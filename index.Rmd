@@ -33,7 +33,7 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
-# This project is built with several libraries from CRAN
+## This project is built with several libraries from CRAN
 
 - bookdown
 - pkgdown
