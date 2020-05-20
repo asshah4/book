@@ -1,5 +1,5 @@
 --- 
-title: "Insights in Autonomic Physiology"
+title: "Thoughts"
 author: "Anish Shah"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
