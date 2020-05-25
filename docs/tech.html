@@ -24,7 +24,7 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-05-20" />
+<meta name="date" content="2020-05-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -134,7 +134,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>1.1</b> This project is built with several libraries from CRAN</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="tech.html"><a href="tech.html"><i class="fa fa-check"></i><b>3</b> Technical Tools</a><ul>
 <li class="chapter" data-level="3.1" data-path="tech.html"><a href="tech.html#r"><i class="fa fa-check"></i><b>3.1</b> R</a></li>
 <li class="chapter" data-level="3.2" data-path="tech.html"><a href="tech.html#github"><i class="fa fa-check"></i><b>3.2</b> Github</a></li>
@@ -165,23 +167,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tech" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Technical Tools</h1>
-<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="intro.html#intro">2</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="#methods"><strong>??</strong></a>.</p>
+<p>When working between Windows, Linux, and macOS systems, having a similar experience is important to maintain workflows. Key features that make the workflow similar are:</p>
+<ul>
+<li>linux kernel (WSL-2)</li>
+<li>terminal (iTerm2, wsltty)</li>
+<li>package manager (homebrew)</li>
+<li>shell (zsh, bash)</li>
+<li>tiling system (tmux)</li>
+<li>email (neomutt)</li>
+<li>version control (github)</li>
+<li>programming (R and RStudio)</li>
+</ul>
 <div id="r" class="section level2">
 <h2><span class="header-section-number">3.1</span> R</h2>
-<p>Built using <em>R</em></p>
+<p>Built using <em>R</em>. Currently using <code>R.version</code>.</p>
 </div>
 <div id="github" class="section level2">
 <h2><span class="header-section-number">3.2</span> Github</h2>
-<p>Maintained and version controled using <em>git</em></p>
+<p>Maintained and version controlled using <em>git</em>.</p>
 </div>
 <div id="terminal" class="section level2">
 <h2><span class="header-section-number">3.3</span> Terminal</h2>
-<p>System-agnostic terminal setup, with key features:</p>
-<ul>
-<li>neomutt</li>
-<li>homebrew</li>
-<li>zsh</li>
-</ul>
+<p>Tmux - a screen multiplexer with a powerline bar to make a pleasant experience across systems.</p>
 
 </div>
 </div>
@@ -222,8 +229,8 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-technical-tools.Rmd",
-"text": "Edit"
+"link": null,
+"text": null
 },
 "history": {
 "link": null,

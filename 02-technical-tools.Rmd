@@ -1,19 +1,24 @@
 # Technical Tools {#tech}
 
-You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+When working between Windows, Linux, and macOS systems, having a similar experience is important to maintain workflows. Key features that make the workflow similar are:
+
+- linux kernel (WSL-2)
+- terminal (iTerm2, wsltty)
+- package manager (homebrew)
+- shell (zsh, bash)
+- tiling system (tmux)
+- email (neomutt)
+- version control (github)
+- programming (R and RStudio)
 
 ## R
 
-Built using _R_
+Built using _R_. Currently using `R.version`.
 
 ## Github
 
-Maintained and version controled using _git_
+Maintained and version controlled using _git_. 
 
 ## Terminal
 
-System-agnostic terminal setup, with key features:
-
-- neomutt
-- homebrew
-- zsh
+Tmux - a screen multiplexer with a powerline bar to make a pleasant experience across systems. 

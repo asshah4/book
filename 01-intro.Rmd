@@ -1,5 +1,9 @@
 # Introduction {#intro}
 
+## Overview
+
+This is a collection of posts built using R, serving as documentation for my current clinical and research workflow.
+
 You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(tech).
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
