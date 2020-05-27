@@ -1,0 +1,15 @@
+# Cosinor Analysis {#cosinor}
+
+Cosinor analysis here.
+
+```{r}
+# Library
+library(card)
+
+# Dataset
+data("twins")
+
+# Cosinor model
+m <- cosinor(rDYX ~ hour, twins)
+```
+
