@@ -1,15 +1,43 @@
 # Cosinor Analysis {#cosinor}
 
-Cosinor analysis here.
+The issue with time series analysis is that the data is by its nature _circular_ and thus cannot be easily be analyzed through traditional, linear methods. The following is the development/expansion of the cosinor model to help study the circadian rhythm \@ref(circadian). 
+
+## Overview
+
+The `card` package was developed to help tackle this problem. 
 
 ```{r}
 # Library
 library(card)
+library(ggplot2)
 
 # Dataset
 data("twins")
 
-# Cosinor model
-m <- cosinor(rDYX ~ hour, twins)
+# Example of data
+ggplot(twins, aes(x = hour, y = rDYX)) +
+	geom_smooth(method = "gam", se = TRUE) 
 ```
 
+Using the `cosinor()` function, the characteristics of the circadian pattern can be retrieved.
+
+```{r}
+# Cosinor model
+m <- cosinor(rDYX ~ hour, twins)
+summary(m)
+```
+
+The statistical principles behind this method allow for different methods to model, diagnose, and interpret findings. [@Refinetti2007; @Cornelissen2014]
+
+- single component cosinor
+- multiple component cosinor
+- population cosinor
+- zero amplitude test
+- lack-of-fit testing
+- confidence intervals (ellipse method)
+
+## Single component cosinor
+
+The single component cosinor method is modeled as:
+
+$$Y(t) = M + A cos(2 \pi t / period) + \epsilon$$

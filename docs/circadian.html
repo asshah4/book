@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Circadian Physiology | Thoughts</title>
+  <title>Chapter 1 Circadian Physiology | Thoughts</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Circadian Physiology | Thoughts" />
+  <meta property="og:title" content="Chapter 1 Circadian Physiology | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Circadian Physiology | Thoughts" />
+  <meta name="twitter:title" content="Chapter 1 Circadian Physiology | Thoughts" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -131,15 +131,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Thoughts</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>1.1</b> This project is built with several libraries from CRAN</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>0.1</b> This project is built with several libraries from CRAN</a></li>
 </ul></li>
-<li class="part"><span><b>I Circadian Rhythm</b></span></li>
-<li class="chapter" data-level="2" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>2</b> Circadian Physiology</a><ul>
-<li class="chapter" data-level="2.1" data-path="circadian.html"><a href="circadian.html#chronobiology"><i class="fa fa-check"></i><b>2.1</b> Chronobiology</a></li>
-<li class="chapter" data-level="2.2" data-path="circadian.html"><a href="circadian.html#circadian-disruption"><i class="fa fa-check"></i><b>2.2</b> Circadian Disruption</a></li>
+<li class="chapter" data-level="1" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>1</b> Circadian Physiology</a><ul>
+<li class="chapter" data-level="1.1" data-path="circadian.html"><a href="circadian.html#chronobiology"><i class="fa fa-check"></i><b>1.1</b> Chronobiology</a></li>
+<li class="chapter" data-level="1.2" data-path="circadian.html"><a href="circadian.html#circadian-disruption"><i class="fa fa-check"></i><b>1.2</b> Circadian Disruption</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>3</b> Cosinor Analysis</a></li>
+<li class="part"><span><b>I Computational</b></span></li>
+<li class="chapter" data-level="2" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>2</b> Cosinor Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="cosinor.html"><a href="cosinor.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="cosinor.html"><a href="cosinor.html#single-component-cosinor"><i class="fa fa-check"></i><b>2.2</b> Single component cosinor</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -161,15 +164,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="circadian" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Circadian Physiology</h1>
+<h1><span class="header-section-number">Chapter 1</span> Circadian Physiology</h1>
 <div id="chronobiology" class="section level2">
-<h2><span class="header-section-number">2.1</span> Chronobiology</h2>
+<h2><span class="header-section-number">1.1</span> Chronobiology</h2>
 <p>Will discuss circadian biology/physiology.</p>
 </div>
 <div id="circadian-disruption" class="section level2">
-<h2><span class="header-section-number">2.2</span> Circadian Disruption</h2>
+<h2><span class="header-section-number">1.2</span> Circadian Disruption</h2>
 
 </div>
+</div>
+
+
+
 </div>
             </section>
 
@@ -227,6 +234,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

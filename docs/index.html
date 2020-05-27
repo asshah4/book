@@ -131,15 +131,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Thoughts</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>1.1</b> This project is built with several libraries from CRAN</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>0.1</b> This project is built with several libraries from CRAN</a></li>
 </ul></li>
-<li class="part"><span><b>I Circadian Rhythm</b></span></li>
-<li class="chapter" data-level="2" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>2</b> Circadian Physiology</a><ul>
-<li class="chapter" data-level="2.1" data-path="circadian.html"><a href="circadian.html#chronobiology"><i class="fa fa-check"></i><b>2.1</b> Chronobiology</a></li>
-<li class="chapter" data-level="2.2" data-path="circadian.html"><a href="circadian.html#circadian-disruption"><i class="fa fa-check"></i><b>2.2</b> Circadian Disruption</a></li>
+<li class="chapter" data-level="1" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>1</b> Circadian Physiology</a><ul>
+<li class="chapter" data-level="1.1" data-path="circadian.html"><a href="circadian.html#chronobiology"><i class="fa fa-check"></i><b>1.1</b> Chronobiology</a></li>
+<li class="chapter" data-level="1.2" data-path="circadian.html"><a href="circadian.html#circadian-disruption"><i class="fa fa-check"></i><b>1.2</b> Circadian Disruption</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>3</b> Cosinor Analysis</a></li>
+<li class="part"><span><b>I Computational</b></span></li>
+<li class="chapter" data-level="2" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>2</b> Cosinor Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="cosinor.html"><a href="cosinor.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="cosinor.html"><a href="cosinor.html#single-component-cosinor"><i class="fa fa-check"></i><b>2.2</b> Single component cosinor</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -165,26 +168,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em>Anish Shah</em></p>
 <p class="date"><em>2020-05-27</em></p>
 </div>
-<div id="prerequisites" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>This is not an organize series of chapters yet.</p>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p>This initially was designed to help document exploratory concepts that were developed using the <a href="https://asshah4.github.io/card">card</a> package, but also expanded to clinical concepts leveraging the power of R and Rmarkdown.</p>
+<p>As this develops, it will likely create its own order. Currently it revolves around the principal components:</p>
 <ul>
-<li><strong>technical</strong>: involving Rmarkdown, Github, Vim, MATLAB</li>
-<li><strong>physiology</strong>: medically related topics</li>
-<li><strong>ecg</strong>: concepts taken from signal processing efforts, including morphology and heart rate variability analyses</li>
+<li>circadian rhythm</li>
+<li>electrocardiography</li>
+<li>autonomic physiology</li>
+<li>clinical medicine</li>
 </ul>
 <div id="this-project-is-built-with-several-libraries-from-cran" class="section level2">
-<h2><span class="header-section-number">1.1</span> This project is built with several libraries from CRAN</h2>
+<h2><span class="header-section-number">0.1</span> This project is built with several libraries from CRAN</h2>
 <ul>
 <li>bookdown</li>
 <li>pkgdown</li>
 </ul>
 
 </div>
-</div>
-
-
-
 </div>
             </section>
 
@@ -242,6 +243,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

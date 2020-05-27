@@ -12,13 +12,16 @@ github-repo: "asshah4/thoughts"
 description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
 ---
 
-# Prerequisites
+# Preface {-}
 
-This is not an organize series of chapters yet. 
+This initially was designed to help document exploratory concepts that were developed using the [card](https://asshah4.github.io/card) package, but also expanded to clinical concepts leveraging the power of R and Rmarkdown.
 
-- __technical__: involving Rmarkdown, Github, Vim, MATLAB
-- __physiology__: medically related topics
-- __ecg__: concepts taken from signal processing efforts, including morphology and heart rate variability analyses
+As this develops, it will likely create its own order. Currently it revolves around the principal components:
+
+- circadian rhythm
+- electrocardiography
+- autonomic physiology
+- clinical medicine
 
 ## This project is built with several libraries from CRAN
 

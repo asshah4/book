@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Cosinor Analysis | Thoughts</title>
+  <title>Chapter 2 Cosinor Analysis | Thoughts</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Cosinor Analysis | Thoughts" />
+  <meta property="og:title" content="Chapter 2 Cosinor Analysis | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Cosinor Analysis | Thoughts" />
+  <meta name="twitter:title" content="Chapter 2 Cosinor Analysis | Thoughts" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -131,15 +131,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Thoughts</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>1.1</b> This project is built with several libraries from CRAN</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#this-project-is-built-with-several-libraries-from-cran"><i class="fa fa-check"></i><b>0.1</b> This project is built with several libraries from CRAN</a></li>
 </ul></li>
-<li class="part"><span><b>I Circadian Rhythm</b></span></li>
-<li class="chapter" data-level="2" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>2</b> Circadian Physiology</a><ul>
-<li class="chapter" data-level="2.1" data-path="circadian.html"><a href="circadian.html#chronobiology"><i class="fa fa-check"></i><b>2.1</b> Chronobiology</a></li>
-<li class="chapter" data-level="2.2" data-path="circadian.html"><a href="circadian.html#circadian-disruption"><i class="fa fa-check"></i><b>2.2</b> Circadian Disruption</a></li>
+<li class="chapter" data-level="1" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>1</b> Circadian Physiology</a><ul>
+<li class="chapter" data-level="1.1" data-path="circadian.html"><a href="circadian.html#chronobiology"><i class="fa fa-check"></i><b>1.1</b> Chronobiology</a></li>
+<li class="chapter" data-level="1.2" data-path="circadian.html"><a href="circadian.html#circadian-disruption"><i class="fa fa-check"></i><b>1.2</b> Circadian Disruption</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>3</b> Cosinor Analysis</a></li>
+<li class="part"><span><b>I Computational</b></span></li>
+<li class="chapter" data-level="2" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>2</b> Cosinor Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="cosinor.html"><a href="cosinor.html#overview"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="cosinor.html"><a href="cosinor.html#single-component-cosinor"><i class="fa fa-check"></i><b>2.2</b> Single component cosinor</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -161,17 +164,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="cosinor" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> Cosinor Analysis</h1>
-<p>Cosinor analysis here.</p>
+<h1><span class="header-section-number">Chapter 2</span> Cosinor Analysis</h1>
+<p>The issue with time series analysis is that the data is by its nature <em>circular</em> and thus cannot be easily be analyzed through traditional, linear methods. The following is the development/expansion of the cosinor model to help study the circadian rhythm <a href="circadian.html#circadian">1</a>.</p>
+<div id="overview" class="section level2">
+<h2><span class="header-section-number">2.1</span> Overview</h2>
+<p>The <code>card</code> package was developed to help tackle this problem.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Library</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(card)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Dataset</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">data</span>(<span class="st">&quot;twins&quot;</span>)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Cosinor model</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8">m &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, twins)</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co"># Dataset</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">data</span>(<span class="st">&quot;twins&quot;</span>)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="co"># Example of data</span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">ggplot</span>(twins, <span class="kw">aes</span>(<span class="dt">x =</span> hour, <span class="dt">y =</span> rDYX)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">se =</span> <span class="ot">TRUE</span>) </a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<p><img src="thoughts_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Using the <code>cosinor()</code> function, the characteristics of the circadian pattern can be retrieved.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Cosinor model</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">m &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, twins)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="kw">summary</span>(m)</a></code></pre></div>
+<pre><code>## Call: 
+## cosinor(&quot;rDYX ~ hour&quot;)
+## 
+## Residuals: 
+##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+## -3.12633 -0.53228 -0.03597  0.00000  0.49132  4.82150 
+## 
+## Coefficients: 
+##      mesor        amp        phi       beta      gamma 
+##  2.8604855  0.2986101 -2.6687044 -0.2658396  0.1360048</code></pre>
+<p>The statistical principles behind this method allow for different methods to model, diagnose, and interpret findings. <span class="citation">(Refinetti, Cornélissen, and Halberg <a href="#ref-Refinetti2007">2007</a>; Cornelissen <a href="#ref-Cornelissen2014">2014</a>)</span></p>
+<ul>
+<li>single component cosinor</li>
+<li>multiple component cosinor</li>
+<li>population cosinor</li>
+<li>zero amplitude test</li>
+<li>lack-of-fit testing</li>
+<li>confidence intervals (ellipse method)</li>
+</ul>
+</div>
+<div id="single-component-cosinor" class="section level2">
+<h2><span class="header-section-number">2.2</span> Single component cosinor</h2>
+<p>The single component cosinor method is modeled as:</p>
+<p><span class="math display">\[Y(t) = M + A cos(2 \pi t / period) + \epsilon\]</span></p>
 
+<div id="refs" class="references">
+<div>
+<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
+</div>
+<div>
+<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Cornelissen2014">
+<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
+</div>
+<div id="ref-Refinetti2007">
+<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
+</div>
 </div>
             </section>
 
@@ -229,6 +285,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@ delete_merged_file: true
 output_dir: "docs"
 rmd_files:
   - "index.Rmd"
-  - "part-circadian.Rmd"
   - "circadian.Rmd"
+  - "part-computational.Rmd"
   - "cosinor.Rmd"
 
