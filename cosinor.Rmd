@@ -1,6 +1,6 @@
 # Cosinor Analysis {#cosinor}
 
-The issue with time series analysis is that the data is by its nature _circular_ and thus cannot be easily be analyzed through traditional, linear methods. The following is the development/expansion of the cosinor model to help study the circadian rhythm \@ref(circadian). 
+The issue with time series analysis is that the data is by its nature _circular_ and thus cannot be easily be analyzed through traditional, linear methods. The following is the development/expansion of the cosinor model to help study circadian rhythms (\@ref(circadian)).
 
 ## Overview
 
@@ -41,3 +41,71 @@ The statistical principles behind this method allow for different methods to mod
 The single component cosinor method is modeled as:
 
 $$Y(t) = M + A cos(2 \pi t / period) + \epsilon$$
+
+## Population-mean cosinor
+
+Based on the work by Cornelissen et al 2014 [@Cornelissen2014], the population mean cosinor can be estimated by applying the single or multiple component cosinor to each individual. Each parameter can then be "averaged" to estimate the population parameters.
+
+$$\{\hat{u} = \hat{M}_{i} + \hat\beta_{i} + \hat\gamma_{i} + ... \}$$
+
+Where $i = 1, 2, ..., k$ for each individual contribution to the population cosinor metrics.
+
+```{r, message = FALSE}
+# Parameters for population mean cosinor
+df <- twins[1:105, c("rDYX", "hour", "patid")]
+names(df) <- c("y", "t", "pop")
+
+# Number of individuals
+k <- length(unique(df$pop))
+
+# Individual cosinor models are implemented for each individual
+kCosinors <- 
+	with(
+		df,
+		by(df, pop, function(x) {
+			cosinor(y ~ t, data = x, tau = 24)
+		})
+	)
+
+# The coefficients have to be extracted and summarized
+tbl <- sapply(kCosinors, stats::coef)
+coef_names <- c("mesor", "amp", "phi", "beta", "gamma")
+rownames(tbl) <- coef_names
+xmat <- t(tbl)
+
+# Get mean for each parameter (mesor, beta, gamma), ignoring averaged amp/phi
+coefs <- apply(xmat, MARGIN = 2, function(x) {
+  sum(x) / k
+})
+
+mesor <- unname(coefs["mesor"])
+beta <- unname(coefs["beta"])
+gamma <- unname(coefs["gamma"])
+
+# Get amplitude
+amp <- sqrt(beta^2 + gamma^2)
+
+# Acrophase (phi) must be in correct quadrant
+sb <- sign(beta)
+sg <- sign(gamma)
+theta <- atan(abs(gamma / beta))
+
+if ((sb == 1 | sb == 0) & sg == 1) {
+  phi <- -theta
+} else if (sb == -1 & (sg == 1 | sg == 0)) {
+  phi <- theta - pi
+} else if ((sb == -1 | sb == 0) & sg == -1) {
+  phi <- -theta - pi
+} else if (sb == 1 & (sg == -1 | sg == 0)) {
+  phi <- theta - (2 * pi)
+}
+
+# Update coefficients
+coefs["amp"] <- amp
+coefs["phi"] <- phi
+
+# Updated coefficients
+names(coefs) <- coef_names
+print(coefs)
+```
+

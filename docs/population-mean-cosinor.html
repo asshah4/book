@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 Population-mean cosinor | Thoughts</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 Population-mean cosinor | Thoughts" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="github-repo" content="asshah4/thoughts" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Population-mean cosinor | Thoughts" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Anish Shah" />
+
+
+<meta name="date" content="2020-05-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="single-component-cosinor.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Thoughts</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="this-project-is-built-with-several-libraries-from-cran.html"><a href="this-project-is-built-with-several-libraries-from-cran.html"><i class="fa fa-check"></i><b>0.1</b> This project is built with several libraries from CRAN</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>1</b> Circadian Physiology</a><ul>
+<li class="chapter" data-level="1.1" data-path="chronobiology.html"><a href="chronobiology.html"><i class="fa fa-check"></i><b>1.1</b> Chronobiology</a></li>
+<li class="chapter" data-level="1.2" data-path="circadian-disruption.html"><a href="circadian-disruption.html"><i class="fa fa-check"></i><b>1.2</b> Circadian Disruption</a></li>
+</ul></li>
+<li class="part"><span><b>I Computational</b></span></li>
+<li class="chapter" data-level="2" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>2</b> Cosinor Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>2.1</b> Overview</a></li>
+<li class="chapter" data-level="2.2" data-path="single-component-cosinor.html"><a href="single-component-cosinor.html"><i class="fa fa-check"></i><b>2.2</b> Single component cosinor</a></li>
+<li class="chapter" data-level="2.3" data-path="population-mean-cosinor.html"><a href="population-mean-cosinor.html"><i class="fa fa-check"></i><b>2.3</b> Population-mean cosinor</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Thoughts</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="population-mean-cosinor" class="section level2">
+<h2><span class="header-section-number">2.3</span> Population-mean cosinor</h2>
+<p>Based on the work by Cornelissen et al 2014 <span class="citation">(Cornelissen <a href="#ref-Cornelissen2014" role="doc-biblioref">2014</a>)</span>, the population mean cosinor can be estimated by applying the single or multiple component cosinor to each individual. Each parameter can then be “averaged” to estimate the population parameters.</p>
+<p><span class="math display">\[\{\hat{u} = \hat{M}_{i} + \hat\beta_{i} + \hat\gamma_{i} + ... \}\]</span></p>
+<p>Where <span class="math inline">\(i = 1, 2, ..., k\)</span> for each individual contribution to the population cosinor metrics.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="population-mean-cosinor.html#cb5-1"></a><span class="co"># Parameters for population mean cosinor</span></span>
+<span id="cb5-2"><a href="population-mean-cosinor.html#cb5-2"></a>df &lt;-<span class="st"> </span>twins[<span class="dv">1</span><span class="op">:</span><span class="dv">105</span>, <span class="kw">c</span>(<span class="st">&quot;rDYX&quot;</span>, <span class="st">&quot;hour&quot;</span>, <span class="st">&quot;patid&quot;</span>)]</span>
+<span id="cb5-3"><a href="population-mean-cosinor.html#cb5-3"></a><span class="kw">names</span>(df) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;y&quot;</span>, <span class="st">&quot;t&quot;</span>, <span class="st">&quot;pop&quot;</span>)</span>
+<span id="cb5-4"><a href="population-mean-cosinor.html#cb5-4"></a></span>
+<span id="cb5-5"><a href="population-mean-cosinor.html#cb5-5"></a><span class="co"># Number of individuals</span></span>
+<span id="cb5-6"><a href="population-mean-cosinor.html#cb5-6"></a>k &lt;-<span class="st"> </span><span class="kw">length</span>(<span class="kw">unique</span>(df<span class="op">$</span>pop))</span>
+<span id="cb5-7"><a href="population-mean-cosinor.html#cb5-7"></a></span>
+<span id="cb5-8"><a href="population-mean-cosinor.html#cb5-8"></a><span class="co"># Individual cosinor models are implemented for each individual</span></span>
+<span id="cb5-9"><a href="population-mean-cosinor.html#cb5-9"></a>kCosinors &lt;-<span class="st"> </span></span>
+<span id="cb5-10"><a href="population-mean-cosinor.html#cb5-10"></a><span class="st">    </span><span class="kw">with</span>(</span>
+<span id="cb5-11"><a href="population-mean-cosinor.html#cb5-11"></a>        df,</span>
+<span id="cb5-12"><a href="population-mean-cosinor.html#cb5-12"></a>        <span class="kw">by</span>(df, pop, <span class="cf">function</span>(x) {</span>
+<span id="cb5-13"><a href="population-mean-cosinor.html#cb5-13"></a>            <span class="kw">cosinor</span>(y <span class="op">~</span><span class="st"> </span>t, <span class="dt">data =</span> x, <span class="dt">tau =</span> <span class="dv">24</span>)</span>
+<span id="cb5-14"><a href="population-mean-cosinor.html#cb5-14"></a>        })</span>
+<span id="cb5-15"><a href="population-mean-cosinor.html#cb5-15"></a>    )</span></code></pre></div>
+<pre><code>## [1] &quot;Confidence regions overlap the poles. Confidence intervals for amplitude and acrophase cannot be determined.&quot;
+## [1] &quot;Confidence regions overlap the poles. Confidence intervals for amplitude and acrophase cannot be determined.&quot;
+## [1] &quot;Confidence regions overlap the poles. Confidence intervals for amplitude and acrophase cannot be determined.&quot;
+## [1] &quot;Confidence regions overlap the poles. Confidence intervals for amplitude and acrophase cannot be determined.&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="population-mean-cosinor.html#cb7-1"></a><span class="co"># The coefficients have to be extracted and summarized</span></span>
+<span id="cb7-2"><a href="population-mean-cosinor.html#cb7-2"></a>tbl &lt;-<span class="st"> </span><span class="kw">sapply</span>(kCosinors, stats<span class="op">::</span>coef)</span>
+<span id="cb7-3"><a href="population-mean-cosinor.html#cb7-3"></a>coef_names &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;mesor&quot;</span>, <span class="st">&quot;amp&quot;</span>, <span class="st">&quot;phi&quot;</span>, <span class="st">&quot;beta&quot;</span>, <span class="st">&quot;gamma&quot;</span>)</span>
+<span id="cb7-4"><a href="population-mean-cosinor.html#cb7-4"></a><span class="kw">rownames</span>(tbl) &lt;-<span class="st"> </span>coef_names</span>
+<span id="cb7-5"><a href="population-mean-cosinor.html#cb7-5"></a>xmat &lt;-<span class="st"> </span><span class="kw">t</span>(tbl)</span>
+<span id="cb7-6"><a href="population-mean-cosinor.html#cb7-6"></a></span>
+<span id="cb7-7"><a href="population-mean-cosinor.html#cb7-7"></a><span class="co"># Get mean for each parameter (mesor, beta, gamma), ignoring averaged amp/phi</span></span>
+<span id="cb7-8"><a href="population-mean-cosinor.html#cb7-8"></a>coefs &lt;-<span class="st"> </span><span class="kw">apply</span>(xmat, <span class="dt">MARGIN =</span> <span class="dv">2</span>, <span class="cf">function</span>(x) {</span>
+<span id="cb7-9"><a href="population-mean-cosinor.html#cb7-9"></a>  <span class="kw">sum</span>(x) <span class="op">/</span><span class="st"> </span>k</span>
+<span id="cb7-10"><a href="population-mean-cosinor.html#cb7-10"></a>})</span>
+<span id="cb7-11"><a href="population-mean-cosinor.html#cb7-11"></a></span>
+<span id="cb7-12"><a href="population-mean-cosinor.html#cb7-12"></a>mesor &lt;-<span class="st"> </span><span class="kw">unname</span>(coefs[<span class="st">&quot;mesor&quot;</span>])</span>
+<span id="cb7-13"><a href="population-mean-cosinor.html#cb7-13"></a>beta &lt;-<span class="st"> </span><span class="kw">unname</span>(coefs[<span class="st">&quot;beta&quot;</span>])</span>
+<span id="cb7-14"><a href="population-mean-cosinor.html#cb7-14"></a>gamma &lt;-<span class="st"> </span><span class="kw">unname</span>(coefs[<span class="st">&quot;gamma&quot;</span>])</span>
+<span id="cb7-15"><a href="population-mean-cosinor.html#cb7-15"></a></span>
+<span id="cb7-16"><a href="population-mean-cosinor.html#cb7-16"></a><span class="co"># Get amplitude</span></span>
+<span id="cb7-17"><a href="population-mean-cosinor.html#cb7-17"></a>amp &lt;-<span class="st"> </span><span class="kw">sqrt</span>(beta<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span>gamma<span class="op">^</span><span class="dv">2</span>)</span>
+<span id="cb7-18"><a href="population-mean-cosinor.html#cb7-18"></a></span>
+<span id="cb7-19"><a href="population-mean-cosinor.html#cb7-19"></a><span class="co"># Acrophase (phi) must be in correct quadrant</span></span>
+<span id="cb7-20"><a href="population-mean-cosinor.html#cb7-20"></a>sb &lt;-<span class="st"> </span><span class="kw">sign</span>(beta)</span>
+<span id="cb7-21"><a href="population-mean-cosinor.html#cb7-21"></a>sg &lt;-<span class="st"> </span><span class="kw">sign</span>(gamma)</span>
+<span id="cb7-22"><a href="population-mean-cosinor.html#cb7-22"></a>theta &lt;-<span class="st"> </span><span class="kw">atan</span>(<span class="kw">abs</span>(gamma <span class="op">/</span><span class="st"> </span>beta))</span>
+<span id="cb7-23"><a href="population-mean-cosinor.html#cb7-23"></a></span>
+<span id="cb7-24"><a href="population-mean-cosinor.html#cb7-24"></a><span class="cf">if</span> ((sb <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>sb <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</span>
+<span id="cb7-25"><a href="population-mean-cosinor.html#cb7-25"></a>  phi &lt;-<span class="st"> </span><span class="op">-</span>theta</span>
+<span id="cb7-26"><a href="population-mean-cosinor.html#cb7-26"></a>} <span class="cf">else</span> <span class="cf">if</span> (sb <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">&amp;</span><span class="st"> </span>(sg <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) {</span>
+<span id="cb7-27"><a href="population-mean-cosinor.html#cb7-27"></a>  phi &lt;-<span class="st"> </span>theta <span class="op">-</span><span class="st"> </span>pi</span>
+<span id="cb7-28"><a href="population-mean-cosinor.html#cb7-28"></a>} <span class="cf">else</span> <span class="cf">if</span> ((sb <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">|</span><span class="st"> </span>sb <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">-1</span>) {</span>
+<span id="cb7-29"><a href="population-mean-cosinor.html#cb7-29"></a>  phi &lt;-<span class="st"> </span><span class="op">-</span>theta <span class="op">-</span><span class="st"> </span>pi</span>
+<span id="cb7-30"><a href="population-mean-cosinor.html#cb7-30"></a>} <span class="cf">else</span> <span class="cf">if</span> (sb <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>(sg <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">|</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) {</span>
+<span id="cb7-31"><a href="population-mean-cosinor.html#cb7-31"></a>  phi &lt;-<span class="st"> </span>theta <span class="op">-</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi)</span>
+<span id="cb7-32"><a href="population-mean-cosinor.html#cb7-32"></a>}</span>
+<span id="cb7-33"><a href="population-mean-cosinor.html#cb7-33"></a></span>
+<span id="cb7-34"><a href="population-mean-cosinor.html#cb7-34"></a><span class="co"># Update coefficients</span></span>
+<span id="cb7-35"><a href="population-mean-cosinor.html#cb7-35"></a>coefs[<span class="st">&quot;amp&quot;</span>] &lt;-<span class="st"> </span>amp</span>
+<span id="cb7-36"><a href="population-mean-cosinor.html#cb7-36"></a>coefs[<span class="st">&quot;phi&quot;</span>] &lt;-<span class="st"> </span>phi</span>
+<span id="cb7-37"><a href="population-mean-cosinor.html#cb7-37"></a></span>
+<span id="cb7-38"><a href="population-mean-cosinor.html#cb7-38"></a><span class="co"># Updated coefficients</span></span>
+<span id="cb7-39"><a href="population-mean-cosinor.html#cb7-39"></a><span class="kw">names</span>(coefs) &lt;-<span class="st"> </span>coef_names</span>
+<span id="cb7-40"><a href="population-mean-cosinor.html#cb7-40"></a><span class="kw">print</span>(coefs)</span></code></pre></div>
+<pre><code>##       mesor         amp         phi        beta       gamma 
+##  2.73343430  0.13693035 -1.72263447 -0.02071145  0.13535493</code></pre>
+
+<div id="refs" class="references">
+<div>
+<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
+</div>
+<div>
+<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
+</div>
+</div>
+</div>
+<!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Cornelissen2014">
+<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="single-component-cosinor.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["thoughts.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
