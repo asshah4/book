@@ -6,11 +6,12 @@ delete_merged_file: true
 output_dir: "docs"
 rmd_files:
   - "index.Rmd"
-  - "circadian.Rmd"
-  - "part-computational.Rmd"
-  - "cosinor.Rmd"
+  - "intro.Rmd"
   - "technical.Rmd"
+  - "circadian.Rmd"
+  - "PART-computational.Rmd"
+  - "cosinor.Rmd"
   - "package.Rmd"
-  - "part-ecg.Rmd"
+  - "PART-ecg.Rmd"
   - "vcg.Rmd"
 

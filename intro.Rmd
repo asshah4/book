@@ -2,7 +2,3 @@
 
 An introduction would go here.
 
-## Technical
-
-- R / Rmarkdown / RStudio
-- git / github
