@@ -1,0 +1,12 @@
+# Technical
+
+## `R` and RStudio
+
+I have been learning R since 2010, and have found it to be an excellent:
+
+- open-source
+- excellent community
+- an outstanding IDE with [RStudio](https://rstudio.com/)
+- package development
+
+## `git` and Github

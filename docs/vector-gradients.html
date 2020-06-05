@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Single component cosinor | Thoughts</title>
+  <title>5.1 Vector Gradients | Thoughts</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Single component cosinor | Thoughts" />
+  <meta property="og:title" content="5.1 Vector Gradients | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Single component cosinor | Thoughts" />
+  <meta name="twitter:title" content="5.1 Vector Gradients | Thoughts" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="overview.html"/>
-<link rel="next" href="population-mean-cosinor.html"/>
+<link rel="prev" href="vcg.html"/>
+<link rel="next" href="global-electrical-heterogeneity.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -180,18 +180,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="single-component-cosinor" class="section level2">
-<h2><span class="header-section-number">2.2</span> Single component cosinor</h2>
-<p>The single component cosinor method is modeled as:</p>
-<p><span class="math display">\[Y(t) = M + A cos(2 \pi t / period) + \epsilon\]</span></p>
+<div id="vector-gradients" class="section level2">
+<h2><span class="header-section-number">5.1</span> Vector Gradients</h2>
+<p>Mark Josephson in 1988 found that repolarization became non-uniform post-infarction, which was the suggestive substrate of VT/VF.</p>
+<p>The dispersion of the total recovery time is suggestive of global electrical heterogeneity, which can then predict SCD.</p>
+<p>Vectorcardiography (VCG) characterizes the electrical heart vector movement through a cardiac cycle. This is understood best through the spatial ventricular gradient vector (SVG), as described by Frank Wilson in 1934, and expanded upon by J. Willis Hurst. This is different and independent of the sequence of ventricular activation, which can be seen on ECG. The work by Larisa Tereschchenko has helped to compute these concepts for analytical approaches <span class="citation">(Tereshchenko <a href="#ref-Tereshchenko2018a" role="doc-biblioref">2018</a>)</span>. The SVG points to different locations in healthy versus diseased hearts.</p>
+<p><a href="https://youtu.be/vsXuJvhRkYA">Summary of SVG</a>:</p>
+<ol style="list-style-type: decimal">
+<li>Points along the direction of greatest activation and recovery time (which is perpendicular to the line of conduction block, such as scar)</li>
+<li>Points towards to the area where the total recovery time is the shortest</li>
+<li>Depends on the heterogeneity of action potential across entire myocardium</li>
+<li>Characterizes the degree of heterogeneity of recovery time across the ventricles</li>
+<li>Steepness of the gradient determines magnitude of the SVG (areas of contrasting recovery time thus give largest SVG)</li>
+</ol>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Tereshchenko2018a">
+<p>Tereshchenko, Larisa G. 2018. “Global Electrical Heterogeneity: Mechanisms and Clinical Significance.” In <em>Computing in Cardiology</em>. Vols. 2018-Septe. IEEE Computer Society. <a href="https://doi.org/10.22489/CinC.2018.165">https://doi.org/10.22489/CinC.2018.165</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="population-mean-cosinor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vcg.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="global-electrical-heterogeneity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

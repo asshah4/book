@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.2 Single component cosinor | Thoughts</title>
+  <title>5.2 Global Electrical Heterogeneity | Thoughts</title>
   <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2.2 Single component cosinor | Thoughts" />
+  <meta property="og:title" content="5.2 Global Electrical Heterogeneity | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.2 Single component cosinor | Thoughts" />
+  <meta name="twitter:title" content="5.2 Global Electrical Heterogeneity | Thoughts" />
   
   <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="overview.html"/>
-<link rel="next" href="population-mean-cosinor.html"/>
+<link rel="prev" href="vector-gradients.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -180,18 +180,50 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="single-component-cosinor" class="section level2">
-<h2><span class="header-section-number">2.2</span> Single component cosinor</h2>
-<p>The single component cosinor method is modeled as:</p>
-<p><span class="math display">\[Y(t) = M + A cos(2 \pi t / period) + \epsilon\]</span></p>
+<div id="global-electrical-heterogeneity" class="section level2">
+<h2><span class="header-section-number">5.2</span> Global Electrical Heterogeneity</h2>
+<p>The SVG can be broken down in 5 VCG parameters to describe the overall global electrical heterogeneity of the heart, as seen in the <strong>Figure</strong> below <span class="citation">(Waks et al. <a href="#ref-Waks2016a" role="doc-biblioref">2016</a>)</span>.</p>
+<ul>
+<li>SVG magnitude</li>
+<li>SVG azimuth</li>
+<li>SVG elevation</li>
+<li>Spatial QRS-T angle = the three-dimensional angle between mean spatial QRS-vector and mean spatial T-vector, measured in degrees</li>
+<li>Sum absolute QRST integral = scalar analog of the SVG, calculated as absolute value under QRS cmplex and T-wave, measured in millivolts (integral of voltage over time)</li>
+</ul>
+<div class="figure">
+<img src="figures/svg.png" alt="" />
+<p class="caption">vector gradient</p>
+</div>
+
+<div id="refs" class="references">
+<div>
+<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
+</div>
+<div>
+<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
+</div>
+<div>
+<p>Tereshchenko, Larisa G. 2018. “Global Electrical Heterogeneity: Mechanisms and Clinical Significance.” In <em>Computing in Cardiology</em>. Vols. 2018-Septe. IEEE Computer Society. <a href="https://doi.org/10.22489/CinC.2018.165">https://doi.org/10.22489/CinC.2018.165</a>.</p>
+</div>
+<div>
+<p>Waks, Jonathan W., Colleen M. Sitlani, Elsayed Z. Soliman, Muammar Kabir, Elyar Ghafoori, Mary L. Biggs, Charles A. Henrikson, et al. 2016. “Global Electric Heterogeneity Risk Score for Prediction of Sudden Cardiac Death in the General Population: The Atherosclerosis Risk in Communities (ARIC) and Cardiovascular Health (CHS) Studies.” <em>Circulation</em> 133 (23): 2222–34. <a href="https://doi.org/10.1161/CIRCULATIONAHA.116.021306">https://doi.org/10.1161/CIRCULATIONAHA.116.021306</a>.</p>
+</div>
+</div>
+</div>
+<!-- </div> -->
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Waks2016a">
+<p>Waks, Jonathan W., Colleen M. Sitlani, Elsayed Z. Soliman, Muammar Kabir, Elyar Ghafoori, Mary L. Biggs, Charles A. Henrikson, et al. 2016. “Global Electric Heterogeneity Risk Score for Prediction of Sudden Cardiac Death in the General Population: The Atherosclerosis Risk in Communities (ARIC) and Cardiovascular Health (CHS) Studies.” <em>Circulation</em> 133 (23): 2222–34. <a href="https://doi.org/10.1161/CIRCULATIONAHA.116.021306">https://doi.org/10.1161/CIRCULATIONAHA.116.021306</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="overview.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="population-mean-cosinor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vector-gradients.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

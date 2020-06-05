@@ -9,4 +9,8 @@ rmd_files:
   - "circadian.Rmd"
   - "part-computational.Rmd"
   - "cosinor.Rmd"
+  - "technical.Rmd"
+  - "package.Rmd"
+  - "part-ecg.Rmd"
+  - "vcg.Rmd"
 

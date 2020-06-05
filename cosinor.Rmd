@@ -23,7 +23,7 @@ Using the `cosinor()` function, the characteristics of the circadian pattern can
 
 ```{r}
 # Cosinor model
-m <- cosinor(rDYX ~ hour, twins)
+m <- cosinor(rDYX ~ hour, twins, tau = 24)
 summary(m)
 ```
 
@@ -107,5 +107,12 @@ coefs["phi"] <- phi
 # Updated coefficients
 names(coefs) <- coef_names
 print(coefs)
+```
+
+This model can be visualized as well if we group each individual by their predicted values, based on the individual cosinor mesor, amplitude, and acrophase.
+
+```{r}
+model <- data.frame(xmat)
+
 ```
 
