@@ -17,7 +17,7 @@ mainfont: Palatino
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.8"
 github-repo: "asshah4/thoughts"
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "A workspace for thoughts."
 ---
 
 # Preface {-}
@@ -30,8 +30,4 @@ As this develops, it will likely create its own order. Currently it revolves aro
 - electrocardiography
 - autonomic physiology
 - clinical medicine
-
-## This project is built with several libraries from CRAN
-
-- bookdown
-- pkgdown
+- programming
