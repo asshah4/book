@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Vectorcardiography | Thoughts</title>
+  <title>Chapter 7 Vectorcardiography | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Vectorcardiography | Thoughts" />
+  <meta property="og:title" content="Chapter 7 Vectorcardiography | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Vectorcardiography | Thoughts" />
+  <meta name="twitter:title" content="Chapter 7 Vectorcardiography | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-06-10" />
+<meta name="date" content="2020-06-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="documenting-a-package.html"/>
+<link rel="prev" href="modeling-multiple-outcomes-and-predictors.html"/>
 <link rel="next" href="vector-gradients.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -154,17 +154,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="population-mean-cosinor.html"><a href="population-mean-cosinor.html"><i class="fa fa-check"></i><b>4.3</b> Population-mean cosinor</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="population-mean-cosinor.html"><a href="population-mean-cosinor.html#confidence-intervals-for-population-cosinor"><i class="fa fa-check"></i><b>4.3.1</b> Confidence Intervals for Population Cosinor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>4.4</b> References</a></li>
+<li class="chapter" data-level="4.4" data-path="multiple-component-cosinor.html"><a href="multiple-component-cosinor.html"><i class="fa fa-check"></i><b>4.4</b> Multiple-Component Cosinor</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="package.html"><a href="package.html"><i class="fa fa-check"></i><b>5</b> Package Development</a><ul>
 <li class="chapter" data-level="5.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html"><i class="fa fa-check"></i><b>5.1</b> Documenting a Package</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html#website"><i class="fa fa-check"></i><b>5.1.1</b> Website</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>6</b> Modeling</a><ul>
+<li class="chapter" data-level="6.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html"><i class="fa fa-check"></i><b>6.1</b> Modeling Multiple Outcomes and Predictors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#creating-multiple-models"><i class="fa fa-check"></i><b>6.1.1</b> Creating Multiple Models</a></li>
+<li class="chapter" data-level="6.1.2" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#visualize-regression-estimates"><i class="fa fa-check"></i><b>6.1.2</b> Visualize Regression Estimates</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>II Electrocardiography</b></span></li>
-<li class="chapter" data-level="6" data-path="vcg.html"><a href="vcg.html"><i class="fa fa-check"></i><b>6</b> Vectorcardiography</a><ul>
-<li class="chapter" data-level="6.1" data-path="vector-gradients.html"><a href="vector-gradients.html"><i class="fa fa-check"></i><b>6.1</b> Vector Gradients</a></li>
-<li class="chapter" data-level="6.2" data-path="global-electrical-heterogeneity.html"><a href="global-electrical-heterogeneity.html"><i class="fa fa-check"></i><b>6.2</b> Global Electrical Heterogeneity</a></li>
+<li class="chapter" data-level="7" data-path="vcg.html"><a href="vcg.html"><i class="fa fa-check"></i><b>7</b> Vectorcardiography</a><ul>
+<li class="chapter" data-level="7.1" data-path="vector-gradients.html"><a href="vector-gradients.html"><i class="fa fa-check"></i><b>7.1</b> Vector Gradients</a></li>
+<li class="chapter" data-level="7.2" data-path="global-electrical-heterogeneity.html"><a href="global-electrical-heterogeneity.html"><i class="fa fa-check"></i><b>7.2</b> Global Electrical Heterogeneity</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -187,14 +193,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="vcg" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Vectorcardiography</h1>
+<h1><span class="header-section-number">Chapter 7</span> Vectorcardiography</h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="documenting-a-package.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="modeling-multiple-outcomes-and-predictors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="vector-gradients.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

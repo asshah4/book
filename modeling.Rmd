@@ -1,0 +1,145 @@
+# Modeling {#models}
+
+Here is a collection of explorations on modeling approaches as they related to electrocardiography and epidemiology.
+
+## Modeling Multiple Outcomes and Predictors
+
+A recurrent issue with causality-focused modeling with ECG data is that there are multiple outcomes (different ECG features). For example, in the `card` package, the `geh` dataset contains several ECG features based on [vectorcardiography](#vcg).
+
+### Creating Multiple Models
+
+```{r}
+library(card)
+library(tidyverse)
+data(geh)
+names(geh)
+```
+
+The first issue is the causal model, which can be visualized using a directed acyclic graph. The variables of interest are a subset of the dataset. In this case, we're looking at the relationship of diabetes with cardiotoxicity in a very small subset of participants.
+
+```{r}
+library(ggdag)
+
+bd <- dagify(
+		GEH ~ DM + Age + BMI + HTN + CAD + IR + Sex,
+		DM ~ Age + IR + BMI,
+		CAD ~ DM + BMI + HTN + Age + Sex,
+		HTN ~ Age,
+		IR ~ BMI + Age,
+		Age ~ Sex,
+		exposure = "DM",
+		outcome = "GEH"
+)
+
+d1 <- ggdag_parents(bd, "DM", layout = "star") + 
+	theme_dag() + 
+	theme(legend.position = "none") +
+	labs(title = "Factors Affecting Diabetes")
+
+d2 <- ggdag_parents(bd, "GEH", layout = "star") + 
+	theme_dag() + 
+	theme(legend.position = "none") +
+	labs(title = "Factors Affecting GEH")
+
+# Combine and plot
+gridExtra::grid.arrange(d1, d2, nrow = 1)
+```
+
+As we can see, many things effect ECG findings, and a subgroup of those impact diabetes, suggesting a number of potential effect modifiers and potential confounders/mediators. Using a sequential model building method in the `card` package allows for a simple way to perform this analysis. This will build a linear model for each outcome, and repeat the model with an additional covariate in the sequence of listed in the formula.
+
+```{r}
+# Select variables
+vars <- 
+	c("svg_mag", "az_svg", "el_svg", "qrs_tang", "log_auc_qt", "log_wvg", "lab_hba1c", "lab_fasting_bg", "homa", "dm", "age", "bmi", "bmi_cat", "age_cat", "sex", "htn", "cad", "lab_ser_creatinine", "lab_tchol") 
+	
+df <-
+	geh %>%
+	select(all_of(vars)) %>%
+	#na.omit() %>%
+	#filter(homa <= 5 * sd(homa, na.rm = TRUE)) %>% # Remove outliers
+	mutate(
+		bmi_cat = 
+			factor(bmi_cat, levels = c(0:3), 
+						 labels = c("Underweight", "Normal", "Overweight", "Obese")),
+		age_cat = 
+			factor(age_cat, levels = c(0:2), 
+						 labels = c("<45", "45-65", ">65")),
+		sex = factor(sex, levels = c(0,1), labels = c("Female", "Male"))
+	) %>%
+	mutate(across(
+		c(svg_mag, az_svg, el_svg, qrs_tang, log_auc_qt, log_wvg), 
+		function(x) {
+			as.vector(scale(x, center = TRUE, scale = TRUE))
+		}
+	))
+
+# Sequential model building
+models <- 
+	card::build_sequential_models(
+		svg_mag + az_svg + el_svg + qrs_tang + log_auc_qt + log_wvg ~ 
+			lab_hba1c + age + sex + bmi + cad + htn, 
+		data = df,
+		exposure = "lab_hba1c",
+		engine = "lm"
+	)
+
+head(models)
+```
+
+### Visualize Regression Estimates
+
+To assess or get a sense of how the variables are playing out, we can visualize the estimates across the builds of the models. This will also use the `gganimate` package to show the effect of data layering 
+
+```{r, message=FALSE}
+# Libraries
+library(gganimate)
+library(ggthemes)
+
+# Data
+df <- 
+	models %>%
+	# Remove intercepts
+	filter(term != "(Intercept)") %>%
+	# Sequence the terms
+	mutate(
+		term = 
+			factor(
+				term, 
+				levels = c("lab_hba1c", "age", "sexMale", "bmi", "cad1", "htn1"),
+				labels = c("HbA1c", "Age", "Sex", "BMI", "CAD", "HTN")
+			)
+	) 
+
+# ggplot
+g <- ggplot(df, aes(x = factor(covar), y = estimate, color = term)) + 
+	facet_wrap(~outcomes, scales = "fixed") + 
+	geom_point(
+		aes(color = term), 
+		data = filter(df, p.value >= 0.20), 
+		shape = 1, 
+		position = "jitter"
+	) + 
+	geom_point(
+		aes(color = term), 
+		data = filter(df, p.value < 0.20), 
+		shape = 19, 
+		position = "jitter"
+	) + 
+	scale_color_ptol(name = "Predictors") + 
+	theme_minimal() + 
+	theme(
+		legend.position = "bottom", legend.box = "horizontal",
+		panel.border = element_rect(colour = "black", fill = NA)
+	) + 
+	labs(
+		title = "Estimates in Sequential Models",
+		x = "Number of Covariates in Model",
+		y = "GEH Parameters (z-normalized)"
+	)
+
+# Animated
+a <- g + transition_reveal(covar)
+
+animate(a, width = 700, height = 400, end_pause = 30)
+```
+

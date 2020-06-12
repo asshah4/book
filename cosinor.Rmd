@@ -229,7 +229,7 @@ print(coefs)
 
 The confidence intervals for a population are more complicated to generate, and several approaches are documented in the literature.
 
-#### ELlipsoid Approach
+#### Ellipsoid Approach
 
 The values, including standard deviation and standard error for the _MESOR_ are calculated using standard statistics along a t-distribution, with degree of freedom based on number of observations. In this case, $\alpha = 0.05$.
 
@@ -381,7 +381,7 @@ alpha <- 0.05
 tdist <- qt(1 - alpha/2, k - 1)
 
 # Plot
-ggplot() +
+g <- ggplot() +
 	geom_segment(
 		aes(
 			x = gamma - (tdist * sd(kcoefs$gamma) / sqrt(k)),
@@ -447,4 +447,8 @@ sd(kcoefs$gamma)
 
 However, this method is more complicated when multiple components are included.
 
-## References
+## Multiple-Component Cosinor
+
+Fitting physiological/circadian data may involve other patterns than a single, 24-hour frequency. There may be additional components or cosine waves that better explain the datasets, such as at 8 hours (e.g. meal times). Thus, it can be beneficial to add a secondary component.
+
+Implementing this in `R` is made complex as it now uses a variable number of inputs and variable number of outputs.

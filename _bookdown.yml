@@ -12,6 +12,7 @@ rmd_files:
   - "PART-computational.Rmd"
   - "cosinor.Rmd"
   - "package.Rmd"
+  - "modeling.Rmd"
   - "PART-ecg.Rmd"
   - "vcg.Rmd"
 

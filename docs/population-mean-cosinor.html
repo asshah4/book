@@ -24,7 +24,7 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-06-10" />
+<meta name="date" content="2020-06-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="single-component-cosinor.html"/>
-<link rel="next" href="references-1.html"/>
+<link rel="next" href="multiple-component-cosinor.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -154,17 +154,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="population-mean-cosinor.html"><a href="population-mean-cosinor.html"><i class="fa fa-check"></i><b>4.3</b> Population-mean cosinor</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="population-mean-cosinor.html"><a href="population-mean-cosinor.html#confidence-intervals-for-population-cosinor"><i class="fa fa-check"></i><b>4.3.1</b> Confidence Intervals for Population Cosinor</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>4.4</b> References</a></li>
+<li class="chapter" data-level="4.4" data-path="multiple-component-cosinor.html"><a href="multiple-component-cosinor.html"><i class="fa fa-check"></i><b>4.4</b> Multiple-Component Cosinor</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="package.html"><a href="package.html"><i class="fa fa-check"></i><b>5</b> Package Development</a><ul>
 <li class="chapter" data-level="5.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html"><i class="fa fa-check"></i><b>5.1</b> Documenting a Package</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html#website"><i class="fa fa-check"></i><b>5.1.1</b> Website</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>6</b> Modeling</a><ul>
+<li class="chapter" data-level="6.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html"><i class="fa fa-check"></i><b>6.1</b> Modeling Multiple Outcomes and Predictors</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#creating-multiple-models"><i class="fa fa-check"></i><b>6.1.1</b> Creating Multiple Models</a></li>
+<li class="chapter" data-level="6.1.2" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#visualize-regression-estimates"><i class="fa fa-check"></i><b>6.1.2</b> Visualize Regression Estimates</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>II Electrocardiography</b></span></li>
-<li class="chapter" data-level="6" data-path="vcg.html"><a href="vcg.html"><i class="fa fa-check"></i><b>6</b> Vectorcardiography</a><ul>
-<li class="chapter" data-level="6.1" data-path="vector-gradients.html"><a href="vector-gradients.html"><i class="fa fa-check"></i><b>6.1</b> Vector Gradients</a></li>
-<li class="chapter" data-level="6.2" data-path="global-electrical-heterogeneity.html"><a href="global-electrical-heterogeneity.html"><i class="fa fa-check"></i><b>6.2</b> Global Electrical Heterogeneity</a></li>
+<li class="chapter" data-level="7" data-path="vcg.html"><a href="vcg.html"><i class="fa fa-check"></i><b>7</b> Vectorcardiography</a><ul>
+<li class="chapter" data-level="7.1" data-path="vector-gradients.html"><a href="vector-gradients.html"><i class="fa fa-check"></i><b>7.1</b> Vector Gradients</a></li>
+<li class="chapter" data-level="7.2" data-path="global-electrical-heterogeneity.html"><a href="global-electrical-heterogeneity.html"><i class="fa fa-check"></i><b>7.2</b> Global Electrical Heterogeneity</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -264,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.3.1</span> Confidence Intervals for Population Cosinor</h3>
 <p>The confidence intervals for a population are more complicated to generate, and several approaches are documented in the literature.</p>
 <div id="ellipsoid-approach" class="section level4">
-<h4><span class="header-section-number">4.3.1.1</span> ELlipsoid Approach</h4>
+<h4><span class="header-section-number">4.3.1.1</span> Ellipsoid Approach</h4>
 <p>The values, including standard deviation and standard error for the <em>MESOR</em> are calculated using standard statistics along a t-distribution, with degree of freedom based on number of observations. In this case, <span class="math inline">\(\alpha = 0.05\)</span>.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="population-mean-cosinor.html#cb17-1"></a><span class="co"># Standard error for mesor</span></span>
 <span id="cb17-2"><a href="population-mean-cosinor.html#cb17-2"></a>kcoefs &lt;-<span class="st"> </span><span class="kw">data.frame</span>(xmat)</span>
@@ -384,7 +390,7 @@ $$</p>
 <span id="cb26-4"><a href="population-mean-cosinor.html#cb26-4"></a>tdist &lt;-<span class="st"> </span><span class="kw">qt</span>(<span class="dv">1</span> <span class="op">-</span><span class="st"> </span>alpha<span class="op">/</span><span class="dv">2</span>, k <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</span>
 <span id="cb26-5"><a href="population-mean-cosinor.html#cb26-5"></a></span>
 <span id="cb26-6"><a href="population-mean-cosinor.html#cb26-6"></a><span class="co"># Plot</span></span>
-<span id="cb26-7"><a href="population-mean-cosinor.html#cb26-7"></a><span class="kw">ggplot</span>() <span class="op">+</span></span>
+<span id="cb26-7"><a href="population-mean-cosinor.html#cb26-7"></a>g &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></span>
 <span id="cb26-8"><a href="population-mean-cosinor.html#cb26-8"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
 <span id="cb26-9"><a href="population-mean-cosinor.html#cb26-9"></a>        <span class="kw">aes</span>(</span>
 <span id="cb26-10"><a href="population-mean-cosinor.html#cb26-10"></a>            <span class="dt">x =</span> gamma <span class="op">-</span><span class="st"> </span>(tdist <span class="op">*</span><span class="st"> </span><span class="kw">sd</span>(kcoefs<span class="op">$</span>gamma) <span class="op">/</span><span class="st"> </span><span class="kw">sqrt</span>(k)),</span>
@@ -436,17 +442,17 @@ $$</p>
 <span id="cb26-56"><a href="population-mean-cosinor.html#cb26-56"></a>        <span class="dt">size =</span> <span class="fl">1.2</span></span>
 <span id="cb26-57"><a href="population-mean-cosinor.html#cb26-57"></a>    ) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb26-58"><a href="population-mean-cosinor.html#cb26-58"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> <span class="dv">0</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb26-59"><a href="population-mean-cosinor.html#cb26-59"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) </span></code></pre></div>
-<p><img src="thoughts_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="population-mean-cosinor.html#cb27-1"></a><span class="co"># Values possible for amplitude</span></span>
-<span id="cb27-2"><a href="population-mean-cosinor.html#cb27-2"></a><span class="kw">is.logical</span>(<span class="kw">round</span>(kcoefs<span class="op">$</span>amp <span class="op">*</span><span class="st"> </span><span class="kw">cos</span>(kcoefs<span class="op">$</span>phi), <span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(kcoefs<span class="op">$</span>beta, <span class="dv">3</span>))</span></code></pre></div>
+<span id="cb26-59"><a href="population-mean-cosinor.html#cb26-59"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> <span class="dv">0</span>) </span>
+<span id="cb26-60"><a href="population-mean-cosinor.html#cb26-60"></a>    </span>
+<span id="cb26-61"><a href="population-mean-cosinor.html#cb26-61"></a><span class="co"># Values possible for amplitude</span></span>
+<span id="cb26-62"><a href="population-mean-cosinor.html#cb26-62"></a><span class="kw">is.logical</span>(<span class="kw">round</span>(kcoefs<span class="op">$</span>amp <span class="op">*</span><span class="st"> </span><span class="kw">cos</span>(kcoefs<span class="op">$</span>phi), <span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(kcoefs<span class="op">$</span>beta, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="population-mean-cosinor.html#cb29-1"></a><span class="co"># Values for phi</span></span>
-<span id="cb29-2"><a href="population-mean-cosinor.html#cb29-2"></a><span class="kw">is.logical</span>(<span class="kw">round</span>(kcoefs<span class="op">$</span>amp <span class="op">*</span><span class="st"> </span><span class="dv">-1</span> <span class="op">*</span><span class="st"> </span><span class="kw">sin</span>(kcoefs<span class="op">$</span>phi), <span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(kcoefs<span class="op">$</span>gamma, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="population-mean-cosinor.html#cb28-1"></a><span class="co"># Values for phi</span></span>
+<span id="cb28-2"><a href="population-mean-cosinor.html#cb28-2"></a><span class="kw">is.logical</span>(<span class="kw">round</span>(kcoefs<span class="op">$</span>amp <span class="op">*</span><span class="st"> </span><span class="dv">-1</span> <span class="op">*</span><span class="st"> </span><span class="kw">sin</span>(kcoefs<span class="op">$</span>phi), <span class="dv">3</span>) <span class="op">==</span><span class="st"> </span><span class="kw">round</span>(kcoefs<span class="op">$</span>gamma, <span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="population-mean-cosinor.html#cb31-1"></a><span class="kw">sd</span>(kcoefs<span class="op">$</span>beta)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="population-mean-cosinor.html#cb30-1"></a><span class="kw">sd</span>(kcoefs<span class="op">$</span>beta)</span></code></pre></div>
 <pre><code>## [1] 0.3023976</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="population-mean-cosinor.html#cb33-1"></a><span class="kw">sd</span>(kcoefs<span class="op">$</span>gamma)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="population-mean-cosinor.html#cb32-1"></a><span class="kw">sd</span>(kcoefs<span class="op">$</span>gamma)</span></code></pre></div>
 <pre><code>## [1] 0.2376721</code></pre>
 <p>However, this method is more complicated when multiple components are included.</p>
 </div>
@@ -467,7 +473,7 @@ $$</p>
         </div>
       </div>
 <a href="single-component-cosinor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multiple-component-cosinor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
