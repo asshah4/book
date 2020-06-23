@@ -8,11 +8,15 @@ rmd_files:
   - "index.Rmd"
   - "intro.Rmd"
   - "technical.Rmd"
+  - "PART-autonomic.Rmd"
   - "circadian.Rmd"
   - "PART-computational.Rmd"
   - "cosinor.Rmd"
+  - "heart.Rmd"
   - "package.Rmd"
+  - "functions.Rmd"
   - "modeling.Rmd"
   - "PART-ecg.Rmd"
   - "vcg.Rmd"
+
 

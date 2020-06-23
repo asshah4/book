@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Thoughts</title>
+  <title>7.1 Speed of for loops | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Thoughts" />
+  <meta property="og:title" content="7.1 Speed of for loops | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Thoughts" />
+  <meta name="twitter:title" content="7.1 Speed of for loops | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="functions.html"/>
+<link rel="next" href="models.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -203,31 +203,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Thoughts</h1>
-<p class="author"><em>Anish Shah</em></p>
-<p class="date"><em>2020-06-18</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This initially was designed to help document exploratory concepts that were developed using the <a href="https://asshah4.github.io/card">card</a> package, but also expanded to clinical concepts leveraging the power of R and Rmarkdown.</p>
-<p>As this develops, it will likely create its own order. Currently it revolves around the principal components:</p>
-<ul>
-<li>circadian rhythm</li>
-<li>electrocardiography</li>
-<li>autonomic physiology</li>
-<li>clinical medicine</li>
-<li>programming</li>
-</ul>
+<div id="speed-of-for-loops" class="section level2">
+<h2><span class="header-section-number">7.1</span> Speed of <em>for loops</em></h2>
+<p>Here is an issue with a function using <em>for loops</em>. Generally, if there is an iterative process internal to the function, it will have an <span class="math inline">\(~O(N^2)\)</span> performance. The <code>card::recur_survival_table</code> is built with intuitive <em>for loops</em>, at a significant cost with increased <em>N</em> sizes.</p>
+<p>Here is the performance of the function:</p>
+<pre><code>  test replications elapsed relative user.self sys.self user.child sys.child</code></pre>
+<p>4 15000 1 901.169 618.086 882.081 18.467 0 0
+3 5000 1 115.573 79.268 112.617 2.942 0 0
+1 100 1 1.458 1.000 1.448 0.009 0 0
+2 1000 1 15.268 10.472 15.234 0.036 0 0</p>
+<pre><code>## [1] &quot;\n      test replications elapsed relative user.self sys.self user.child sys.child\n4\t\t 15000\t\t\t\t\t\t1 901.169  618.086   882.081   18.467          0         0\n3 \t\t5000            1 115.573   79.268   112.617    2.942          0         0\n1 \t\t 100\t          1   1.458    1.000     1.448    0.009          0         0\n2 \t\t1000\t\t        1  15.268   10.472    15.234    0.036          0         0\n&quot;</code></pre>
+<p>The function currently relies on <em>for loops</em> througout, as seen below:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="speed-of-for-loops.html#cb44-1"></a><span class="kw">print</span>(card<span class="op">::</span>recur_survival_table)</span></code></pre></div>
+<pre><code>## function (data, id, first, last, event.dates, model.type, death = NULL) 
+## {
+##     if (is.null(death)) {
+##         df &lt;- data[c(id, first, last, event.dates)]
+##         death &lt;- &quot;null_death&quot;
+##         df$null_death &lt;- 0
+##     }
+##     else {
+##         df &lt;- data[c(id, first, last, event.dates, death)]
+##     }
+##     n &lt;- 0:length(event.dates)
+##     events &lt;- paste0(&quot;EVENT_DATE_&quot;, c(1:(length(n) - 1)))
+##     x &lt;- df[c(id, event.dates)] %&gt;% tidyr::pivot_longer(-c(id), 
+##         names_to = &quot;EVENT&quot;, values_to = &quot;DATE&quot;) %&gt;% dplyr::group_by_(id) %&gt;% 
+##         dplyr::arrange(DATE) %&gt;% dplyr::arrange_(id) %&gt;% tidyr::nest()
+##     for (i in 1:length(x[[id]])) {
+##         if (!plyr::empty(x[[i, 2]][[1]][duplicated(x[[i, 2]][[1]]$DATE), 
+##             ])) {
+##             x[[i, 2]][[1]][duplicated(x[[i, 2]][[1]]$DATE), ]$DATE &lt;- NA
+##         }
+##         x[[i, 2]][[1]] %&lt;&gt;% dplyr::arrange(DATE)
+##         x[[i, 2]][[1]]$EVENT &lt;- events
+##     }
+##     df &lt;- tidyr::unnest(x, cols = data) %&gt;% tidyr::pivot_wider(names_from = &quot;EVENT&quot;, 
+##         values_from = &quot;DATE&quot;) %&gt;% dplyr::inner_join(df[c(id, 
+##         first, last, death)], ., by = id)
+##     names(df) &lt;- c(&quot;ID&quot;, &quot;FIRST&quot;, &quot;LAST&quot;, &quot;DEATH&quot;, events)
+##     df$EVENT_DATE_0 &lt;- df$FIRST
+##     for (i in 1:length(n)) {
+##         df$EVENT_DATE_0[!is.na(df[paste0(&quot;EVENT_DATE_&quot;, n[i])])] &lt;- df[[paste0(&quot;EVENT_DATE_&quot;, 
+##             n[i])]][!is.na(df[paste0(&quot;EVENT_DATE_&quot;, n[i])])]
+##     }
+##     x &lt;- df[c(&quot;ID&quot;, paste0(&quot;EVENT_DATE_&quot;, n))] %&gt;% tidyr::pivot_longer(-c(&quot;ID&quot;), 
+##         names_to = &quot;EVENT&quot;, values_to = &quot;DATE&quot;) %&gt;% stats::na.omit() %&gt;% 
+##         dplyr::left_join(df, ., by = &quot;ID&quot;)
+##     switch(model.type, marginal = {
+##         x$STATUS &lt;- x$TSTART &lt;- x$TSTOP &lt;- 0
+##         for (i in 2:length(n)) {
+##             x$TSTOP[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- x[[paste0(&quot;EVENT_DATE_&quot;, 
+##                 n[i])]][x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] - 
+##                 x$FIRST[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])]
+##         }
+##         x$TSTOP[x$EVENT == &quot;EVENT_DATE_0&quot;] &lt;- x$LAST[x$EVENT == 
+##             &quot;EVENT_DATE_0&quot;] - x$FIRST[x$EVENT == &quot;EVENT_DATE_0&quot;]
+##         x$STATUS[x$EVENT == &quot;EVENT_DATE_0&quot; &amp; x$DEATH == 1] &lt;- 1
+##         x$STATUS[x$EVENT != &quot;EVENT_DATE_0&quot;] &lt;- 1
+##     }, pwptt = {
+##         x$STATUS &lt;- x$TSTART &lt;- x$TSTOP &lt;- 0
+##         x$TSTOP[x$EVENT == &quot;EVENT_DATE_0&quot;] &lt;- x$LAST[x$EVENT == 
+##             &quot;EVENT_DATE_0&quot;] - x$FIRST[x$EVENT == &quot;EVENT_DATE_0&quot;]
+##         for (i in 2:length(n)) {
+##             x$TSTOP[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- x[[paste0(&quot;EVENT_DATE_&quot;, 
+##                 n[i])]][x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] - 
+##                 x$FIRST[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])]
+##         }
+##         x$TSTART[x$EVENT == &quot;EVENT_DATE_0&quot;] &lt;- x$EVENT_DATE_0[x$EVENT == 
+##             &quot;EVENT_DATE_0&quot;] - x$FIRST[x$EVENT == &quot;EVENT_DATE_0&quot;]
+##         for (i in 2:length(n)) {
+##             if (n[i] == 1) {
+##                 x$TSTART[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- 0
+##             } else {
+##                 x$TSTART[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- as.numeric(unlist(x[x$EVENT == 
+##                   paste0(&quot;EVENT_DATE_&quot;, n[i]), paste0(&quot;EVENT_DATE_&quot;, 
+##                   n[i - 1])] - x[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, 
+##                   n[i]), &quot;FIRST&quot;]))
+##             }
+##         }
+##         x$STATUS[x$EVENT == &quot;EVENT_DATE_0&quot; &amp; x$DEATH == 1] &lt;- 1
+##         x$STATUS[x$EVENT != &quot;EVENT_DATE_0&quot;] &lt;- 1
+##     }, pwpgt = {
+##         x$STATUS &lt;- x$TSTART &lt;- x$TSTOP &lt;- 0
+##         x$TSTOP[x$EVENT == &quot;EVENT_DATE_0&quot;] &lt;- x$LAST[x$EVENT == 
+##             &quot;EVENT_DATE_0&quot;] - x$FIRST[x$EVENT == &quot;EVENT_DATE_0&quot;]
+##         for (i in 2:length(n)) {
+##             x$TSTOP[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- x[[paste0(&quot;EVENT_DATE_&quot;, 
+##                 n[i])]][x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] - 
+##                 x$FIRST[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])]
+##         }
+##         x$TSTART[x$EVENT == &quot;EVENT_DATE_0&quot;] &lt;- x$EVENT_DATE_0[x$EVENT == 
+##             &quot;EVENT_DATE_0&quot;] - x$FIRST[x$EVENT == &quot;EVENT_DATE_0&quot;]
+##         for (i in 2:length(n)) {
+##             if (n[i] == 1) {
+##                 x$TSTART[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- 0
+##             } else {
+##                 x$TSTART[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, n[i])] &lt;- as.numeric(unlist(x[x$EVENT == 
+##                   paste0(&quot;EVENT_DATE_&quot;, n[i]), paste0(&quot;EVENT_DATE_&quot;, 
+##                   n[i - 1])] - x[x$EVENT == paste0(&quot;EVENT_DATE_&quot;, 
+##                   n[i]), &quot;FIRST&quot;]))
+##             }
+##         }
+##         x$STATUS[x$EVENT == &quot;EVENT_DATE_0&quot; &amp; x$DEATH == 1] &lt;- 1
+##         x$STATUS[x$EVENT != &quot;EVENT_DATE_0&quot;] &lt;- 1
+##         x$TSTOP &lt;- x$TSTOP - x$TSTART
+##         x$TSTART &lt;- x$TSTART - x$TSTART
+##     }, stop(&quot;Need the correct repeat event model: marginal, pwptt, pwpgt&quot;))
+##     y &lt;- x[c(&quot;ID&quot;, &quot;TSTART&quot;, &quot;TSTOP&quot;, &quot;STATUS&quot;, &quot;EVENT&quot;, &quot;DATE&quot;)]
+##     return(y)
+## }
+## &lt;bytecode: 0x7fbeb6b5b648&gt;
+## &lt;environment: namespace:card&gt;</code></pre>
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

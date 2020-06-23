@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Thoughts</title>
+  <title>2.2 Mutt | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Thoughts" />
+  <meta property="og:title" content="2.2 Mutt | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Thoughts" />
+  <meta name="twitter:title" content="2.2 Mutt | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="vim.html"/>
+<link rel="next" href="building-a-cv.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -203,31 +203,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Thoughts</h1>
-<p class="author"><em>Anish Shah</em></p>
-<p class="date"><em>2020-06-18</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This initially was designed to help document exploratory concepts that were developed using the <a href="https://asshah4.github.io/card">card</a> package, but also expanded to clinical concepts leveraging the power of R and Rmarkdown.</p>
-<p>As this develops, it will likely create its own order. Currently it revolves around the principal components:</p>
+<div id="mutt" class="section level2">
+<h2><span class="header-section-number">2.2</span> Mutt</h2>
+<p>Email clients are typically bloated with additional “features” that are supposed to improve the email experience. However, it seems that these additions in a GUI interface actually slow things down.</p>
+<p><a href="http://www.mutt.org/">Mutt</a>, and its heavily-featured fork <a href="https://neomutt.org/about.html">Neomutt</a>, are ways around those problems with a command line interface.</p>
+<p>Email is not just a single service, but a bundling of several components.</p>
 <ul>
-<li>circadian rhythm</li>
-<li>electrocardiography</li>
-<li>autonomic physiology</li>
-<li>clinical medicine</li>
-<li>programming</li>
+<li><code>mutt</code> is a MUA (mail user agent) that is a front-end for users to manage stored messages in a mailbox</li>
+<li><code>msmtp</code> is a MTA (mail transport agent) that sends mails through SMTP (simple mail transfer protocol)</li>
+<li><code>mbsync</code> is a MRA (mail retrieval agent) that can hop onto a mail server and actually retrieve items from inboxes</li>
 </ul>
-
+<p>Originally, for my personal gmail and professional/institution, the following resources were helpful.</p>
+<ul>
+<li><a href="https://wincent.com/blog/email" class="uri">https://wincent.com/blog/email</a></li>
+<li><a href="http://stevelosh.com/blog/2012/10/the-homely-mutt/" class="uri">http://stevelosh.com/blog/2012/10/the-homely-mutt/</a></li>
+<li><a href="https://gitlab.com/muttmua/mutt/wikis/MuttGuide" class="uri">https://gitlab.com/muttmua/mutt/wikis/MuttGuide</a></li>
+<li><a href="https://www.youtube.com/watch?v=2jMInHnpNfQ&amp;t=111s" class="uri">https://www.youtube.com/watch?v=2jMInHnpNfQ&amp;t=111s</a></li>
+<li><a href="https://webgefrickel.de/blog/a-modern-mutt-setup" class="uri">https://webgefrickel.de/blog/a-modern-mutt-setup</a></li>
+<li><a href="https://webgefrickel.de/blog/a-modern-mutt-setup-part-two" class="uri">https://webgefrickel.de/blog/a-modern-mutt-setup-part-two</a></li>
+</ul>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vim.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="building-a-cv.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

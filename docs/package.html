@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Package Development | Thoughts</title>
+  <title>Chapter 6 Package Development | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Package Development | Thoughts" />
+  <meta property="og:title" content="Chapter 6 Package Development | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Package Development | Thoughts" />
+  <meta name="twitter:title" content="Chapter 6 Package Development | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-06-12" />
+<meta name="date" content="2020-06-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="multiple-component-cosinor.html"/>
+<link rel="prev" href="using-s4.html"/>
 <link rel="next" href="documenting-a-package.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -138,16 +138,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="r-and-rstudio.html"><a href="r-and-rstudio.html"><i class="fa fa-check"></i><b>1.1</b> <code>R</code> and RStudio</a></li>
 <li class="chapter" data-level="1.2" data-path="git-and-github.html"><a href="git-and-github.html"><i class="fa fa-check"></i><b>1.2</b> <code>git</code> and Github</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="technical.html"><a href="technical.html"><i class="fa fa-check"></i><b>2</b> Technical</a><ul>
-<li class="chapter" data-level="2.1" data-path="building-a-cv.html"><a href="building-a-cv.html"><i class="fa fa-check"></i><b>2.1</b> Building a CV</a></li>
-<li class="chapter" data-level="2.2" data-path="troubleshooting-git.html"><a href="troubleshooting-git.html"><i class="fa fa-check"></i><b>2.2</b> Troubleshooting Git</a></li>
+<li class="chapter" data-level="2" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>2</b> Technical Setup</a><ul>
+<li class="chapter" data-level="2.1" data-path="vim.html"><a href="vim.html"><i class="fa fa-check"></i><b>2.1</b> Vim</a></li>
+<li class="chapter" data-level="2.2" data-path="mutt.html"><a href="mutt.html"><i class="fa fa-check"></i><b>2.2</b> Mutt</a></li>
+<li class="chapter" data-level="2.3" data-path="building-a-cv.html"><a href="building-a-cv.html"><i class="fa fa-check"></i><b>2.3</b> Building a CV</a></li>
 </ul></li>
+<li class="part"><span><b>I Autonomic Regulation</b></span></li>
 <li class="chapter" data-level="3" data-path="circadian.html"><a href="circadian.html"><i class="fa fa-check"></i><b>3</b> Circadian Physiology</a><ul>
 <li class="chapter" data-level="3.1" data-path="chronobiology.html"><a href="chronobiology.html"><i class="fa fa-check"></i><b>3.1</b> Chronobiology</a></li>
 <li class="chapter" data-level="3.2" data-path="circadian-disruption.html"><a href="circadian-disruption.html"><i class="fa fa-check"></i><b>3.2</b> Circadian Disruption</a></li>
 <li class="chapter" data-level="3.3" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>3.3</b> References</a></li>
 </ul></li>
-<li class="part"><span><b>I Computational</b></span></li>
+<li class="part"><span><b>II Computational</b></span></li>
 <li class="chapter" data-level="4" data-path="cosinor.html"><a href="cosinor.html"><i class="fa fa-check"></i><b>4</b> Cosinor Analysis</a><ul>
 <li class="chapter" data-level="4.1" data-path="overview.html"><a href="overview.html"><i class="fa fa-check"></i><b>4.1</b> Overview</a></li>
 <li class="chapter" data-level="4.2" data-path="single-component-cosinor.html"><a href="single-component-cosinor.html"><i class="fa fa-check"></i><b>4.2</b> Single component cosinor</a></li>
@@ -156,21 +158,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="multiple-component-cosinor.html"><a href="multiple-component-cosinor.html"><i class="fa fa-check"></i><b>4.4</b> Multiple-Component Cosinor</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="package.html"><a href="package.html"><i class="fa fa-check"></i><b>5</b> Package Development</a><ul>
-<li class="chapter" data-level="5.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html"><i class="fa fa-check"></i><b>5.1</b> Documenting a Package</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html#website"><i class="fa fa-check"></i><b>5.1.1</b> Website</a></li>
+<li class="chapter" data-level="5" data-path="heart.html"><a href="heart.html"><i class="fa fa-check"></i><b>5</b> Heart</a><ul>
+<li class="chapter" data-level="5.1" data-path="using-s4.html"><a href="using-s4.html"><i class="fa fa-check"></i><b>5.1</b> Using S4</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="package.html"><a href="package.html"><i class="fa fa-check"></i><b>6</b> Package Development</a><ul>
+<li class="chapter" data-level="6.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html"><i class="fa fa-check"></i><b>6.1</b> Documenting a Package</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="documenting-a-package.html"><a href="documenting-a-package.html#website"><i class="fa fa-check"></i><b>6.1.1</b> Website</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="building-a-modeling-package.html"><a href="building-a-modeling-package.html"><i class="fa fa-check"></i><b>6.2</b> Building a Modeling Package</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="building-a-modeling-package.html"><a href="building-a-modeling-package.html#blueprints"><i class="fa fa-check"></i><b>6.2.1</b> Blueprints</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>6</b> Modeling</a><ul>
-<li class="chapter" data-level="6.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html"><i class="fa fa-check"></i><b>6.1</b> Modeling Multiple Outcomes and Predictors</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#creating-multiple-models"><i class="fa fa-check"></i><b>6.1.1</b> Creating Multiple Models</a></li>
-<li class="chapter" data-level="6.1.2" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#visualize-regression-estimates"><i class="fa fa-check"></i><b>6.1.2</b> Visualize Regression Estimates</a></li>
+<li class="chapter" data-level="7" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>7</b> Functions</a><ul>
+<li class="chapter" data-level="7.1" data-path="speed-of-for-loops.html"><a href="speed-of-for-loops.html"><i class="fa fa-check"></i><b>7.1</b> Speed of <em>for loops</em></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>8</b> Modeling</a><ul>
+<li class="chapter" data-level="8.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html"><i class="fa fa-check"></i><b>8.1</b> Modeling Multiple Outcomes and Predictors</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#creating-multiple-models"><i class="fa fa-check"></i><b>8.1.1</b> Creating Multiple Models</a></li>
+<li class="chapter" data-level="8.1.2" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html#visualize-regression-estimates"><i class="fa fa-check"></i><b>8.1.2</b> Visualize Regression Estimates</a></li>
 </ul></li>
 </ul></li>
-<li class="part"><span><b>II Electrocardiography</b></span></li>
-<li class="chapter" data-level="7" data-path="vcg.html"><a href="vcg.html"><i class="fa fa-check"></i><b>7</b> Vectorcardiography</a><ul>
-<li class="chapter" data-level="7.1" data-path="vector-gradients.html"><a href="vector-gradients.html"><i class="fa fa-check"></i><b>7.1</b> Vector Gradients</a></li>
-<li class="chapter" data-level="7.2" data-path="global-electrical-heterogeneity.html"><a href="global-electrical-heterogeneity.html"><i class="fa fa-check"></i><b>7.2</b> Global Electrical Heterogeneity</a></li>
+<li class="part"><span><b>III Electrocardiography</b></span></li>
+<li class="chapter" data-level="9" data-path="vcg.html"><a href="vcg.html"><i class="fa fa-check"></i><b>9</b> Vectorcardiography</a><ul>
+<li class="chapter" data-level="9.1" data-path="vector-gradients.html"><a href="vector-gradients.html"><i class="fa fa-check"></i><b>9.1</b> Vector Gradients</a></li>
+<li class="chapter" data-level="9.2" data-path="global-electrical-heterogeneity.html"><a href="global-electrical-heterogeneity.html"><i class="fa fa-check"></i><b>9.2</b> Global Electrical Heterogeneity</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -193,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="package" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Package Development</h1>
+<h1><span class="header-section-number">Chapter 6</span> Package Development</h1>
 <p><a href="https://cran.r-project.org/">CRAN</a> supports the publishing of open-source packages in <code>R</code>. The workflow on package development is improved by the following supporting packages:</p>
 <ul>
 <li><code>devtools</code></li>
@@ -210,7 +221,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="multiple-component-cosinor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-s4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="documenting-a-package.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

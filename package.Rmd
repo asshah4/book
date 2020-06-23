@@ -24,4 +24,15 @@ In addition, in the fashion of `R`, package logos are developed with a [hexagon-
 - https://github.com/GuangchuangYu/hexSticker
 - http://connect.thinkr.fr/hexmake/
 
+## Building a Modeling Package
+
+With the development of the `card::cosinor()` function, the _tidy_ approach was inspired by the work of Max Kuhn's [`hardhat` package](https://tidymodels.github.io/hardhat/index.html). THe basic concepts are:
+
+- models require a user-facing interface 
+- models require an internal, computational interface
+- these two interfaces must be bridged
+
+### Blueprints
+
+The idea of bridging the user-interface and the computational interface seems to be the birth of the `hardhat::new_blueprint()` concept, with its derivatives for standard user-facing methods (formulas, recipes, matrices, etc). 
 

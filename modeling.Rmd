@@ -140,6 +140,6 @@ g <- ggplot(df, aes(x = factor(covar), y = estimate, color = term)) +
 # Animated
 a <- g + transition_reveal(covar)
 
-animate(a, width = 700, height = 400, end_pause = 30)
+animate(a, end_pause = 30)
 ```
 

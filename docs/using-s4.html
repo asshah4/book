@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Thoughts</title>
+  <title>5.1 Using S4 | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Thoughts" />
+  <meta property="og:title" content="5.1 Using S4 | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Thoughts" />
+  <meta name="twitter:title" content="5.1 Using S4 | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="intro.html"/>
+<link rel="prev" href="heart.html"/>
+<link rel="next" href="package.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -203,31 +203,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Thoughts</h1>
-<p class="author"><em>Anish Shah</em></p>
-<p class="date"><em>2020-06-18</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p>This initially was designed to help document exploratory concepts that were developed using the <a href="https://asshah4.github.io/card">card</a> package, but also expanded to clinical concepts leveraging the power of R and Rmarkdown.</p>
-<p>As this develops, it will likely create its own order. Currently it revolves around the principal components:</p>
-<ul>
-<li>circadian rhythm</li>
-<li>electrocardiography</li>
-<li>autonomic physiology</li>
-<li>clinical medicine</li>
-<li>programming</li>
-</ul>
+<div id="using-s4" class="section level2">
+<h2><span class="header-section-number">5.1</span> Using S4</h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="using-s4.html#cb41-1"></a><span class="co"># First S4 method</span></span>
+<span id="cb41-2"><a href="using-s4.html#cb41-2"></a><span class="kw">library</span>(methods)</span>
+<span id="cb41-3"><a href="using-s4.html#cb41-3"></a>heart &lt;-<span class="st"> </span><span class="kw">setClass</span>(</span>
+<span id="cb41-4"><a href="using-s4.html#cb41-4"></a>    <span class="st">&quot;heart&quot;</span>,</span>
+<span id="cb41-5"><a href="using-s4.html#cb41-5"></a>    <span class="dt">slots =</span> <span class="kw">c</span>(</span>
+<span id="cb41-6"><a href="using-s4.html#cb41-6"></a>        <span class="dt">plumbing =</span> <span class="st">&quot;list&quot;</span>,</span>
+<span id="cb41-7"><a href="using-s4.html#cb41-7"></a>        <span class="dt">electric =</span> <span class="st">&quot;list&quot;</span>,</span>
+<span id="cb41-8"><a href="using-s4.html#cb41-8"></a>        <span class="dt">structural =</span> <span class="st">&quot;list&quot;</span></span>
+<span id="cb41-9"><a href="using-s4.html#cb41-9"></a>    )</span>
+<span id="cb41-10"><a href="using-s4.html#cb41-10"></a>)</span>
+<span id="cb41-11"><a href="using-s4.html#cb41-11"></a></span>
+<span id="cb41-12"><a href="using-s4.html#cb41-12"></a><span class="co"># Make a new object</span></span>
+<span id="cb41-13"><a href="using-s4.html#cb41-13"></a>first &lt;-<span class="st"> </span><span class="kw">new</span>(</span>
+<span id="cb41-14"><a href="using-s4.html#cb41-14"></a>    <span class="st">&quot;heart&quot;</span>, </span>
+<span id="cb41-15"><a href="using-s4.html#cb41-15"></a>    <span class="dt">plumbing =</span> <span class="kw">list</span>(<span class="st">&quot;LHC&quot;</span>, <span class="st">&quot;RHC&quot;</span>), </span>
+<span id="cb41-16"><a href="using-s4.html#cb41-16"></a>    <span class="dt">electric =</span> <span class="kw">list</span>(<span class="st">&quot;SA&quot;</span>, <span class="st">&quot;AV&quot;</span>), </span>
+<span id="cb41-17"><a href="using-s4.html#cb41-17"></a>    <span class="dt">structural =</span> <span class="kw">list</span>(<span class="st">&quot;LA&quot;</span>, <span class="st">&quot;RA&quot;</span>, <span class="st">&quot;LV&quot;</span>, <span class="st">&quot;RV&quot;</span>)</span>
+<span id="cb41-18"><a href="using-s4.html#cb41-18"></a>)</span>
+<span id="cb41-19"><a href="using-s4.html#cb41-19"></a></span>
+<span id="cb41-20"><a href="using-s4.html#cb41-20"></a><span class="co"># Or, through the generator function</span></span>
+<span id="cb41-21"><a href="using-s4.html#cb41-21"></a>second &lt;-<span class="st"> </span><span class="kw">heart</span>(</span>
+<span id="cb41-22"><a href="using-s4.html#cb41-22"></a>    <span class="dt">plumbing =</span> <span class="kw">list</span>(<span class="st">&quot;LHC&quot;</span>, <span class="st">&quot;RHC&quot;</span>), </span>
+<span id="cb41-23"><a href="using-s4.html#cb41-23"></a>    <span class="dt">electric =</span> <span class="kw">list</span>(<span class="st">&quot;SA&quot;</span>, <span class="st">&quot;AV&quot;</span>), </span>
+<span id="cb41-24"><a href="using-s4.html#cb41-24"></a>    <span class="dt">structural =</span> <span class="kw">list</span>(<span class="st">&quot;LA&quot;</span>, <span class="st">&quot;RA&quot;</span>, <span class="st">&quot;LV&quot;</span>, <span class="st">&quot;RV&quot;</span>)</span>
+<span id="cb41-25"><a href="using-s4.html#cb41-25"></a>)</span></code></pre></div>
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="heart.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="package.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
