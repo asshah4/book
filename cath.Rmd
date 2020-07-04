@@ -1,0 +1,61 @@
+# Cardiac Catheterization
+
+A large part of cardiovascular studies of interest are hemodynamic parameters. These parameters are specific to the structure of the heart (e.g. valves closing and opening, the heart contracting, etc), and cycle over a single wave. These patterns are seen as different waveforms in different chambers of the heart:
+
+- RA = 1-5 mm Hg
+- RV = 25/5 mm Hg
+- PA = 20/10 mm Hg
+- LA = 3-12 mm Hg
+- LV = 120/12 mm Hg
+
+The waveforms could theoretically be recreated using an understanding of intracardiac hemodynamics (the "structure follows function" appraoch). As these are cyclic, sinusoidal curves would be appropriate for describing these curves.
+
+## Right heart catheterization
+
+There are several chambers that are measured in a right-heart study. Usually, the order is:
+
+1. Right atrium pressure
+2. Right ventricle pressure
+3. Pulmonary artery pressure
+4. Pulmonary capillary wedge pressure
+
+The right atrial waveform is mapped onto several events:
+
+| Waveform | Cardiac Cycle | Mechanical Process |
+| - | - | - |
+| a | end diastole | atrial contraction |
+| c | early systole | tricuspid bulge |
+| v | late systole | systolic atrial filling | 
+| x | mid systole | atrial relaxation |
+| y | early diastole | early ventricular filling | 
+
+Each of these can be mapped onto a time or phase-shift of a single cycle. For now, $2 pi$ will be a cycle length.
+
+```{r}
+# Setup
+library(ggplot2)
+
+# Time positions of each peak and descent
+tau <- 2*pi
+xa <- 2/16 * tau 
+xc <- 8/16 * tau
+xx <- 10/16 * tau
+xv <- 12/16 * tau
+xy <- 14/16 * tau
+
+# Height of peaks and troughs
+ya <- 8
+yc <- 6
+yx <- 2
+yv <- 10
+yy <- 1
+
+# Data
+library(mgcv)
+df <- data.frame(x = c(xa, xc, xx, xv, xy), y = c(ya, yc, yx, yv, yy))
+m <- gamm(y ~ s(x, bs = "cc", k = 3), data = df)
+plot(m$gam)
+```
+
+This simulates a portion of a single descent, but is problematic interms of cyclic nature and repeated measures. An alternative approach may be to consider segments of the data that are delayed based on findings from ECG (e.g. p-wave for atrial contraction). 
+

@@ -18,5 +18,6 @@ rmd_files:
   - "modeling.Rmd"
   - "PART-ecg.Rmd"
   - "vcg.Rmd"
-
+  - "PART-clinical.Rmd"
+  - "cath.Rmd"
 
