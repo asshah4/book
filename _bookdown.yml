@@ -20,4 +20,5 @@ rmd_files:
   - "vcg.Rmd"
   - "PART-clinical.Rmd"
   - "cath.Rmd"
+  - "echo.Rmd"
 

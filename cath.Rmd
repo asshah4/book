@@ -59,3 +59,32 @@ plot(m$gam)
 
 This simulates a portion of a single descent, but is problematic interms of cyclic nature and repeated measures. An alternative approach may be to consider segments of the data that are delayed based on findings from ECG (e.g. p-wave for atrial contraction). 
 
+## Invasive Hemodynamics
+
+During a cardiac catheterization, particularly of the right side, there are specific hemodynamics that can be assessed. The most important on right heart catheterization is cardiac output. 
+
+### Fick's cardiac output
+
+The Fick's method for cardiac output relies on the concept that peripheral uptake of oxygen is equal to the blood flow to the periphery and the arterial-venous oxygen saturation gradient.
+
+There are several important concepts or parameters:
+
+- oxygen consumption (V02)
+- arterial oxygenation
+- venous oxygenation
+
+How do we measure oxygenation? The blood oxygenation will be dependent on the amount of hemoglobin, how well it binds oxygen, the oxygen saturation, and the dissolved oxygen in the serum.
+
+Hemoglobin has an oxygen-binding capaciity of 1.34 mL/g. On average, an adult may have a hemoglobin level of 15 g/dL. The partial pressure of oxygen can also be measured, which is 21% of the atmospheric pressure at sea level (760 mmHg), thus approximately 160 mmHg.
+
+Thus, arterial (and similiarly venous) oxygenation can be calculated as:
+
+$$CaO_{2} = (1.34 \times Hb \times SaO_{2}) + 0.0032 \times PaO_{2}$$
+
+At sea level, we can essentially exclude the contribution to partial pressure of oxygen.
+
+Thus, an average adult male would have a saturation of approximately 200 mL/dL. 
+
+### Thermodilution
+
+Stewart-Hamilton equation. 

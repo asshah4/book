@@ -1,0 +1,10 @@
+# Echocardiography {#echo}
+
+Echocardiography is a tool used to analyze the function of the heart dynamically. It uses ultrasonography to evaluate the heart, and with the advent of doppler, can assess movement.  
+
+## Pressure gradients
+
+In echocardiography, relative velocity and known chamber sizes can help assess pressure of blood as it moves through the heart, which help to assess two important cardiac capacities:
+
+- inotropy: the ability of the heart to contract
+- lusitropy: the ability of the heart to relax
