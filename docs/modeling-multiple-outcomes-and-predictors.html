@@ -24,7 +24,7 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-07-04" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -186,6 +186,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Clinical</b></span></li>
 <li class="chapter" data-level="10" data-path="cardiac-catheterization.html"><a href="cardiac-catheterization.html"><i class="fa fa-check"></i><b>10</b> Cardiac Catheterization</a><ul>
 <li class="chapter" data-level="10.1" data-path="right-heart-catheterization.html"><a href="right-heart-catheterization.html"><i class="fa fa-check"></i><b>10.1</b> Right heart catheterization</a></li>
+<li class="chapter" data-level="10.2" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html"><i class="fa fa-check"></i><b>10.2</b> Invasive Hemodynamics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html#ficks-cardiac-output"><i class="fa fa-check"></i><b>10.2.1</b> Fick’s cardiac output</a></li>
+<li class="chapter" data-level="10.2.2" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html#thermodilution"><i class="fa fa-check"></i><b>10.2.2</b> Thermodilution</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="coronary-anatomy.html"><a href="coronary-anatomy.html"><i class="fa fa-check"></i><b>10.3</b> Coronary Anatomy</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="coronary-anatomy.html"><a href="coronary-anatomy.html#text-processing"><i class="fa fa-check"></i><b>10.3.1</b> Text-processing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="echo.html"><a href="echo.html"><i class="fa fa-check"></i><b>11</b> Echocardiography</a><ul>
+<li class="chapter" data-level="11.1" data-path="chamber-size.html"><a href="chamber-size.html"><i class="fa fa-check"></i><b>11.1</b> Chamber size</a></li>
+<li class="chapter" data-level="11.2" data-path="pressure-gradients.html"><a href="pressure-gradients.html"><i class="fa fa-check"></i><b>11.2</b> Pressure gradients</a></li>
+</ul></li>
+<li class="part"><span><b>V Learning</b></span></li>
+<li class="chapter" data-level="12" data-path="tidymodels.html"><a href="tidymodels.html"><i class="fa fa-check"></i><b>12</b> Tidymodels</a><ul>
+<li class="chapter" data-level="12.1" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html"><i class="fa fa-check"></i><b>12.1</b> R/Medicine 2020 (and RStudio Intro Course)</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#introduction"><i class="fa fa-check"></i><b>12.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.1.2" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#build-a-model"><i class="fa fa-check"></i><b>12.1.2</b> Build a Model</a></li>
+<li class="chapter" data-level="12.1.3" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#build-a-workflow"><i class="fa fa-check"></i><b>12.1.3</b> Build a Workflow</a></li>
+<li class="chapter" data-level="12.1.4" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#tune-better-models"><i class="fa fa-check"></i><b>12.1.4</b> Tune Better Models</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -212,10 +232,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A recurrent issue with causality-focused modeling with ECG data is that there are multiple outcomes (different ECG features). For example, in the <code>card</code> package, the <code>geh</code> dataset contains several ECG features based on <a href="vcg.html#vcg">vectorcardiography</a>.</p>
 <div id="creating-multiple-models" class="section level3">
 <h3><span class="header-section-number">8.1.1</span> Creating Multiple Models</h3>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb46-1"></a><span class="kw">library</span>(card)</span>
-<span id="cb46-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb46-2"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb46-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb46-3"></a><span class="kw">data</span>(geh)</span>
-<span id="cb46-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb46-4"></a><span class="kw">names</span>(geh)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb50-1"></a><span class="kw">library</span>(card)</span>
+<span id="cb50-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb50-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb50-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb50-3"></a><span class="kw">data</span>(geh)</span>
+<span id="cb50-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb50-4"></a><span class="kw">names</span>(geh)</span></code></pre></div>
 <pre><code>##  [1] &quot;pid&quot;                 &quot;hhp_id&quot;              &quot;age&quot;                
 ##  [4] &quot;sex&quot;                 &quot;age_cat&quot;             &quot;systolic_bp_first&quot;  
 ##  [7] &quot;systolic_bp_second&quot;  &quot;systolic_bp_third&quot;   &quot;diastolic_bp_first&quot; 
@@ -241,73 +261,73 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [67] &quot;wvg&quot;                 &quot;log_svg&quot;             &quot;log_auc_qt&quot;         
 ## [70] &quot;log_wvg&quot;</code></pre>
 <p>The first issue is the causal model, which can be visualized using a directed acyclic graph. The variables of interest are a subset of the dataset. In this case, we’re looking at the relationship of diabetes with cardiotoxicity in a very small subset of participants.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb48-1"></a><span class="kw">library</span>(ggdag)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-1"></a><span class="kw">library</span>(ggdag)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;ggdag&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:stats&#39;:
 ## 
 ##     filter</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-1"></a>bd &lt;-<span class="st"> </span><span class="kw">dagify</span>(</span>
-<span id="cb51-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-2"></a>        GEH <span class="op">~</span><span class="st"> </span>DM <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>BMI <span class="op">+</span><span class="st"> </span>HTN <span class="op">+</span><span class="st"> </span>CAD <span class="op">+</span><span class="st"> </span>IR <span class="op">+</span><span class="st"> </span>Sex,</span>
-<span id="cb51-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-3"></a>        DM <span class="op">~</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>IR <span class="op">+</span><span class="st"> </span>BMI,</span>
-<span id="cb51-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-4"></a>        CAD <span class="op">~</span><span class="st"> </span>DM <span class="op">+</span><span class="st"> </span>BMI <span class="op">+</span><span class="st"> </span>HTN <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>Sex,</span>
-<span id="cb51-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-5"></a>        HTN <span class="op">~</span><span class="st"> </span>Age,</span>
-<span id="cb51-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-6"></a>        IR <span class="op">~</span><span class="st"> </span>BMI <span class="op">+</span><span class="st"> </span>Age,</span>
-<span id="cb51-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-7"></a>        Age <span class="op">~</span><span class="st"> </span>Sex,</span>
-<span id="cb51-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-8"></a>        <span class="dt">exposure =</span> <span class="st">&quot;DM&quot;</span>,</span>
-<span id="cb51-9"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-9"></a>        <span class="dt">outcome =</span> <span class="st">&quot;GEH&quot;</span></span>
-<span id="cb51-10"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-10"></a>)</span>
-<span id="cb51-11"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-11"></a></span>
-<span id="cb51-12"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-12"></a>d1 &lt;-<span class="st"> </span><span class="kw">ggdag_parents</span>(bd, <span class="st">&quot;DM&quot;</span>, <span class="dt">layout =</span> <span class="st">&quot;star&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-13"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-13"></a><span class="st">    </span><span class="kw">theme_dag</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-14"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-14"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
-<span id="cb51-15"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-15"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Factors Affecting Diabetes&quot;</span>)</span>
-<span id="cb51-16"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-16"></a></span>
-<span id="cb51-17"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-17"></a>d2 &lt;-<span class="st"> </span><span class="kw">ggdag_parents</span>(bd, <span class="st">&quot;GEH&quot;</span>, <span class="dt">layout =</span> <span class="st">&quot;star&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-18"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-18"></a><span class="st">    </span><span class="kw">theme_dag</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb51-19"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-19"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
-<span id="cb51-20"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-20"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Factors Affecting GEH&quot;</span>)</span>
-<span id="cb51-21"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-21"></a></span>
-<span id="cb51-22"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-22"></a><span class="co"># Combine and plot</span></span>
-<span id="cb51-23"><a href="modeling-multiple-outcomes-and-predictors.html#cb51-23"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(d1, d2, <span class="dt">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-1"></a>bd &lt;-<span class="st"> </span><span class="kw">dagify</span>(</span>
+<span id="cb55-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-2"></a>        GEH <span class="op">~</span><span class="st"> </span>DM <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>BMI <span class="op">+</span><span class="st"> </span>HTN <span class="op">+</span><span class="st"> </span>CAD <span class="op">+</span><span class="st"> </span>IR <span class="op">+</span><span class="st"> </span>Sex,</span>
+<span id="cb55-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-3"></a>        DM <span class="op">~</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>IR <span class="op">+</span><span class="st"> </span>BMI,</span>
+<span id="cb55-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-4"></a>        CAD <span class="op">~</span><span class="st"> </span>DM <span class="op">+</span><span class="st"> </span>BMI <span class="op">+</span><span class="st"> </span>HTN <span class="op">+</span><span class="st"> </span>Age <span class="op">+</span><span class="st"> </span>Sex,</span>
+<span id="cb55-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-5"></a>        HTN <span class="op">~</span><span class="st"> </span>Age,</span>
+<span id="cb55-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-6"></a>        IR <span class="op">~</span><span class="st"> </span>BMI <span class="op">+</span><span class="st"> </span>Age,</span>
+<span id="cb55-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-7"></a>        Age <span class="op">~</span><span class="st"> </span>Sex,</span>
+<span id="cb55-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-8"></a>        <span class="dt">exposure =</span> <span class="st">&quot;DM&quot;</span>,</span>
+<span id="cb55-9"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-9"></a>        <span class="dt">outcome =</span> <span class="st">&quot;GEH&quot;</span></span>
+<span id="cb55-10"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-10"></a>)</span>
+<span id="cb55-11"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-11"></a></span>
+<span id="cb55-12"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-12"></a>d1 &lt;-<span class="st"> </span><span class="kw">ggdag_parents</span>(bd, <span class="st">&quot;DM&quot;</span>, <span class="dt">layout =</span> <span class="st">&quot;star&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb55-13"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-13"></a><span class="st">    </span><span class="kw">theme_dag</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb55-14"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-14"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb55-15"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-15"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Factors Affecting Diabetes&quot;</span>)</span>
+<span id="cb55-16"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-16"></a></span>
+<span id="cb55-17"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-17"></a>d2 &lt;-<span class="st"> </span><span class="kw">ggdag_parents</span>(bd, <span class="st">&quot;GEH&quot;</span>, <span class="dt">layout =</span> <span class="st">&quot;star&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb55-18"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-18"></a><span class="st">    </span><span class="kw">theme_dag</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb55-19"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-19"></a><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="op">+</span></span>
+<span id="cb55-20"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-20"></a><span class="st">    </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Factors Affecting GEH&quot;</span>)</span>
+<span id="cb55-21"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-21"></a></span>
+<span id="cb55-22"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-22"></a><span class="co"># Combine and plot</span></span>
+<span id="cb55-23"><a href="modeling-multiple-outcomes-and-predictors.html#cb55-23"></a>gridExtra<span class="op">::</span><span class="kw">grid.arrange</span>(d1, d2, <span class="dt">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="thoughts_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>As we can see, many things effect ECG findings, and a subgroup of those impact diabetes, suggesting a number of potential effect modifiers and potential confounders/mediators. Using a sequential model building method in the <code>card</code> package allows for a simple way to perform this analysis. This will build a linear model for each outcome, and repeat the model with an additional covariate in the sequence of listed in the formula.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-1"></a><span class="co"># Select variables</span></span>
-<span id="cb52-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-2"></a>vars &lt;-<span class="st"> </span></span>
-<span id="cb52-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-3"></a><span class="st">    </span><span class="kw">c</span>(<span class="st">&quot;svg_mag&quot;</span>, <span class="st">&quot;az_svg&quot;</span>, <span class="st">&quot;el_svg&quot;</span>, <span class="st">&quot;qrs_tang&quot;</span>, <span class="st">&quot;log_auc_qt&quot;</span>, <span class="st">&quot;log_wvg&quot;</span>, <span class="st">&quot;lab_hba1c&quot;</span>, <span class="st">&quot;lab_fasting_bg&quot;</span>, <span class="st">&quot;homa&quot;</span>, <span class="st">&quot;dm&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;bmi&quot;</span>, <span class="st">&quot;bmi_cat&quot;</span>, <span class="st">&quot;age_cat&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;htn&quot;</span>, <span class="st">&quot;cad&quot;</span>, <span class="st">&quot;lab_ser_creatinine&quot;</span>, <span class="st">&quot;lab_tchol&quot;</span>) </span>
-<span id="cb52-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-4"></a>    </span>
-<span id="cb52-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-5"></a>df &lt;-</span>
-<span id="cb52-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-6"></a><span class="st">    </span>geh <span class="op">%&gt;%</span></span>
-<span id="cb52-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-7"></a><span class="st">    </span><span class="kw">select</span>(<span class="kw">all_of</span>(vars)) <span class="op">%&gt;%</span></span>
-<span id="cb52-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-8"></a><span class="st">    </span><span class="co">#na.omit() %&gt;%</span></span>
-<span id="cb52-9"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-9"></a><span class="st">    </span><span class="co">#filter(homa &lt;= 5 * sd(homa, na.rm = TRUE)) %&gt;% # Remove outliers</span></span>
-<span id="cb52-10"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-10"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
-<span id="cb52-11"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-11"></a>        <span class="dt">bmi_cat =</span> </span>
-<span id="cb52-12"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-12"></a>            <span class="kw">factor</span>(bmi_cat, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">3</span>), </span>
-<span id="cb52-13"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-13"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Underweight&quot;</span>, <span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Overweight&quot;</span>, <span class="st">&quot;Obese&quot;</span>)),</span>
-<span id="cb52-14"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-14"></a>        <span class="dt">age_cat =</span> </span>
-<span id="cb52-15"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-15"></a>            <span class="kw">factor</span>(age_cat, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">2</span>), </span>
-<span id="cb52-16"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-16"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt;45&quot;</span>, <span class="st">&quot;45-65&quot;</span>, <span class="st">&quot;&gt;65&quot;</span>)),</span>
-<span id="cb52-17"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-17"></a>        <span class="dt">sex =</span> <span class="kw">factor</span>(sex, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))</span>
-<span id="cb52-18"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-18"></a>    ) <span class="op">%&gt;%</span></span>
-<span id="cb52-19"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-19"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="kw">across</span>(</span>
-<span id="cb52-20"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-20"></a>        <span class="kw">c</span>(svg_mag, az_svg, el_svg, qrs_tang, log_auc_qt, log_wvg), </span>
-<span id="cb52-21"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-21"></a>        <span class="cf">function</span>(x) {</span>
-<span id="cb52-22"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-22"></a>            <span class="kw">as.vector</span>(<span class="kw">scale</span>(x, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>))</span>
-<span id="cb52-23"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-23"></a>        }</span>
-<span id="cb52-24"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-24"></a>    ))</span>
-<span id="cb52-25"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-25"></a></span>
-<span id="cb52-26"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-26"></a><span class="co"># Sequential model building</span></span>
-<span id="cb52-27"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-27"></a>models &lt;-<span class="st"> </span></span>
-<span id="cb52-28"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-28"></a><span class="st">    </span>card<span class="op">::</span><span class="kw">build_sequential_models</span>(</span>
-<span id="cb52-29"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-29"></a>        svg_mag <span class="op">+</span><span class="st"> </span>az_svg <span class="op">+</span><span class="st"> </span>el_svg <span class="op">+</span><span class="st"> </span>qrs_tang <span class="op">+</span><span class="st"> </span>log_auc_qt <span class="op">+</span><span class="st"> </span>log_wvg <span class="op">~</span><span class="st"> </span></span>
-<span id="cb52-30"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-30"></a><span class="st">            </span>lab_hba1c <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>cad <span class="op">+</span><span class="st"> </span>htn, </span>
-<span id="cb52-31"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-31"></a>        <span class="dt">data =</span> df,</span>
-<span id="cb52-32"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-32"></a>        <span class="dt">exposure =</span> <span class="st">&quot;lab_hba1c&quot;</span>,</span>
-<span id="cb52-33"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-33"></a>        <span class="dt">engine =</span> <span class="st">&quot;lm&quot;</span></span>
-<span id="cb52-34"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-34"></a>    )</span>
-<span id="cb52-35"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-35"></a></span>
-<span id="cb52-36"><a href="modeling-multiple-outcomes-and-predictors.html#cb52-36"></a><span class="kw">head</span>(models)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-1"></a><span class="co"># Select variables</span></span>
+<span id="cb56-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-2"></a>vars &lt;-<span class="st"> </span></span>
+<span id="cb56-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-3"></a><span class="st">    </span><span class="kw">c</span>(<span class="st">&quot;svg_mag&quot;</span>, <span class="st">&quot;az_svg&quot;</span>, <span class="st">&quot;el_svg&quot;</span>, <span class="st">&quot;qrs_tang&quot;</span>, <span class="st">&quot;log_auc_qt&quot;</span>, <span class="st">&quot;log_wvg&quot;</span>, <span class="st">&quot;lab_hba1c&quot;</span>, <span class="st">&quot;lab_fasting_bg&quot;</span>, <span class="st">&quot;homa&quot;</span>, <span class="st">&quot;dm&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;bmi&quot;</span>, <span class="st">&quot;bmi_cat&quot;</span>, <span class="st">&quot;age_cat&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;htn&quot;</span>, <span class="st">&quot;cad&quot;</span>, <span class="st">&quot;lab_ser_creatinine&quot;</span>, <span class="st">&quot;lab_tchol&quot;</span>) </span>
+<span id="cb56-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-4"></a>    </span>
+<span id="cb56-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-5"></a>df &lt;-</span>
+<span id="cb56-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-6"></a><span class="st">    </span>geh <span class="op">%&gt;%</span></span>
+<span id="cb56-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-7"></a><span class="st">    </span><span class="kw">select</span>(<span class="kw">all_of</span>(vars)) <span class="op">%&gt;%</span></span>
+<span id="cb56-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-8"></a><span class="st">    </span><span class="co">#na.omit() %&gt;%</span></span>
+<span id="cb56-9"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-9"></a><span class="st">    </span><span class="co">#filter(homa &lt;= 5 * sd(homa, na.rm = TRUE)) %&gt;% # Remove outliers</span></span>
+<span id="cb56-10"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-10"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb56-11"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-11"></a>        <span class="dt">bmi_cat =</span> </span>
+<span id="cb56-12"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-12"></a>            <span class="kw">factor</span>(bmi_cat, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">3</span>), </span>
+<span id="cb56-13"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-13"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Underweight&quot;</span>, <span class="st">&quot;Normal&quot;</span>, <span class="st">&quot;Overweight&quot;</span>, <span class="st">&quot;Obese&quot;</span>)),</span>
+<span id="cb56-14"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-14"></a>        <span class="dt">age_cat =</span> </span>
+<span id="cb56-15"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-15"></a>            <span class="kw">factor</span>(age_cat, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span><span class="op">:</span><span class="dv">2</span>), </span>
+<span id="cb56-16"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-16"></a>                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;&lt;45&quot;</span>, <span class="st">&quot;45-65&quot;</span>, <span class="st">&quot;&gt;65&quot;</span>)),</span>
+<span id="cb56-17"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-17"></a>        <span class="dt">sex =</span> <span class="kw">factor</span>(sex, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">1</span>), <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;Female&quot;</span>, <span class="st">&quot;Male&quot;</span>))</span>
+<span id="cb56-18"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-18"></a>    ) <span class="op">%&gt;%</span></span>
+<span id="cb56-19"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-19"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="kw">across</span>(</span>
+<span id="cb56-20"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-20"></a>        <span class="kw">c</span>(svg_mag, az_svg, el_svg, qrs_tang, log_auc_qt, log_wvg), </span>
+<span id="cb56-21"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-21"></a>        <span class="cf">function</span>(x) {</span>
+<span id="cb56-22"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-22"></a>            <span class="kw">as.vector</span>(<span class="kw">scale</span>(x, <span class="dt">center =</span> <span class="ot">TRUE</span>, <span class="dt">scale =</span> <span class="ot">TRUE</span>))</span>
+<span id="cb56-23"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-23"></a>        }</span>
+<span id="cb56-24"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-24"></a>    ))</span>
+<span id="cb56-25"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-25"></a></span>
+<span id="cb56-26"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-26"></a><span class="co"># Sequential model building</span></span>
+<span id="cb56-27"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-27"></a>models &lt;-<span class="st"> </span></span>
+<span id="cb56-28"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-28"></a><span class="st">    </span>card<span class="op">::</span><span class="kw">build_sequential_models</span>(</span>
+<span id="cb56-29"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-29"></a>        svg_mag <span class="op">+</span><span class="st"> </span>az_svg <span class="op">+</span><span class="st"> </span>el_svg <span class="op">+</span><span class="st"> </span>qrs_tang <span class="op">+</span><span class="st"> </span>log_auc_qt <span class="op">+</span><span class="st"> </span>log_wvg <span class="op">~</span><span class="st"> </span></span>
+<span id="cb56-30"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-30"></a><span class="st">            </span>lab_hba1c <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>cad <span class="op">+</span><span class="st"> </span>htn, </span>
+<span id="cb56-31"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-31"></a>        <span class="dt">data =</span> df,</span>
+<span id="cb56-32"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-32"></a>        <span class="dt">exposure =</span> <span class="st">&quot;lab_hba1c&quot;</span>,</span>
+<span id="cb56-33"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-33"></a>        <span class="dt">engine =</span> <span class="st">&quot;lm&quot;</span></span>
+<span id="cb56-34"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-34"></a>    )</span>
+<span id="cb56-35"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-35"></a></span>
+<span id="cb56-36"><a href="modeling-multiple-outcomes-and-predictors.html#cb56-36"></a><span class="kw">head</span>(models)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##   outcomes term    estimate std.error statistic p.value conf.low conf.high covar
 ##   &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
@@ -321,56 +341,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="visualize-regression-estimates" class="section level3">
 <h3><span class="header-section-number">8.1.2</span> Visualize Regression Estimates</h3>
 <p>To assess or get a sense of how the variables are playing out, we can visualize the estimates across the builds of the models. This will also use the <code>gganimate</code> package to show the effect of data layering</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-1"></a><span class="co"># Libraries</span></span>
-<span id="cb54-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-2"></a><span class="kw">library</span>(gganimate)</span>
-<span id="cb54-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-3"></a><span class="kw">library</span>(ggthemes)</span>
-<span id="cb54-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-4"></a></span>
-<span id="cb54-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-5"></a><span class="co"># Data</span></span>
-<span id="cb54-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-6"></a>df &lt;-<span class="st"> </span></span>
-<span id="cb54-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-7"></a><span class="st">    </span>models <span class="op">%&gt;%</span></span>
-<span id="cb54-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-8"></a><span class="st">    </span><span class="co"># Remove intercepts</span></span>
-<span id="cb54-9"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-9"></a><span class="st">    </span><span class="kw">filter</span>(term <span class="op">!=</span><span class="st"> &quot;(Intercept)&quot;</span>) <span class="op">%&gt;%</span></span>
-<span id="cb54-10"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-10"></a><span class="st">    </span><span class="co"># Sequence the terms</span></span>
-<span id="cb54-11"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-11"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
-<span id="cb54-12"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-12"></a>        <span class="dt">term =</span> </span>
-<span id="cb54-13"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-13"></a>            <span class="kw">factor</span>(</span>
-<span id="cb54-14"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-14"></a>                term, </span>
-<span id="cb54-15"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-15"></a>                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;lab_hba1c&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;sexMale&quot;</span>, <span class="st">&quot;bmi&quot;</span>, <span class="st">&quot;cad1&quot;</span>, <span class="st">&quot;htn1&quot;</span>),</span>
-<span id="cb54-16"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-16"></a>                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;HbA1c&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;BMI&quot;</span>, <span class="st">&quot;CAD&quot;</span>, <span class="st">&quot;HTN&quot;</span>)</span>
-<span id="cb54-17"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-17"></a>            )</span>
-<span id="cb54-18"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-18"></a>    ) </span>
-<span id="cb54-19"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-19"></a></span>
-<span id="cb54-20"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-20"></a><span class="co"># ggplot</span></span>
-<span id="cb54-21"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-21"></a>g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(covar), <span class="dt">y =</span> estimate, <span class="dt">color =</span> term)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-22"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-22"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>outcomes, <span class="dt">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-23"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-23"></a><span class="st">    </span><span class="kw">geom_point</span>(</span>
-<span id="cb54-24"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-24"></a>        <span class="kw">aes</span>(<span class="dt">color =</span> term), </span>
-<span id="cb54-25"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-25"></a>        <span class="dt">data =</span> <span class="kw">filter</span>(df, p.value <span class="op">&gt;=</span><span class="st"> </span><span class="fl">0.20</span>), </span>
-<span id="cb54-26"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-26"></a>        <span class="dt">shape =</span> <span class="dv">1</span>, </span>
-<span id="cb54-27"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-27"></a>        <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span></span>
-<span id="cb54-28"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-28"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-29"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-29"></a><span class="st">    </span><span class="kw">geom_point</span>(</span>
-<span id="cb54-30"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-30"></a>        <span class="kw">aes</span>(<span class="dt">color =</span> term), </span>
-<span id="cb54-31"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-31"></a>        <span class="dt">data =</span> <span class="kw">filter</span>(df, p.value <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.20</span>), </span>
-<span id="cb54-32"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-32"></a>        <span class="dt">shape =</span> <span class="dv">19</span>, </span>
-<span id="cb54-33"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-33"></a>        <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span></span>
-<span id="cb54-34"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-34"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-35"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-35"></a><span class="st">    </span><span class="kw">scale_color_ptol</span>(<span class="dt">name =</span> <span class="st">&quot;Predictors&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-36"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-36"></a><span class="st">    </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-37"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-37"></a><span class="st">    </span><span class="kw">theme</span>(</span>
-<span id="cb54-38"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-38"></a>        <span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>, <span class="dt">legend.box =</span> <span class="st">&quot;horizontal&quot;</span>,</span>
-<span id="cb54-39"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-39"></a>        <span class="dt">panel.border =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="ot">NA</span>)</span>
-<span id="cb54-40"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-40"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb54-41"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-41"></a><span class="st">    </span><span class="kw">labs</span>(</span>
-<span id="cb54-42"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-42"></a>        <span class="dt">title =</span> <span class="st">&quot;Estimates in Sequential Models&quot;</span>,</span>
-<span id="cb54-43"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-43"></a>        <span class="dt">x =</span> <span class="st">&quot;Number of Covariates in Model&quot;</span>,</span>
-<span id="cb54-44"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-44"></a>        <span class="dt">y =</span> <span class="st">&quot;GEH Parameters (z-normalized)&quot;</span></span>
-<span id="cb54-45"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-45"></a>    )</span>
-<span id="cb54-46"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-46"></a></span>
-<span id="cb54-47"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-47"></a><span class="co"># Animated</span></span>
-<span id="cb54-48"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-48"></a>a &lt;-<span class="st"> </span>g <span class="op">+</span><span class="st"> </span><span class="kw">transition_reveal</span>(covar)</span>
-<span id="cb54-49"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-49"></a></span>
-<span id="cb54-50"><a href="modeling-multiple-outcomes-and-predictors.html#cb54-50"></a><span class="kw">animate</span>(a, <span class="dt">end_pause =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-1"></a><span class="co"># Libraries</span></span>
+<span id="cb58-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-2"></a><span class="kw">library</span>(gganimate)</span>
+<span id="cb58-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-3"></a><span class="kw">library</span>(ggthemes)</span>
+<span id="cb58-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-4"></a></span>
+<span id="cb58-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-5"></a><span class="co"># Data</span></span>
+<span id="cb58-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-6"></a>df &lt;-<span class="st"> </span></span>
+<span id="cb58-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-7"></a><span class="st">    </span>models <span class="op">%&gt;%</span></span>
+<span id="cb58-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-8"></a><span class="st">    </span><span class="co"># Remove intercepts</span></span>
+<span id="cb58-9"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-9"></a><span class="st">    </span><span class="kw">filter</span>(term <span class="op">!=</span><span class="st"> &quot;(Intercept)&quot;</span>) <span class="op">%&gt;%</span></span>
+<span id="cb58-10"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-10"></a><span class="st">    </span><span class="co"># Sequence the terms</span></span>
+<span id="cb58-11"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-11"></a><span class="st">    </span><span class="kw">mutate</span>(</span>
+<span id="cb58-12"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-12"></a>        <span class="dt">term =</span> </span>
+<span id="cb58-13"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-13"></a>            <span class="kw">factor</span>(</span>
+<span id="cb58-14"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-14"></a>                term, </span>
+<span id="cb58-15"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-15"></a>                <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;lab_hba1c&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;sexMale&quot;</span>, <span class="st">&quot;bmi&quot;</span>, <span class="st">&quot;cad1&quot;</span>, <span class="st">&quot;htn1&quot;</span>),</span>
+<span id="cb58-16"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-16"></a>                <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;HbA1c&quot;</span>, <span class="st">&quot;Age&quot;</span>, <span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;BMI&quot;</span>, <span class="st">&quot;CAD&quot;</span>, <span class="st">&quot;HTN&quot;</span>)</span>
+<span id="cb58-17"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-17"></a>            )</span>
+<span id="cb58-18"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-18"></a>    ) </span>
+<span id="cb58-19"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-19"></a></span>
+<span id="cb58-20"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-20"></a><span class="co"># ggplot</span></span>
+<span id="cb58-21"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-21"></a>g &lt;-<span class="st"> </span><span class="kw">ggplot</span>(df, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(covar), <span class="dt">y =</span> estimate, <span class="dt">color =</span> term)) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-22"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-22"></a><span class="st">    </span><span class="kw">facet_wrap</span>(<span class="op">~</span>outcomes, <span class="dt">scales =</span> <span class="st">&quot;fixed&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-23"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-23"></a><span class="st">    </span><span class="kw">geom_point</span>(</span>
+<span id="cb58-24"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-24"></a>        <span class="kw">aes</span>(<span class="dt">color =</span> term), </span>
+<span id="cb58-25"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-25"></a>        <span class="dt">data =</span> <span class="kw">filter</span>(df, p.value <span class="op">&gt;=</span><span class="st"> </span><span class="fl">0.20</span>), </span>
+<span id="cb58-26"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-26"></a>        <span class="dt">shape =</span> <span class="dv">1</span>, </span>
+<span id="cb58-27"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-27"></a>        <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span></span>
+<span id="cb58-28"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-28"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-29"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-29"></a><span class="st">    </span><span class="kw">geom_point</span>(</span>
+<span id="cb58-30"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-30"></a>        <span class="kw">aes</span>(<span class="dt">color =</span> term), </span>
+<span id="cb58-31"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-31"></a>        <span class="dt">data =</span> <span class="kw">filter</span>(df, p.value <span class="op">&lt;</span><span class="st"> </span><span class="fl">0.20</span>), </span>
+<span id="cb58-32"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-32"></a>        <span class="dt">shape =</span> <span class="dv">19</span>, </span>
+<span id="cb58-33"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-33"></a>        <span class="dt">position =</span> <span class="st">&quot;jitter&quot;</span></span>
+<span id="cb58-34"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-34"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-35"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-35"></a><span class="st">    </span><span class="kw">scale_color_ptol</span>(<span class="dt">name =</span> <span class="st">&quot;Predictors&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-36"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-36"></a><span class="st">    </span><span class="kw">theme_minimal</span>() <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-37"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-37"></a><span class="st">    </span><span class="kw">theme</span>(</span>
+<span id="cb58-38"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-38"></a>        <span class="dt">legend.position =</span> <span class="st">&quot;bottom&quot;</span>, <span class="dt">legend.box =</span> <span class="st">&quot;horizontal&quot;</span>,</span>
+<span id="cb58-39"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-39"></a>        <span class="dt">panel.border =</span> <span class="kw">element_rect</span>(<span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">fill =</span> <span class="ot">NA</span>)</span>
+<span id="cb58-40"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-40"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb58-41"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-41"></a><span class="st">    </span><span class="kw">labs</span>(</span>
+<span id="cb58-42"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-42"></a>        <span class="dt">title =</span> <span class="st">&quot;Estimates in Sequential Models&quot;</span>,</span>
+<span id="cb58-43"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-43"></a>        <span class="dt">x =</span> <span class="st">&quot;Number of Covariates in Model&quot;</span>,</span>
+<span id="cb58-44"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-44"></a>        <span class="dt">y =</span> <span class="st">&quot;GEH Parameters (z-normalized)&quot;</span></span>
+<span id="cb58-45"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-45"></a>    )</span>
+<span id="cb58-46"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-46"></a></span>
+<span id="cb58-47"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-47"></a><span class="co"># Animated</span></span>
+<span id="cb58-48"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-48"></a>a &lt;-<span class="st"> </span>g <span class="op">+</span><span class="st"> </span><span class="kw">transition_reveal</span>(covar)</span>
+<span id="cb58-49"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-49"></a></span>
+<span id="cb58-50"><a href="modeling-multiple-outcomes-and-predictors.html#cb58-50"></a><span class="kw">animate</span>(a, <span class="dt">end_pause =</span> <span class="dv">30</span>)</span></code></pre></div>
 <p><img src="thoughts_files/figure-html/unnamed-chunk-20-1.gif" /><!-- --></p>
 
 </div>

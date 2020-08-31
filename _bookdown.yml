@@ -21,4 +21,5 @@ rmd_files:
   - "PART-clinical.Rmd"
   - "cath.Rmd"
   - "echo.Rmd"
-
+  - "PART-learning.Rmd"
+  - "tidymodels.Rmd"

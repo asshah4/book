@@ -24,7 +24,7 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-07-04" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="cardiac-catheterization.html"/>
-
+<link rel="next" href="invasive-hemodynamics.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -186,6 +186,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Clinical</b></span></li>
 <li class="chapter" data-level="10" data-path="cardiac-catheterization.html"><a href="cardiac-catheterization.html"><i class="fa fa-check"></i><b>10</b> Cardiac Catheterization</a><ul>
 <li class="chapter" data-level="10.1" data-path="right-heart-catheterization.html"><a href="right-heart-catheterization.html"><i class="fa fa-check"></i><b>10.1</b> Right heart catheterization</a></li>
+<li class="chapter" data-level="10.2" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html"><i class="fa fa-check"></i><b>10.2</b> Invasive Hemodynamics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html#ficks-cardiac-output"><i class="fa fa-check"></i><b>10.2.1</b> Fick’s cardiac output</a></li>
+<li class="chapter" data-level="10.2.2" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html#thermodilution"><i class="fa fa-check"></i><b>10.2.2</b> Thermodilution</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="coronary-anatomy.html"><a href="coronary-anatomy.html"><i class="fa fa-check"></i><b>10.3</b> Coronary Anatomy</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="coronary-anatomy.html"><a href="coronary-anatomy.html#text-processing"><i class="fa fa-check"></i><b>10.3.1</b> Text-processing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="echo.html"><a href="echo.html"><i class="fa fa-check"></i><b>11</b> Echocardiography</a><ul>
+<li class="chapter" data-level="11.1" data-path="chamber-size.html"><a href="chamber-size.html"><i class="fa fa-check"></i><b>11.1</b> Chamber size</a></li>
+<li class="chapter" data-level="11.2" data-path="pressure-gradients.html"><a href="pressure-gradients.html"><i class="fa fa-check"></i><b>11.2</b> Pressure gradients</a></li>
+</ul></li>
+<li class="part"><span><b>V Learning</b></span></li>
+<li class="chapter" data-level="12" data-path="tidymodels.html"><a href="tidymodels.html"><i class="fa fa-check"></i><b>12</b> Tidymodels</a><ul>
+<li class="chapter" data-level="12.1" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html"><i class="fa fa-check"></i><b>12.1</b> R/Medicine 2020 (and RStudio Intro Course)</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#introduction"><i class="fa fa-check"></i><b>12.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.1.2" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#build-a-model"><i class="fa fa-check"></i><b>12.1.2</b> Build a Model</a></li>
+<li class="chapter" data-level="12.1.3" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#build-a-workflow"><i class="fa fa-check"></i><b>12.1.3</b> Build a Workflow</a></li>
+<li class="chapter" data-level="12.1.4" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#tune-better-models"><i class="fa fa-check"></i><b>12.1.4</b> Tune Better Models</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -254,26 +274,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Each of these can be mapped onto a time or phase-shift of a single cycle. For now, <span class="math inline">\(2 pi\)</span> will be a cycle length.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="right-heart-catheterization.html#cb55-1"></a><span class="co"># Setup</span></span>
-<span id="cb55-2"><a href="right-heart-catheterization.html#cb55-2"></a><span class="kw">library</span>(ggplot2)</span>
-<span id="cb55-3"><a href="right-heart-catheterization.html#cb55-3"></a></span>
-<span id="cb55-4"><a href="right-heart-catheterization.html#cb55-4"></a><span class="co"># Time positions of each peak and descent</span></span>
-<span id="cb55-5"><a href="right-heart-catheterization.html#cb55-5"></a>tau &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>pi</span>
-<span id="cb55-6"><a href="right-heart-catheterization.html#cb55-6"></a>xa &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau </span>
-<span id="cb55-7"><a href="right-heart-catheterization.html#cb55-7"></a>xc &lt;-<span class="st"> </span><span class="dv">8</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
-<span id="cb55-8"><a href="right-heart-catheterization.html#cb55-8"></a>xx &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
-<span id="cb55-9"><a href="right-heart-catheterization.html#cb55-9"></a>xv &lt;-<span class="st"> </span><span class="dv">12</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
-<span id="cb55-10"><a href="right-heart-catheterization.html#cb55-10"></a>xy &lt;-<span class="st"> </span><span class="dv">14</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
-<span id="cb55-11"><a href="right-heart-catheterization.html#cb55-11"></a></span>
-<span id="cb55-12"><a href="right-heart-catheterization.html#cb55-12"></a><span class="co"># Height of peaks and troughs</span></span>
-<span id="cb55-13"><a href="right-heart-catheterization.html#cb55-13"></a>ya &lt;-<span class="st"> </span><span class="dv">8</span></span>
-<span id="cb55-14"><a href="right-heart-catheterization.html#cb55-14"></a>yc &lt;-<span class="st"> </span><span class="dv">6</span></span>
-<span id="cb55-15"><a href="right-heart-catheterization.html#cb55-15"></a>yx &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb55-16"><a href="right-heart-catheterization.html#cb55-16"></a>yv &lt;-<span class="st"> </span><span class="dv">10</span></span>
-<span id="cb55-17"><a href="right-heart-catheterization.html#cb55-17"></a>yy &lt;-<span class="st"> </span><span class="dv">1</span></span>
-<span id="cb55-18"><a href="right-heart-catheterization.html#cb55-18"></a></span>
-<span id="cb55-19"><a href="right-heart-catheterization.html#cb55-19"></a><span class="co"># Data</span></span>
-<span id="cb55-20"><a href="right-heart-catheterization.html#cb55-20"></a><span class="kw">library</span>(mgcv)</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="right-heart-catheterization.html#cb59-1"></a><span class="co"># Setup</span></span>
+<span id="cb59-2"><a href="right-heart-catheterization.html#cb59-2"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb59-3"><a href="right-heart-catheterization.html#cb59-3"></a></span>
+<span id="cb59-4"><a href="right-heart-catheterization.html#cb59-4"></a><span class="co"># Time positions of each peak and descent</span></span>
+<span id="cb59-5"><a href="right-heart-catheterization.html#cb59-5"></a>tau &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>pi</span>
+<span id="cb59-6"><a href="right-heart-catheterization.html#cb59-6"></a>xa &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau </span>
+<span id="cb59-7"><a href="right-heart-catheterization.html#cb59-7"></a>xc &lt;-<span class="st"> </span><span class="dv">8</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
+<span id="cb59-8"><a href="right-heart-catheterization.html#cb59-8"></a>xx &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
+<span id="cb59-9"><a href="right-heart-catheterization.html#cb59-9"></a>xv &lt;-<span class="st"> </span><span class="dv">12</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
+<span id="cb59-10"><a href="right-heart-catheterization.html#cb59-10"></a>xy &lt;-<span class="st"> </span><span class="dv">14</span><span class="op">/</span><span class="dv">16</span> <span class="op">*</span><span class="st"> </span>tau</span>
+<span id="cb59-11"><a href="right-heart-catheterization.html#cb59-11"></a></span>
+<span id="cb59-12"><a href="right-heart-catheterization.html#cb59-12"></a><span class="co"># Height of peaks and troughs</span></span>
+<span id="cb59-13"><a href="right-heart-catheterization.html#cb59-13"></a>ya &lt;-<span class="st"> </span><span class="dv">8</span></span>
+<span id="cb59-14"><a href="right-heart-catheterization.html#cb59-14"></a>yc &lt;-<span class="st"> </span><span class="dv">6</span></span>
+<span id="cb59-15"><a href="right-heart-catheterization.html#cb59-15"></a>yx &lt;-<span class="st"> </span><span class="dv">2</span></span>
+<span id="cb59-16"><a href="right-heart-catheterization.html#cb59-16"></a>yv &lt;-<span class="st"> </span><span class="dv">10</span></span>
+<span id="cb59-17"><a href="right-heart-catheterization.html#cb59-17"></a>yy &lt;-<span class="st"> </span><span class="dv">1</span></span>
+<span id="cb59-18"><a href="right-heart-catheterization.html#cb59-18"></a></span>
+<span id="cb59-19"><a href="right-heart-catheterization.html#cb59-19"></a><span class="co"># Data</span></span>
+<span id="cb59-20"><a href="right-heart-catheterization.html#cb59-20"></a><span class="kw">library</span>(mgcv)</span></code></pre></div>
 <pre><code>## Loading required package: nlme</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;nlme&#39;</code></pre>
@@ -281,39 +301,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     collapse</code></pre>
 <pre><code>## This is mgcv 1.8-31. For overview type &#39;help(&quot;mgcv-package&quot;)&#39;.</code></pre>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="right-heart-catheterization.html#cb60-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(xa, xc, xx, xv, xy), <span class="dt">y =</span> <span class="kw">c</span>(ya, yc, yx, yv, yy))</span>
-<span id="cb60-2"><a href="right-heart-catheterization.html#cb60-2"></a>m &lt;-<span class="st"> </span><span class="kw">gamm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(x, <span class="dt">bs =</span> <span class="st">&quot;cc&quot;</span>, <span class="dt">k =</span> <span class="dv">3</span>), <span class="dt">data =</span> df)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="right-heart-catheterization.html#cb64-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(xa, xc, xx, xv, xy), <span class="dt">y =</span> <span class="kw">c</span>(ya, yc, yx, yv, yy))</span>
+<span id="cb64-2"><a href="right-heart-catheterization.html#cb64-2"></a>m &lt;-<span class="st"> </span><span class="kw">gamm</span>(y <span class="op">~</span><span class="st"> </span><span class="kw">s</span>(x, <span class="dt">bs =</span> <span class="st">&quot;cc&quot;</span>, <span class="dt">k =</span> <span class="dv">3</span>), <span class="dt">data =</span> df)</span></code></pre></div>
 <pre><code>## Warning in smooth.construct.cc.smooth.spec(object, dk$data, dk$knots): basis dimension, k, increased to minimum possible</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="right-heart-catheterization.html#cb62-1"></a><span class="kw">plot</span>(m<span class="op">$</span>gam)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="right-heart-catheterization.html#cb66-1"></a><span class="kw">plot</span>(m<span class="op">$</span>gam)</span></code></pre></div>
 <p><img src="thoughts_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>This simulates a portion of a single descent, but is problematic interms of cyclic nature and repeated measures. An alternative approach may be to consider segments of the data that are delayed based on findings from ECG (e.g. p-wave for atrial contraction).</p>
-
-<div id="refs" class="references">
-<div>
-<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
 </div>
-<div>
-<p>Fernández, José Ramón, Artemio Mojón, and Ramón C Hermida. 2004. “Comparison of parameters from rhythmometric models with multiple components on hybrid data.” <em>Chronobiology International</em> 21 (3): 469–84. <a href="https://doi.org/10.1081/CBI-120038630">https://doi.org/10.1081/CBI-120038630</a>.</p>
-</div>
-<div>
-<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
-</div>
-<div>
-<p>Tereshchenko, Larisa G. 2018. “Global Electrical Heterogeneity: Mechanisms and Clinical Significance.” In <em>Computing in Cardiology</em>. Vols. 2018-Septe. IEEE Computer Society. <a href="https://doi.org/10.22489/CinC.2018.165">https://doi.org/10.22489/CinC.2018.165</a>.</p>
-</div>
-<div>
-<p>Waks, Jonathan W., Colleen M. Sitlani, Elsayed Z. Soliman, Muammar Kabir, Elyar Ghafoori, Mary L. Biggs, Charles A. Henrikson, et al. 2016. “Global Electric Heterogeneity Risk Score for Prediction of Sudden Cardiac Death in the General Population: The Atherosclerosis Risk in Communities (ARIC) and Cardiovascular Health (CHS) Studies.” <em>Circulation</em> 133 (23): 2222–34. <a href="https://doi.org/10.1161/CIRCULATIONAHA.116.021306">https://doi.org/10.1161/CIRCULATIONAHA.116.021306</a>.</p>
-</div>
-</div>
-</div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="cardiac-catheterization.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="cardiac-catheterization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="invasive-hemodynamics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

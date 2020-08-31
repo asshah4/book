@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Overview | Thoughts</title>
+  <title>10.3 Coronary Anatomy | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Overview | Thoughts" />
+  <meta property="og:title" content="10.3 Coronary Anatomy | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Overview | Thoughts" />
+  <meta name="twitter:title" content="10.3 Coronary Anatomy | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cosinor.html"/>
-<link rel="next" href="single-component-cosinor.html"/>
+<link rel="prev" href="invasive-hemodynamics.html"/>
+<link rel="next" href="echo.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -227,55 +227,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="overview" class="section level2">
-<h2><span class="header-section-number">4.1</span> Overview</h2>
-<p>Using the <code>cosinor()</code> function, the characteristics of the circadian pattern can be retrieved.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="overview.html#cb11-1"></a><span class="co"># Cosinor model</span></span>
-<span id="cb11-2"><a href="overview.html#cb11-2"></a>m &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, twins, <span class="dt">tau =</span> <span class="dv">24</span>)</span>
-<span id="cb11-3"><a href="overview.html#cb11-3"></a><span class="kw">summary</span>(m)</span></code></pre></div>
-<pre><code>## Individual Cosinor Model 
-## ------------------------------------------
-## Call: 
-## cosinor(formula = rDYX ~ M + A1 * cos(2*pi*hour/24 + phi1) 
-## 
-## Period(s): 24 
-## 
-## Residuals: 
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -3.12633 -0.53228 -0.03597  0.00000  0.49132  4.82150 
-## 
-## Coefficients: 
-##         Estimate  Std. Error
-## mesor  2.8604855 0.006098624
-## amp1   0.2986101 0.008746706
-## phi1  -2.6687044 0.028860014</code></pre>
-<p>The statistical principles behind this method allow for different methods to model, diagnose, and interpret findings. <span class="citation">(Refinetti, Cornélissen, and Halberg <a href="#ref-Refinetti2007" role="doc-biblioref">2007</a>; Cornelissen <a href="#ref-Cornelissen2014" role="doc-biblioref">2014</a>)</span></p>
-<ul>
-<li>single component cosinor</li>
-<li>multiple component cosinor</li>
-<li>population cosinor</li>
-<li>confidence intervals (ellipse method)</li>
-<li>zero amplitude test</li>
-<li>lack-of-fit testing</li>
-</ul>
-<p>The example here use the dataset <code>twins</code> which contains a continuous ECG signal, called <code>DYX</code>, collected at hourly time points.</p>
+<div id="coronary-anatomy" class="section level2">
+<h2><span class="header-section-number">10.3</span> Coronary Anatomy</h2>
+<p>The coronary anatomy tree is visualized during cardiac catheterization. Clinical reports label the epicardial vessels and their percent stenosis.</p>
+<div id="text-processing" class="section level3">
+<h3><span class="header-section-number">10.3.1</span> Text-processing</h3>
+<p>An approach to analysis of LHC/RHC data is through text-processing, since cardiologists write very similar descriptions of procedures using a limited/specialized vocabulary.</p>
+<p>For example, we can set up the analysis of a single sentence from the findings section using a <em>tidy</em> approach.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="coronary-anatomy.html#cb67-1"></a><span class="co"># Setup</span></span>
+<span id="cb67-2"><a href="coronary-anatomy.html#cb67-2"></a><span class="kw">library</span>(tidyverse)</span>
+<span id="cb67-3"><a href="coronary-anatomy.html#cb67-3"></a></span>
+<span id="cb67-4"><a href="coronary-anatomy.html#cb67-4"></a><span class="co"># From findings</span></span>
+<span id="cb67-5"><a href="coronary-anatomy.html#cb67-5"></a>txt &lt;-<span class="st"> &quot;Small caliber RCA with 50% proximal and 70% mid stenoses.&quot;</span></span>
+<span id="cb67-6"><a href="coronary-anatomy.html#cb67-6"></a></span>
+<span id="cb67-7"><a href="coronary-anatomy.html#cb67-7"></a><span class="co"># Convert to tidy format</span></span>
+<span id="cb67-8"><a href="coronary-anatomy.html#cb67-8"></a>sentence &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">line =</span> <span class="dv">1</span>, <span class="dt">sentence =</span> txt) <span class="op">%&gt;%</span></span>
+<span id="cb67-9"><a href="coronary-anatomy.html#cb67-9"></a><span class="st">    </span>tidytext<span class="op">::</span><span class="kw">unnest_tokens</span>(<span class="dt">input =</span> sentence, <span class="dt">output =</span> word, <span class="dt">to_lower =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb67-10"><a href="coronary-anatomy.html#cb67-10"></a><span class="st">    </span><span class="kw">pull</span>(word)</span>
+<span id="cb67-11"><a href="coronary-anatomy.html#cb67-11"></a></span>
+<span id="cb67-12"><a href="coronary-anatomy.html#cb67-12"></a><span class="co"># Identify a big artery in sentence</span></span>
+<span id="cb67-13"><a href="coronary-anatomy.html#cb67-13"></a>epicardial &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;LM&quot;</span>, <span class="st">&quot;LAD&quot;</span>, <span class="st">&quot;LCX&quot;</span>, <span class="st">&quot;RCA&quot;</span>)</span>
+<span id="cb67-14"><a href="coronary-anatomy.html#cb67-14"></a>artery &lt;-<span class="st"> </span>sentence[<span class="kw">which</span>(sentence <span class="op">%in%</span><span class="st"> </span>epicardial)]</span>
+<span id="cb67-15"><a href="coronary-anatomy.html#cb67-15"></a></span>
+<span id="cb67-16"><a href="coronary-anatomy.html#cb67-16"></a><span class="co"># Identify number/locations of disease</span></span>
+<span id="cb67-17"><a href="coronary-anatomy.html#cb67-17"></a>locs &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">d+&quot;</span>, sentence) </span>
+<span id="cb67-18"><a href="coronary-anatomy.html#cb67-18"></a></span>
+<span id="cb67-19"><a href="coronary-anatomy.html#cb67-19"></a><span class="co"># Modifier for disease location</span></span>
+<span id="cb67-20"><a href="coronary-anatomy.html#cb67-20"></a>mods &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;proximal&quot;</span>, <span class="st">&quot;mid&quot;</span>, <span class="st">&quot;distal&quot;</span>, <span class="st">&quot;ostial&quot;</span>)</span>
+<span id="cb67-21"><a href="coronary-anatomy.html#cb67-21"></a>mlocs &lt;-<span class="st"> </span><span class="kw">which</span>(sentence <span class="op">%in%</span><span class="st"> </span>mods)</span>
+<span id="cb67-22"><a href="coronary-anatomy.html#cb67-22"></a></span>
+<span id="cb67-23"><a href="coronary-anatomy.html#cb67-23"></a><span class="co"># Find the nearest neighbors to identify which modifier goes with which location</span></span>
+<span id="cb67-24"><a href="coronary-anatomy.html#cb67-24"></a>space &lt;-<span class="st"> </span><span class="kw">combn</span>(mlocs, <span class="kw">length</span>(locs))</span>
+<span id="cb67-25"><a href="coronary-anatomy.html#cb67-25"></a>dist &lt;-<span class="st"> </span><span class="kw">apply</span>(space, <span class="dv">2</span>, <span class="cf">function</span>(x) {<span class="kw">sum</span>(<span class="kw">abs</span>(locs <span class="op">-</span><span class="st"> </span>x))})</span>
+<span id="cb67-26"><a href="coronary-anatomy.html#cb67-26"></a>matched &lt;-<span class="st"> </span>space[, <span class="kw">which.min</span>(dist)]</span>
+<span id="cb67-27"><a href="coronary-anatomy.html#cb67-27"></a></span>
+<span id="cb67-28"><a href="coronary-anatomy.html#cb67-28"></a><span class="co"># Now connect the artery with percent stenosis</span></span>
+<span id="cb67-29"><a href="coronary-anatomy.html#cb67-29"></a><span class="kw">tibble</span>(</span>
+<span id="cb67-30"><a href="coronary-anatomy.html#cb67-30"></a>    <span class="dt">anatomy =</span> <span class="kw">paste</span>(sentence[matched], artery),</span>
+<span id="cb67-31"><a href="coronary-anatomy.html#cb67-31"></a>    <span class="dt">stenosis =</span> <span class="kw">as.numeric</span>(sentence[locs])</span>
+<span id="cb67-32"><a href="coronary-anatomy.html#cb67-32"></a>) <span class="op">%&gt;%</span></span>
+<span id="cb67-33"><a href="coronary-anatomy.html#cb67-33"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">description =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;The {anatomy} has {stenosis}% stenosis.&quot;</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 3
+##   anatomy      stenosis description                       
+##   &lt;chr&gt;           &lt;dbl&gt; &lt;glue&gt;                            
+## 1 proximal RCA       50 The proximal RCA has 50% stenosis.
+## 2 mid RCA            70 The mid RCA has 70% stenosis.</code></pre>
+<p>This method allows a computational approach at analyzing cath reports. This can be pushed into a function likely.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="coronary-anatomy.html#cb69-1"></a><span class="co"># Function to turn sentence into tibble?</span></span>
+<span id="cb69-2"><a href="coronary-anatomy.html#cb69-2"></a>coronary_anatomy &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</span>
+<span id="cb69-3"><a href="coronary-anatomy.html#cb69-3"></a>    </span>
+<span id="cb69-4"><a href="coronary-anatomy.html#cb69-4"></a>    <span class="co"># Check if sentence</span></span>
+<span id="cb69-5"><a href="coronary-anatomy.html#cb69-5"></a>    <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.character</span>(x)) {<span class="kw">stop</span>(<span class="st">&quot;Requires character string&quot;</span>, <span class="dt">call. =</span> <span class="ot">FALSE</span>)}</span>
+<span id="cb69-6"><a href="coronary-anatomy.html#cb69-6"></a>    </span>
+<span id="cb69-7"><a href="coronary-anatomy.html#cb69-7"></a>    <span class="co"># Establish variables</span></span>
+<span id="cb69-8"><a href="coronary-anatomy.html#cb69-8"></a>    epicardial &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;LM&quot;</span>, <span class="st">&quot;LAD&quot;</span>, <span class="st">&quot;LCX&quot;</span>, <span class="st">&quot;RCA&quot;</span>)</span>
+<span id="cb69-9"><a href="coronary-anatomy.html#cb69-9"></a>    mods &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;proximal&quot;</span>, <span class="st">&quot;mid&quot;</span>, <span class="st">&quot;distal&quot;</span>, <span class="st">&quot;ostial&quot;</span>)</span>
+<span id="cb69-10"><a href="coronary-anatomy.html#cb69-10"></a>    </span>
+<span id="cb69-11"><a href="coronary-anatomy.html#cb69-11"></a>    sentence &lt;-</span>
+<span id="cb69-12"><a href="coronary-anatomy.html#cb69-12"></a><span class="st">        </span><span class="kw">tibble</span>(<span class="dt">line =</span> <span class="dv">1</span>, <span class="dt">sentence =</span> x) <span class="op">%&gt;%</span></span>
+<span id="cb69-13"><a href="coronary-anatomy.html#cb69-13"></a><span class="st">        </span>tidytext<span class="op">::</span><span class="kw">unnest_tokens</span>(<span class="dt">input =</span> sentence, <span class="dt">output =</span> word, <span class="dt">to_lower =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></span>
+<span id="cb69-14"><a href="coronary-anatomy.html#cb69-14"></a><span class="st">        </span><span class="kw">pull</span>(word)</span>
+<span id="cb69-15"><a href="coronary-anatomy.html#cb69-15"></a>        </span>
+<span id="cb69-16"><a href="coronary-anatomy.html#cb69-16"></a>    <span class="co"># Identify number/locations of disease</span></span>
+<span id="cb69-17"><a href="coronary-anatomy.html#cb69-17"></a>    artery &lt;-<span class="st"> </span>sentence[<span class="kw">which</span>(sentence <span class="op">%in%</span><span class="st"> </span>epicardial)]</span>
+<span id="cb69-18"><a href="coronary-anatomy.html#cb69-18"></a>    locs &lt;-<span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;</span><span class="ch">\\</span><span class="st">d+&quot;</span>, sentence) </span>
+<span id="cb69-19"><a href="coronary-anatomy.html#cb69-19"></a>    mlocs &lt;-<span class="st"> </span><span class="kw">which</span>(sentence <span class="op">%in%</span><span class="st"> </span>mods)</span>
+<span id="cb69-20"><a href="coronary-anatomy.html#cb69-20"></a>    </span>
+<span id="cb69-21"><a href="coronary-anatomy.html#cb69-21"></a>    <span class="co"># Find the nearest neighbors to identify which modifier goes with which location</span></span>
+<span id="cb69-22"><a href="coronary-anatomy.html#cb69-22"></a>    space &lt;-<span class="st"> </span><span class="kw">combn</span>(mlocs, <span class="kw">length</span>(locs))</span>
+<span id="cb69-23"><a href="coronary-anatomy.html#cb69-23"></a>    dist &lt;-<span class="st"> </span><span class="kw">apply</span>(space, <span class="dv">2</span>, <span class="cf">function</span>(x) {<span class="kw">sum</span>(<span class="kw">abs</span>(locs <span class="op">-</span><span class="st"> </span>x))})</span>
+<span id="cb69-24"><a href="coronary-anatomy.html#cb69-24"></a>    matched &lt;-<span class="st"> </span>space[, <span class="kw">which.min</span>(dist)]</span>
+<span id="cb69-25"><a href="coronary-anatomy.html#cb69-25"></a>    </span>
+<span id="cb69-26"><a href="coronary-anatomy.html#cb69-26"></a>    tbl &lt;-<span class="st"> </span></span>
+<span id="cb69-27"><a href="coronary-anatomy.html#cb69-27"></a><span class="st">        </span><span class="kw">tibble</span>(</span>
+<span id="cb69-28"><a href="coronary-anatomy.html#cb69-28"></a>            <span class="dt">anatomy =</span> <span class="kw">paste</span>(sentence[matched], artery),</span>
+<span id="cb69-29"><a href="coronary-anatomy.html#cb69-29"></a>            <span class="dt">stenosis =</span> <span class="kw">as.numeric</span>(sentence[locs])</span>
+<span id="cb69-30"><a href="coronary-anatomy.html#cb69-30"></a>        )</span>
+<span id="cb69-31"><a href="coronary-anatomy.html#cb69-31"></a>    </span>
+<span id="cb69-32"><a href="coronary-anatomy.html#cb69-32"></a>    <span class="co"># Return</span></span>
+<span id="cb69-33"><a href="coronary-anatomy.html#cb69-33"></a>    <span class="kw">return</span>(tbl)</span>
+<span id="cb69-34"><a href="coronary-anatomy.html#cb69-34"></a>}</span>
+<span id="cb69-35"><a href="coronary-anatomy.html#cb69-35"></a></span>
+<span id="cb69-36"><a href="coronary-anatomy.html#cb69-36"></a><span class="co"># Test it out</span></span>
+<span id="cb69-37"><a href="coronary-anatomy.html#cb69-37"></a><span class="kw">coronary_anatomy</span>(txt)</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 2
+##   anatomy      stenosis
+##   &lt;chr&gt;           &lt;dbl&gt;
+## 1 proximal RCA       50
+## 2 mid RCA            70</code></pre>
+
 </div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Cornelissen2014">
-<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
 </div>
-<div id="ref-Refinetti2007">
-<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
-</div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="cosinor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="single-component-cosinor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="invasive-hemodynamics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="echo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

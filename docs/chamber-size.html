@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Overview | Thoughts</title>
+  <title>11.1 Chamber size | Thoughts</title>
   <meta name="description" content="A workspace for thoughts." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Overview | Thoughts" />
+  <meta property="og:title" content="11.1 Chamber size | Thoughts" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="asshah4/thoughts" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Overview | Thoughts" />
+  <meta name="twitter:title" content="11.1 Chamber size | Thoughts" />
   
   <meta name="twitter:description" content="A workspace for thoughts." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="cosinor.html"/>
-<link rel="next" href="single-component-cosinor.html"/>
+<link rel="prev" href="echo.html"/>
+<link rel="next" href="pressure-gradients.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -227,55 +227,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="overview" class="section level2">
-<h2><span class="header-section-number">4.1</span> Overview</h2>
-<p>Using the <code>cosinor()</code> function, the characteristics of the circadian pattern can be retrieved.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="overview.html#cb11-1"></a><span class="co"># Cosinor model</span></span>
-<span id="cb11-2"><a href="overview.html#cb11-2"></a>m &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, twins, <span class="dt">tau =</span> <span class="dv">24</span>)</span>
-<span id="cb11-3"><a href="overview.html#cb11-3"></a><span class="kw">summary</span>(m)</span></code></pre></div>
-<pre><code>## Individual Cosinor Model 
-## ------------------------------------------
-## Call: 
-## cosinor(formula = rDYX ~ M + A1 * cos(2*pi*hour/24 + phi1) 
-## 
-## Period(s): 24 
-## 
-## Residuals: 
-##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
-## -3.12633 -0.53228 -0.03597  0.00000  0.49132  4.82150 
-## 
-## Coefficients: 
-##         Estimate  Std. Error
-## mesor  2.8604855 0.006098624
-## amp1   0.2986101 0.008746706
-## phi1  -2.6687044 0.028860014</code></pre>
-<p>The statistical principles behind this method allow for different methods to model, diagnose, and interpret findings. <span class="citation">(Refinetti, Cornélissen, and Halberg <a href="#ref-Refinetti2007" role="doc-biblioref">2007</a>; Cornelissen <a href="#ref-Cornelissen2014" role="doc-biblioref">2014</a>)</span></p>
-<ul>
-<li>single component cosinor</li>
-<li>multiple component cosinor</li>
-<li>population cosinor</li>
-<li>confidence intervals (ellipse method)</li>
-<li>zero amplitude test</li>
-<li>lack-of-fit testing</li>
-</ul>
-<p>The example here use the dataset <code>twins</code> which contains a continuous ECG signal, called <code>DYX</code>, collected at hourly time points.</p>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-Cornelissen2014">
-<p>Cornelissen, Germaine. 2014. “Cosinor-based rhythmometry.” BioMed Central. <a href="https://doi.org/10.1186/1742-4682-11-16">https://doi.org/10.1186/1742-4682-11-16</a>.</p>
-</div>
-<div id="ref-Refinetti2007">
-<p>Refinetti, Roberto, Germaine Cornélissen, and Franz Halberg. 2007. “Procedures for numerical analysis of circadian rhythms.” <em>Biological Rhythm Research</em> 38 (4): 275–325. <a href="https://doi.org/10.1080/09291010600903692">https://doi.org/10.1080/09291010600903692</a>.</p>
-</div>
+<div id="chamber-size" class="section level2">
+<h2><span class="header-section-number">11.1</span> Chamber size</h2>
+<p>The left ventricle can be dilated, and would thus have a change in shape/size. Because the density of myocardium is known, we can assess overall mass, e.g. how much the heart weighs.</p>
+<p><span class="math display">\[LV\ mass = 0.8 \times 1.04 \times [(IVS + LVID + PWT)^3 - LVID^3] + 0.6 \]</span></p>
+<p>The tissue density of the myocardium is 1.04 mL/gm. The other measurements are available on echocardiography, but because it is cubed, small changes can dramatically change mass.</p>
+<p>The ejection fraction can also be calculated using similar approaches.</p>
+<p>Fractional shortening:</p>
+<p><span class="math display">\[FS = (LVEDD - LVESD) / LVEDD\]</span></p>
+<p>Quinones equation:</p>
+<p><span class="math display">\[EF = (LVEDD^2 - LVESD^2) / LVEDD^2 + (apical\ factor)\]</span></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="cosinor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="single-component-cosinor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="echo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pressure-gradients.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

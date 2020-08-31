@@ -24,7 +24,7 @@
 <meta name="author" content="Anish Shah" />
 
 
-<meta name="date" content="2020-07-04" />
+<meta name="date" content="2020-08-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -186,6 +186,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Clinical</b></span></li>
 <li class="chapter" data-level="10" data-path="cardiac-catheterization.html"><a href="cardiac-catheterization.html"><i class="fa fa-check"></i><b>10</b> Cardiac Catheterization</a><ul>
 <li class="chapter" data-level="10.1" data-path="right-heart-catheterization.html"><a href="right-heart-catheterization.html"><i class="fa fa-check"></i><b>10.1</b> Right heart catheterization</a></li>
+<li class="chapter" data-level="10.2" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html"><i class="fa fa-check"></i><b>10.2</b> Invasive Hemodynamics</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html#ficks-cardiac-output"><i class="fa fa-check"></i><b>10.2.1</b> Fick’s cardiac output</a></li>
+<li class="chapter" data-level="10.2.2" data-path="invasive-hemodynamics.html"><a href="invasive-hemodynamics.html#thermodilution"><i class="fa fa-check"></i><b>10.2.2</b> Thermodilution</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="coronary-anatomy.html"><a href="coronary-anatomy.html"><i class="fa fa-check"></i><b>10.3</b> Coronary Anatomy</a><ul>
+<li class="chapter" data-level="10.3.1" data-path="coronary-anatomy.html"><a href="coronary-anatomy.html#text-processing"><i class="fa fa-check"></i><b>10.3.1</b> Text-processing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="echo.html"><a href="echo.html"><i class="fa fa-check"></i><b>11</b> Echocardiography</a><ul>
+<li class="chapter" data-level="11.1" data-path="chamber-size.html"><a href="chamber-size.html"><i class="fa fa-check"></i><b>11.1</b> Chamber size</a></li>
+<li class="chapter" data-level="11.2" data-path="pressure-gradients.html"><a href="pressure-gradients.html"><i class="fa fa-check"></i><b>11.2</b> Pressure gradients</a></li>
+</ul></li>
+<li class="part"><span><b>V Learning</b></span></li>
+<li class="chapter" data-level="12" data-path="tidymodels.html"><a href="tidymodels.html"><i class="fa fa-check"></i><b>12</b> Tidymodels</a><ul>
+<li class="chapter" data-level="12.1" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html"><i class="fa fa-check"></i><b>12.1</b> R/Medicine 2020 (and RStudio Intro Course)</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#introduction"><i class="fa fa-check"></i><b>12.1.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.1.2" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#build-a-model"><i class="fa fa-check"></i><b>12.1.2</b> Build a Model</a></li>
+<li class="chapter" data-level="12.1.3" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#build-a-workflow"><i class="fa fa-check"></i><b>12.1.3</b> Build a Workflow</a></li>
+<li class="chapter" data-level="12.1.4" data-path="rmedicine-2020-and-rstudio-intro-course.html"><a href="rmedicine-2020-and-rstudio-intro-course.html#tune-better-models"><i class="fa fa-check"></i><b>12.1.4</b> Tune Better Models</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -219,79 +239,79 @@ y(t) &amp;= M + \beta_{j} x_{j} + \gamma_{j} z_{j}
 \]</span></p>
 <p>Where <span class="math inline">\(j = 1,\ 2,\ ... p\)</span>, which is the number of parameters. In a single component cosinor, there are at 3 parameters: <span class="math inline">\(2(p=1) + 1\)</span>, and in a multiple component: <span class="math inline">\(2(p=j) + 1\)</span>. The components are based on the periods.</p>
 <p>In a <em>formula</em> based approach…</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="multiple-component-cosinor.html#cb34-1"></a><span class="co"># This is the final dataset for a single component, however we have multiple</span></span>
-<span id="cb34-2"><a href="multiple-component-cosinor.html#cb34-2"></a>object &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, <span class="dt">data =</span> twins, <span class="dt">tau =</span> <span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">8</span>))</span>
-<span id="cb34-3"><a href="multiple-component-cosinor.html#cb34-3"></a><span class="kw">cat</span>(object<span class="op">$</span>call)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multiple-component-cosinor.html#cb38-1"></a><span class="co"># This is the final dataset for a single component, however we have multiple</span></span>
+<span id="cb38-2"><a href="multiple-component-cosinor.html#cb38-2"></a>object &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, <span class="dt">data =</span> twins, <span class="dt">tau =</span> <span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">8</span>))</span>
+<span id="cb38-3"><a href="multiple-component-cosinor.html#cb38-3"></a><span class="kw">cat</span>(object<span class="op">$</span>call)</span></code></pre></div>
 <pre><code>## cosinor(formula = rDYX ~ M + A1 * cos(2*pi*hour/24 + phi1) + A2 * cos(2*pi*hour/8 + phi2)</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="multiple-component-cosinor.html#cb36-1"></a><span class="co"># Periods</span></span>
-<span id="cb36-2"><a href="multiple-component-cosinor.html#cb36-2"></a>tau &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">8</span>) <span class="co"># Two components</span></span>
-<span id="cb36-3"><a href="multiple-component-cosinor.html#cb36-3"></a>l &lt;-<span class="st"> </span><span class="kw">length</span>(tau)</span>
-<span id="cb36-4"><a href="multiple-component-cosinor.html#cb36-4"></a>j &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>l <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb36-5"><a href="multiple-component-cosinor.html#cb36-5"></a>period &lt;-<span class="st"> </span>tau</span>
-<span id="cb36-6"><a href="multiple-component-cosinor.html#cb36-6"></a></span>
-<span id="cb36-7"><a href="multiple-component-cosinor.html#cb36-7"></a><span class="co"># No variable parameters</span></span>
-<span id="cb36-8"><a href="multiple-component-cosinor.html#cb36-8"></a>y &lt;-<span class="st"> </span>outcomes &lt;-<span class="st"> </span>twins<span class="op">$</span>rDYX</span>
-<span id="cb36-9"><a href="multiple-component-cosinor.html#cb36-9"></a>t &lt;-<span class="st"> </span>predictors &lt;-<span class="st"> </span>twins<span class="op">$</span>hour</span>
-<span id="cb36-10"><a href="multiple-component-cosinor.html#cb36-10"></a>n  &lt;-<span class="st"> </span><span class="kw">length</span>(t)</span>
-<span id="cb36-11"><a href="multiple-component-cosinor.html#cb36-11"></a></span>
-<span id="cb36-12"><a href="multiple-component-cosinor.html#cb36-12"></a><span class="co"># Need to create number of x values to match number of periods</span></span>
-<span id="cb36-13"><a href="multiple-component-cosinor.html#cb36-13"></a>    <span class="co"># x1, x2, z1, z2 in this case</span></span>
-<span id="cb36-14"><a href="multiple-component-cosinor.html#cb36-14"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>l) {</span>
-<span id="cb36-15"><a href="multiple-component-cosinor.html#cb36-15"></a>  <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, i), <span class="kw">cos</span>((<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>t) <span class="op">/</span><span class="st"> </span>period[i]))</span>
-<span id="cb36-16"><a href="multiple-component-cosinor.html#cb36-16"></a>  <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;z&quot;</span>, i), <span class="kw">sin</span>((<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>t) <span class="op">/</span><span class="st"> </span>period[i]))</span>
-<span id="cb36-17"><a href="multiple-component-cosinor.html#cb36-17"></a>}</span>
-<span id="cb36-18"><a href="multiple-component-cosinor.html#cb36-18"></a></span>
-<span id="cb36-19"><a href="multiple-component-cosinor.html#cb36-19"></a><span class="co"># Creating a new dataframe with all variables</span></span>
-<span id="cb36-20"><a href="multiple-component-cosinor.html#cb36-20"></a>model &lt;-<span class="st"> </span><span class="kw">data.frame</span>(y, t, <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;z&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)))</span>
-<span id="cb36-21"><a href="multiple-component-cosinor.html#cb36-21"></a></span>
-<span id="cb36-22"><a href="multiple-component-cosinor.html#cb36-22"></a><span class="co"># The formula, where the intercept will be the MESOR (not included)</span></span>
-<span id="cb36-23"><a href="multiple-component-cosinor.html#cb36-23"></a>f &lt;-<span class="st"> </span><span class="kw">as.formula</span>(</span>
-<span id="cb36-24"><a href="multiple-component-cosinor.html#cb36-24"></a>  <span class="kw">paste0</span>(<span class="st">&quot;y ~ &quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="op">:</span>l, <span class="st">&quot; + &quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="dv">1</span><span class="op">:</span>l, <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))</span>
-<span id="cb36-25"><a href="multiple-component-cosinor.html#cb36-25"></a>)</span>
-<span id="cb36-26"><a href="multiple-component-cosinor.html#cb36-26"></a><span class="kw">print</span>(f)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="multiple-component-cosinor.html#cb40-1"></a><span class="co"># Periods</span></span>
+<span id="cb40-2"><a href="multiple-component-cosinor.html#cb40-2"></a>tau &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">8</span>) <span class="co"># Two components</span></span>
+<span id="cb40-3"><a href="multiple-component-cosinor.html#cb40-3"></a>l &lt;-<span class="st"> </span><span class="kw">length</span>(tau)</span>
+<span id="cb40-4"><a href="multiple-component-cosinor.html#cb40-4"></a>j &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">*</span>l <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb40-5"><a href="multiple-component-cosinor.html#cb40-5"></a>period &lt;-<span class="st"> </span>tau</span>
+<span id="cb40-6"><a href="multiple-component-cosinor.html#cb40-6"></a></span>
+<span id="cb40-7"><a href="multiple-component-cosinor.html#cb40-7"></a><span class="co"># No variable parameters</span></span>
+<span id="cb40-8"><a href="multiple-component-cosinor.html#cb40-8"></a>y &lt;-<span class="st"> </span>outcomes &lt;-<span class="st"> </span>twins<span class="op">$</span>rDYX</span>
+<span id="cb40-9"><a href="multiple-component-cosinor.html#cb40-9"></a>t &lt;-<span class="st"> </span>predictors &lt;-<span class="st"> </span>twins<span class="op">$</span>hour</span>
+<span id="cb40-10"><a href="multiple-component-cosinor.html#cb40-10"></a>n  &lt;-<span class="st"> </span><span class="kw">length</span>(t)</span>
+<span id="cb40-11"><a href="multiple-component-cosinor.html#cb40-11"></a></span>
+<span id="cb40-12"><a href="multiple-component-cosinor.html#cb40-12"></a><span class="co"># Need to create number of x values to match number of periods</span></span>
+<span id="cb40-13"><a href="multiple-component-cosinor.html#cb40-13"></a>    <span class="co"># x1, x2, z1, z2 in this case</span></span>
+<span id="cb40-14"><a href="multiple-component-cosinor.html#cb40-14"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>l) {</span>
+<span id="cb40-15"><a href="multiple-component-cosinor.html#cb40-15"></a>  <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, i), <span class="kw">cos</span>((<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>t) <span class="op">/</span><span class="st"> </span>period[i]))</span>
+<span id="cb40-16"><a href="multiple-component-cosinor.html#cb40-16"></a>  <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;z&quot;</span>, i), <span class="kw">sin</span>((<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi <span class="op">*</span><span class="st"> </span>t) <span class="op">/</span><span class="st"> </span>period[i]))</span>
+<span id="cb40-17"><a href="multiple-component-cosinor.html#cb40-17"></a>}</span>
+<span id="cb40-18"><a href="multiple-component-cosinor.html#cb40-18"></a></span>
+<span id="cb40-19"><a href="multiple-component-cosinor.html#cb40-19"></a><span class="co"># Creating a new dataframe with all variables</span></span>
+<span id="cb40-20"><a href="multiple-component-cosinor.html#cb40-20"></a>model &lt;-<span class="st"> </span><span class="kw">data.frame</span>(y, t, <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;z&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)))</span>
+<span id="cb40-21"><a href="multiple-component-cosinor.html#cb40-21"></a></span>
+<span id="cb40-22"><a href="multiple-component-cosinor.html#cb40-22"></a><span class="co"># The formula, where the intercept will be the MESOR (not included)</span></span>
+<span id="cb40-23"><a href="multiple-component-cosinor.html#cb40-23"></a>f &lt;-<span class="st"> </span><span class="kw">as.formula</span>(</span>
+<span id="cb40-24"><a href="multiple-component-cosinor.html#cb40-24"></a>  <span class="kw">paste0</span>(<span class="st">&quot;y ~ &quot;</span>, <span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, <span class="dv">1</span><span class="op">:</span>l, <span class="st">&quot; + &quot;</span>, <span class="st">&quot;z&quot;</span>, <span class="dv">1</span><span class="op">:</span>l, <span class="dt">collapse =</span> <span class="st">&quot; + &quot;</span>))</span>
+<span id="cb40-25"><a href="multiple-component-cosinor.html#cb40-25"></a>)</span>
+<span id="cb40-26"><a href="multiple-component-cosinor.html#cb40-26"></a><span class="kw">print</span>(f)</span></code></pre></div>
 <pre><code>## y ~ x1 + z1 + x2 + z2</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="multiple-component-cosinor.html#cb38-1"></a><span class="co"># Can create a model frame here using two approaches</span></span>
-<span id="cb38-2"><a href="multiple-component-cosinor.html#cb38-2"></a><span class="co"># Base R and with hardhat</span></span>
-<span id="cb38-3"><a href="multiple-component-cosinor.html#cb38-3"></a>m &lt;-<span class="st"> </span><span class="kw">model.frame</span>(f, model)</span>
-<span id="cb38-4"><a href="multiple-component-cosinor.html#cb38-4"></a>xmat &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(f, m)</span>
-<span id="cb38-5"><a href="multiple-component-cosinor.html#cb38-5"></a>ymat &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(y)</span>
-<span id="cb38-6"><a href="multiple-component-cosinor.html#cb38-6"></a></span>
-<span id="cb38-7"><a href="multiple-component-cosinor.html#cb38-7"></a><span class="co"># Hardhat</span></span>
-<span id="cb38-8"><a href="multiple-component-cosinor.html#cb38-8"></a>framed &lt;-<span class="st"> </span>hardhat<span class="op">::</span><span class="kw">model_frame</span>(f, model)</span>
-<span id="cb38-9"><a href="multiple-component-cosinor.html#cb38-9"></a>mat &lt;-<span class="st"> </span>hardhat<span class="op">::</span><span class="kw">model_matrix</span>(framed<span class="op">$</span>terms, framed<span class="op">$</span>data)</span>
-<span id="cb38-10"><a href="multiple-component-cosinor.html#cb38-10"></a></span>
-<span id="cb38-11"><a href="multiple-component-cosinor.html#cb38-11"></a><span class="co"># Solve for coefficients, including amplitude and acrophase</span></span>
-<span id="cb38-12"><a href="multiple-component-cosinor.html#cb38-12"></a>coefs &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(xmat) <span class="op">%*%</span><span class="st"> </span>xmat) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(xmat) <span class="op">%*%</span><span class="st"> </span>ymat</span>
-<span id="cb38-13"><a href="multiple-component-cosinor.html#cb38-13"></a>mesor &lt;-<span class="st"> </span>coefs[<span class="dv">1</span>]</span>
-<span id="cb38-14"><a href="multiple-component-cosinor.html#cb38-14"></a></span>
-<span id="cb38-15"><a href="multiple-component-cosinor.html#cb38-15"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>l) {</span>
-<span id="cb38-16"><a href="multiple-component-cosinor.html#cb38-16"></a>    </span>
-<span id="cb38-17"><a href="multiple-component-cosinor.html#cb38-17"></a>    <span class="co"># Beta and gamma terms</span></span>
-<span id="cb38-18"><a href="multiple-component-cosinor.html#cb38-18"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i), <span class="kw">unname</span>(coefs[<span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, i),]))</span>
-<span id="cb38-19"><a href="multiple-component-cosinor.html#cb38-19"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i), <span class="kw">unname</span>(coefs[<span class="kw">paste0</span>(<span class="st">&quot;z&quot;</span>, i),]))</span>
-<span id="cb38-20"><a href="multiple-component-cosinor.html#cb38-20"></a>    </span>
-<span id="cb38-21"><a href="multiple-component-cosinor.html#cb38-21"></a>    <span class="co"># Amplitude</span></span>
-<span id="cb38-22"><a href="multiple-component-cosinor.html#cb38-22"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;amp&quot;</span>, i), <span class="kw">sqrt</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i))<span class="op">^</span><span class="dv">2</span>))</span>
-<span id="cb38-23"><a href="multiple-component-cosinor.html#cb38-23"></a>    </span>
-<span id="cb38-24"><a href="multiple-component-cosinor.html#cb38-24"></a>    <span class="co"># Phi / acrophase</span></span>
-<span id="cb38-25"><a href="multiple-component-cosinor.html#cb38-25"></a>    sb &lt;-<span class="st"> </span><span class="kw">sign</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i)))</span>
-<span id="cb38-26"><a href="multiple-component-cosinor.html#cb38-26"></a>    sg &lt;-<span class="st"> </span><span class="kw">sign</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i)))</span>
-<span id="cb38-27"><a href="multiple-component-cosinor.html#cb38-27"></a>    theta &lt;-<span class="st"> </span><span class="kw">atan</span>(<span class="kw">abs</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i)) <span class="op">/</span><span class="st"> </span><span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i))))</span>
-<span id="cb38-28"><a href="multiple-component-cosinor.html#cb38-28"></a>    </span>
-<span id="cb38-29"><a href="multiple-component-cosinor.html#cb38-29"></a>  <span class="cf">if</span> ((sb <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>sb <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</span>
-<span id="cb38-30"><a href="multiple-component-cosinor.html#cb38-30"></a>    phi &lt;-<span class="st"> </span><span class="op">-</span>theta</span>
-<span id="cb38-31"><a href="multiple-component-cosinor.html#cb38-31"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sb <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">&amp;</span><span class="st"> </span>(sg <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) {</span>
-<span id="cb38-32"><a href="multiple-component-cosinor.html#cb38-32"></a>    phi &lt;-<span class="st"> </span>theta <span class="op">-</span><span class="st"> </span>pi</span>
-<span id="cb38-33"><a href="multiple-component-cosinor.html#cb38-33"></a>  } <span class="cf">else</span> <span class="cf">if</span> ((sb <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">|</span><span class="st"> </span>sb <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">-1</span>) {</span>
-<span id="cb38-34"><a href="multiple-component-cosinor.html#cb38-34"></a>    phi &lt;-<span class="st"> </span><span class="op">-</span>theta <span class="op">-</span><span class="st"> </span>pi</span>
-<span id="cb38-35"><a href="multiple-component-cosinor.html#cb38-35"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sb <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>(sg <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">|</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) {</span>
-<span id="cb38-36"><a href="multiple-component-cosinor.html#cb38-36"></a>    phi &lt;-<span class="st"> </span>theta <span class="op">-</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi)</span>
-<span id="cb38-37"><a href="multiple-component-cosinor.html#cb38-37"></a>  }</span>
-<span id="cb38-38"><a href="multiple-component-cosinor.html#cb38-38"></a>    </span>
-<span id="cb38-39"><a href="multiple-component-cosinor.html#cb38-39"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;phi&quot;</span>, i), phi)</span>
-<span id="cb38-40"><a href="multiple-component-cosinor.html#cb38-40"></a>}</span>
-<span id="cb38-41"><a href="multiple-component-cosinor.html#cb38-41"></a></span>
-<span id="cb38-42"><a href="multiple-component-cosinor.html#cb38-42"></a>coefs &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">c</span>(<span class="dt">mesor =</span> mesor, <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;amp&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;phi&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, <span class="dv">1</span><span class="op">:</span>l))))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="multiple-component-cosinor.html#cb42-1"></a><span class="co"># Can create a model frame here using two approaches</span></span>
+<span id="cb42-2"><a href="multiple-component-cosinor.html#cb42-2"></a><span class="co"># Base R and with hardhat</span></span>
+<span id="cb42-3"><a href="multiple-component-cosinor.html#cb42-3"></a>m &lt;-<span class="st"> </span><span class="kw">model.frame</span>(f, model)</span>
+<span id="cb42-4"><a href="multiple-component-cosinor.html#cb42-4"></a>xmat &lt;-<span class="st"> </span><span class="kw">model.matrix</span>(f, m)</span>
+<span id="cb42-5"><a href="multiple-component-cosinor.html#cb42-5"></a>ymat &lt;-<span class="st"> </span><span class="kw">as.matrix</span>(y)</span>
+<span id="cb42-6"><a href="multiple-component-cosinor.html#cb42-6"></a></span>
+<span id="cb42-7"><a href="multiple-component-cosinor.html#cb42-7"></a><span class="co"># Hardhat</span></span>
+<span id="cb42-8"><a href="multiple-component-cosinor.html#cb42-8"></a>framed &lt;-<span class="st"> </span>hardhat<span class="op">::</span><span class="kw">model_frame</span>(f, model)</span>
+<span id="cb42-9"><a href="multiple-component-cosinor.html#cb42-9"></a>mat &lt;-<span class="st"> </span>hardhat<span class="op">::</span><span class="kw">model_matrix</span>(framed<span class="op">$</span>terms, framed<span class="op">$</span>data)</span>
+<span id="cb42-10"><a href="multiple-component-cosinor.html#cb42-10"></a></span>
+<span id="cb42-11"><a href="multiple-component-cosinor.html#cb42-11"></a><span class="co"># Solve for coefficients, including amplitude and acrophase</span></span>
+<span id="cb42-12"><a href="multiple-component-cosinor.html#cb42-12"></a>coefs &lt;-<span class="st"> </span><span class="kw">solve</span>(<span class="kw">t</span>(xmat) <span class="op">%*%</span><span class="st"> </span>xmat) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(xmat) <span class="op">%*%</span><span class="st"> </span>ymat</span>
+<span id="cb42-13"><a href="multiple-component-cosinor.html#cb42-13"></a>mesor &lt;-<span class="st"> </span>coefs[<span class="dv">1</span>]</span>
+<span id="cb42-14"><a href="multiple-component-cosinor.html#cb42-14"></a></span>
+<span id="cb42-15"><a href="multiple-component-cosinor.html#cb42-15"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>l) {</span>
+<span id="cb42-16"><a href="multiple-component-cosinor.html#cb42-16"></a>    </span>
+<span id="cb42-17"><a href="multiple-component-cosinor.html#cb42-17"></a>    <span class="co"># Beta and gamma terms</span></span>
+<span id="cb42-18"><a href="multiple-component-cosinor.html#cb42-18"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i), <span class="kw">unname</span>(coefs[<span class="kw">paste0</span>(<span class="st">&quot;x&quot;</span>, i),]))</span>
+<span id="cb42-19"><a href="multiple-component-cosinor.html#cb42-19"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i), <span class="kw">unname</span>(coefs[<span class="kw">paste0</span>(<span class="st">&quot;z&quot;</span>, i),]))</span>
+<span id="cb42-20"><a href="multiple-component-cosinor.html#cb42-20"></a>    </span>
+<span id="cb42-21"><a href="multiple-component-cosinor.html#cb42-21"></a>    <span class="co"># Amplitude</span></span>
+<span id="cb42-22"><a href="multiple-component-cosinor.html#cb42-22"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;amp&quot;</span>, i), <span class="kw">sqrt</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i))<span class="op">^</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i))<span class="op">^</span><span class="dv">2</span>))</span>
+<span id="cb42-23"><a href="multiple-component-cosinor.html#cb42-23"></a>    </span>
+<span id="cb42-24"><a href="multiple-component-cosinor.html#cb42-24"></a>    <span class="co"># Phi / acrophase</span></span>
+<span id="cb42-25"><a href="multiple-component-cosinor.html#cb42-25"></a>    sb &lt;-<span class="st"> </span><span class="kw">sign</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i)))</span>
+<span id="cb42-26"><a href="multiple-component-cosinor.html#cb42-26"></a>    sg &lt;-<span class="st"> </span><span class="kw">sign</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i)))</span>
+<span id="cb42-27"><a href="multiple-component-cosinor.html#cb42-27"></a>    theta &lt;-<span class="st"> </span><span class="kw">atan</span>(<span class="kw">abs</span>(<span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, i)) <span class="op">/</span><span class="st"> </span><span class="kw">get</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, i))))</span>
+<span id="cb42-28"><a href="multiple-component-cosinor.html#cb42-28"></a>    </span>
+<span id="cb42-29"><a href="multiple-component-cosinor.html#cb42-29"></a>  <span class="cf">if</span> ((sb <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>sb <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</span>
+<span id="cb42-30"><a href="multiple-component-cosinor.html#cb42-30"></a>    phi &lt;-<span class="st"> </span><span class="op">-</span>theta</span>
+<span id="cb42-31"><a href="multiple-component-cosinor.html#cb42-31"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sb <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">&amp;</span><span class="st"> </span>(sg <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) {</span>
+<span id="cb42-32"><a href="multiple-component-cosinor.html#cb42-32"></a>    phi &lt;-<span class="st"> </span>theta <span class="op">-</span><span class="st"> </span>pi</span>
+<span id="cb42-33"><a href="multiple-component-cosinor.html#cb42-33"></a>  } <span class="cf">else</span> <span class="cf">if</span> ((sb <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">|</span><span class="st"> </span>sb <span class="op">==</span><span class="st"> </span><span class="dv">0</span>) <span class="op">&amp;</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">-1</span>) {</span>
+<span id="cb42-34"><a href="multiple-component-cosinor.html#cb42-34"></a>    phi &lt;-<span class="st"> </span><span class="op">-</span>theta <span class="op">-</span><span class="st"> </span>pi</span>
+<span id="cb42-35"><a href="multiple-component-cosinor.html#cb42-35"></a>  } <span class="cf">else</span> <span class="cf">if</span> (sb <span class="op">==</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>(sg <span class="op">==</span><span class="st"> </span><span class="dv">-1</span> <span class="op">|</span><span class="st"> </span>sg <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)) {</span>
+<span id="cb42-36"><a href="multiple-component-cosinor.html#cb42-36"></a>    phi &lt;-<span class="st"> </span>theta <span class="op">-</span><span class="st"> </span>(<span class="dv">2</span> <span class="op">*</span><span class="st"> </span>pi)</span>
+<span id="cb42-37"><a href="multiple-component-cosinor.html#cb42-37"></a>  }</span>
+<span id="cb42-38"><a href="multiple-component-cosinor.html#cb42-38"></a>    </span>
+<span id="cb42-39"><a href="multiple-component-cosinor.html#cb42-39"></a>    <span class="kw">assign</span>(<span class="kw">paste0</span>(<span class="st">&quot;phi&quot;</span>, i), phi)</span>
+<span id="cb42-40"><a href="multiple-component-cosinor.html#cb42-40"></a>}</span>
+<span id="cb42-41"><a href="multiple-component-cosinor.html#cb42-41"></a></span>
+<span id="cb42-42"><a href="multiple-component-cosinor.html#cb42-42"></a>coefs &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">c</span>(<span class="dt">mesor =</span> mesor, <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;amp&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;phi&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;beta&quot;</span>, <span class="dv">1</span><span class="op">:</span>l)), <span class="kw">mget</span>(<span class="kw">paste0</span>(<span class="st">&quot;gamma&quot;</span>, <span class="dv">1</span><span class="op">:</span>l))))</span></code></pre></div>
 <p>In a multiple-component cosinor analysis, if the periods are harmonic, as in if the longest value of <span class="math inline">\(\tau\)</span> is an integer multiple of the shortest <span class="math inline">\(\tau\)</span> (fundamental frequency), additional features can be extracted from the fit.</p>
 <ul>
 <li><span class="math inline">\(A_{g}\)</span> - global amplitude, defined as half of the difference between peak and trough values</li>
@@ -299,90 +319,90 @@ y(t) &amp;= M + \beta_{j} x_{j} + \gamma_{j} z_{j}
 <li><span class="math inline">\(\phi_{B}\)</span> - bathyphase, defined as lag time to trough value</li>
 </ul>
 <p>This can be assessed through the fitted values in an augmented <code>cosinor</code> object.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="multiple-component-cosinor.html#cb39-1"></a><span class="co"># Multiple component object</span></span>
-<span id="cb39-2"><a href="multiple-component-cosinor.html#cb39-2"></a>object &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, <span class="dt">data =</span> twins, <span class="dt">tau =</span> <span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">12</span>))</span>
-<span id="cb39-3"><a href="multiple-component-cosinor.html#cb39-3"></a></span>
-<span id="cb39-4"><a href="multiple-component-cosinor.html#cb39-4"></a><span class="co"># Retrieve parameter values and fit</span></span>
-<span id="cb39-5"><a href="multiple-component-cosinor.html#cb39-5"></a>aug &lt;-<span class="st"> </span><span class="kw">augment</span>(object)</span>
-<span id="cb39-6"><a href="multiple-component-cosinor.html#cb39-6"></a>fit &lt;-<span class="st"> </span><span class="kw">unique</span>(aug[<span class="kw">c</span>(<span class="st">&quot;t&quot;</span>, <span class="st">&quot;.fitted&quot;</span>)])</span>
-<span id="cb39-7"><a href="multiple-component-cosinor.html#cb39-7"></a>mesor &lt;-<span class="st"> </span>object<span class="op">$</span>coefficients[<span class="dv">1</span>]</span>
-<span id="cb39-8"><a href="multiple-component-cosinor.html#cb39-8"></a></span>
-<span id="cb39-9"><a href="multiple-component-cosinor.html#cb39-9"></a><span class="co"># Orthophase</span></span>
-<span id="cb39-10"><a href="multiple-component-cosinor.html#cb39-10"></a>peak &lt;-<span class="st"> </span><span class="kw">max</span>(fit<span class="op">$</span>.fitted)</span>
-<span id="cb39-11"><a href="multiple-component-cosinor.html#cb39-11"></a>orthophase &lt;-<span class="st"> </span>fit<span class="op">$</span>t[<span class="kw">which.max</span>(fit<span class="op">$</span>.fitted)]</span>
-<span id="cb39-12"><a href="multiple-component-cosinor.html#cb39-12"></a></span>
-<span id="cb39-13"><a href="multiple-component-cosinor.html#cb39-13"></a><span class="co"># Bathyphase</span></span>
-<span id="cb39-14"><a href="multiple-component-cosinor.html#cb39-14"></a>trough &lt;-<span class="st"> </span><span class="kw">min</span>(fit<span class="op">$</span>.fitted)</span>
-<span id="cb39-15"><a href="multiple-component-cosinor.html#cb39-15"></a>bathyphase &lt;-<span class="st"> </span>fit<span class="op">$</span>t[<span class="kw">which.min</span>(fit<span class="op">$</span>.fitted)]</span>
-<span id="cb39-16"><a href="multiple-component-cosinor.html#cb39-16"></a></span>
-<span id="cb39-17"><a href="multiple-component-cosinor.html#cb39-17"></a><span class="co"># Global amplitude</span></span>
-<span id="cb39-18"><a href="multiple-component-cosinor.html#cb39-18"></a>globalAmp &lt;-<span class="st"> </span>(peak <span class="op">-</span><span class="st"> </span>trough) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb39-19"><a href="multiple-component-cosinor.html#cb39-19"></a></span>
-<span id="cb39-20"><a href="multiple-component-cosinor.html#cb39-20"></a><span class="co"># Reference phase</span></span>
-<span id="cb39-21"><a href="multiple-component-cosinor.html#cb39-21"></a>zero &lt;-<span class="st"> </span><span class="kw">min</span>(aug<span class="op">$</span>t)</span>
-<span id="cb39-22"><a href="multiple-component-cosinor.html#cb39-22"></a></span>
-<span id="cb39-23"><a href="multiple-component-cosinor.html#cb39-23"></a><span class="co"># Plot</span></span>
-<span id="cb39-24"><a href="multiple-component-cosinor.html#cb39-24"></a><span class="kw">ggplot</span>(fit, <span class="kw">aes</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> .fitted)) <span class="op">+</span></span>
-<span id="cb39-25"><a href="multiple-component-cosinor.html#cb39-25"></a><span class="st">    </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="fl">1.2</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-26"><a href="multiple-component-cosinor.html#cb39-26"></a><span class="st">    </span><span class="co"># Mesor</span></span>
-<span id="cb39-27"><a href="multiple-component-cosinor.html#cb39-27"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> mesor, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-28"><a href="multiple-component-cosinor.html#cb39-28"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">x =</span> zero <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">y =</span> mesor <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>mesor, <span class="dt">label =</span> <span class="st">&quot;MESOR&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-29"><a href="multiple-component-cosinor.html#cb39-29"></a><span class="st">    </span><span class="co"># Orthophase</span></span>
-<span id="cb39-30"><a href="multiple-component-cosinor.html#cb39-30"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> orthophase, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-31"><a href="multiple-component-cosinor.html#cb39-31"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> orthophase, <span class="dt">y =</span> peak), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st">   </span></span>
-<span id="cb39-32"><a href="multiple-component-cosinor.html#cb39-32"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb39-33"><a href="multiple-component-cosinor.html#cb39-33"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> zero, <span class="dt">xend =</span> orthophase, <span class="dt">y =</span> peak, <span class="dt">yend =</span> peak),</span>
-<span id="cb39-34"><a href="multiple-component-cosinor.html#cb39-34"></a>        <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span></span>
-<span id="cb39-35"><a href="multiple-component-cosinor.html#cb39-35"></a>    ) <span class="op">+</span></span>
-<span id="cb39-36"><a href="multiple-component-cosinor.html#cb39-36"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
-<span id="cb39-37"><a href="multiple-component-cosinor.html#cb39-37"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> (orthophase <span class="op">-</span><span class="st"> </span>zero) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">y =</span> peak <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>mesor), </span>
-<span id="cb39-38"><a href="multiple-component-cosinor.html#cb39-38"></a>        <span class="dt">label =</span> <span class="st">&quot;Orthophase&quot;</span></span>
-<span id="cb39-39"><a href="multiple-component-cosinor.html#cb39-39"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-40"><a href="multiple-component-cosinor.html#cb39-40"></a><span class="st">    </span><span class="co"># Bathyphase</span></span>
-<span id="cb39-41"><a href="multiple-component-cosinor.html#cb39-41"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> bathyphase, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-42"><a href="multiple-component-cosinor.html#cb39-42"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> bathyphase, <span class="dt">y =</span> trough), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st">     </span></span>
-<span id="cb39-43"><a href="multiple-component-cosinor.html#cb39-43"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb39-44"><a href="multiple-component-cosinor.html#cb39-44"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> zero, <span class="dt">xend =</span> bathyphase, <span class="dt">y =</span> trough, <span class="dt">yend =</span> trough),</span>
-<span id="cb39-45"><a href="multiple-component-cosinor.html#cb39-45"></a>        <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span></span>
-<span id="cb39-46"><a href="multiple-component-cosinor.html#cb39-46"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-47"><a href="multiple-component-cosinor.html#cb39-47"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
-<span id="cb39-48"><a href="multiple-component-cosinor.html#cb39-48"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> (bathyphase <span class="op">+</span><span class="st"> </span>zero) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">y =</span> trough <span class="op">-</span><span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>mesor), </span>
-<span id="cb39-49"><a href="multiple-component-cosinor.html#cb39-49"></a>        <span class="dt">label =</span> <span class="st">&quot;Bathyphase&quot;</span></span>
-<span id="cb39-50"><a href="multiple-component-cosinor.html#cb39-50"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-51"><a href="multiple-component-cosinor.html#cb39-51"></a><span class="st">    </span><span class="co"># Global Amplitude</span></span>
-<span id="cb39-52"><a href="multiple-component-cosinor.html#cb39-52"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb39-53"><a href="multiple-component-cosinor.html#cb39-53"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> orthophase, <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, <span class="dt">y =</span> peak, <span class="dt">yend =</span> peak),</span>
-<span id="cb39-54"><a href="multiple-component-cosinor.html#cb39-54"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span></span>
-<span id="cb39-55"><a href="multiple-component-cosinor.html#cb39-55"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-56"><a href="multiple-component-cosinor.html#cb39-56"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb39-57"><a href="multiple-component-cosinor.html#cb39-57"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> bathyphase, <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, <span class="dt">y =</span> trough, <span class="dt">yend =</span> trough),</span>
-<span id="cb39-58"><a href="multiple-component-cosinor.html#cb39-58"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span></span>
-<span id="cb39-59"><a href="multiple-component-cosinor.html#cb39-59"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-60"><a href="multiple-component-cosinor.html#cb39-60"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb39-61"><a href="multiple-component-cosinor.html#cb39-61"></a>        <span class="kw">aes</span>(</span>
-<span id="cb39-62"><a href="multiple-component-cosinor.html#cb39-62"></a>            <span class="dt">x =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, </span>
-<span id="cb39-63"><a href="multiple-component-cosinor.html#cb39-63"></a>            <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>,</span>
-<span id="cb39-64"><a href="multiple-component-cosinor.html#cb39-64"></a>            <span class="dt">y =</span> mesor,</span>
-<span id="cb39-65"><a href="multiple-component-cosinor.html#cb39-65"></a>            <span class="dt">yend =</span> trough</span>
-<span id="cb39-66"><a href="multiple-component-cosinor.html#cb39-66"></a>        ),</span>
-<span id="cb39-67"><a href="multiple-component-cosinor.html#cb39-67"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, </span>
-<span id="cb39-68"><a href="multiple-component-cosinor.html#cb39-68"></a>        <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">type =</span> <span class="st">&quot;closed&quot;</span>, <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">&quot;npc&quot;</span>))</span>
-<span id="cb39-69"><a href="multiple-component-cosinor.html#cb39-69"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-70"><a href="multiple-component-cosinor.html#cb39-70"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
-<span id="cb39-71"><a href="multiple-component-cosinor.html#cb39-71"></a>        <span class="kw">aes</span>(</span>
-<span id="cb39-72"><a href="multiple-component-cosinor.html#cb39-72"></a>            <span class="dt">x =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, </span>
-<span id="cb39-73"><a href="multiple-component-cosinor.html#cb39-73"></a>            <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>,</span>
-<span id="cb39-74"><a href="multiple-component-cosinor.html#cb39-74"></a>            <span class="dt">y =</span> mesor,</span>
-<span id="cb39-75"><a href="multiple-component-cosinor.html#cb39-75"></a>            <span class="dt">yend =</span> peak</span>
-<span id="cb39-76"><a href="multiple-component-cosinor.html#cb39-76"></a>        ),</span>
-<span id="cb39-77"><a href="multiple-component-cosinor.html#cb39-77"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, </span>
-<span id="cb39-78"><a href="multiple-component-cosinor.html#cb39-78"></a>        <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">type =</span> <span class="st">&quot;closed&quot;</span>, <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">&quot;npc&quot;</span>))</span>
-<span id="cb39-79"><a href="multiple-component-cosinor.html#cb39-79"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-80"><a href="multiple-component-cosinor.html#cb39-80"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
-<span id="cb39-81"><a href="multiple-component-cosinor.html#cb39-81"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> (bathyphase <span class="op">+</span><span class="st"> </span>orthophase)<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span>, <span class="dt">y =</span> <span class="fl">1.01</span><span class="op">*</span>mesor),</span>
-<span id="cb39-82"><a href="multiple-component-cosinor.html#cb39-82"></a>        <span class="dt">label =</span> <span class="st">&quot;2 x Global Amplitude&quot;</span></span>
-<span id="cb39-83"><a href="multiple-component-cosinor.html#cb39-83"></a>    ) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb39-84"><a href="multiple-component-cosinor.html#cb39-84"></a><span class="st">    </span><span class="kw">theme_minimal</span>() </span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="multiple-component-cosinor.html#cb43-1"></a><span class="co"># Multiple component object</span></span>
+<span id="cb43-2"><a href="multiple-component-cosinor.html#cb43-2"></a>object &lt;-<span class="st"> </span><span class="kw">cosinor</span>(rDYX <span class="op">~</span><span class="st"> </span>hour, <span class="dt">data =</span> twins, <span class="dt">tau =</span> <span class="kw">c</span>(<span class="dv">24</span>, <span class="dv">12</span>))</span>
+<span id="cb43-3"><a href="multiple-component-cosinor.html#cb43-3"></a></span>
+<span id="cb43-4"><a href="multiple-component-cosinor.html#cb43-4"></a><span class="co"># Retrieve parameter values and fit</span></span>
+<span id="cb43-5"><a href="multiple-component-cosinor.html#cb43-5"></a>aug &lt;-<span class="st"> </span><span class="kw">augment</span>(object)</span>
+<span id="cb43-6"><a href="multiple-component-cosinor.html#cb43-6"></a>fit &lt;-<span class="st"> </span><span class="kw">unique</span>(aug[<span class="kw">c</span>(<span class="st">&quot;t&quot;</span>, <span class="st">&quot;.fitted&quot;</span>)])</span>
+<span id="cb43-7"><a href="multiple-component-cosinor.html#cb43-7"></a>mesor &lt;-<span class="st"> </span>object<span class="op">$</span>coefficients[<span class="dv">1</span>]</span>
+<span id="cb43-8"><a href="multiple-component-cosinor.html#cb43-8"></a></span>
+<span id="cb43-9"><a href="multiple-component-cosinor.html#cb43-9"></a><span class="co"># Orthophase</span></span>
+<span id="cb43-10"><a href="multiple-component-cosinor.html#cb43-10"></a>peak &lt;-<span class="st"> </span><span class="kw">max</span>(fit<span class="op">$</span>.fitted)</span>
+<span id="cb43-11"><a href="multiple-component-cosinor.html#cb43-11"></a>orthophase &lt;-<span class="st"> </span>fit<span class="op">$</span>t[<span class="kw">which.max</span>(fit<span class="op">$</span>.fitted)]</span>
+<span id="cb43-12"><a href="multiple-component-cosinor.html#cb43-12"></a></span>
+<span id="cb43-13"><a href="multiple-component-cosinor.html#cb43-13"></a><span class="co"># Bathyphase</span></span>
+<span id="cb43-14"><a href="multiple-component-cosinor.html#cb43-14"></a>trough &lt;-<span class="st"> </span><span class="kw">min</span>(fit<span class="op">$</span>.fitted)</span>
+<span id="cb43-15"><a href="multiple-component-cosinor.html#cb43-15"></a>bathyphase &lt;-<span class="st"> </span>fit<span class="op">$</span>t[<span class="kw">which.min</span>(fit<span class="op">$</span>.fitted)]</span>
+<span id="cb43-16"><a href="multiple-component-cosinor.html#cb43-16"></a></span>
+<span id="cb43-17"><a href="multiple-component-cosinor.html#cb43-17"></a><span class="co"># Global amplitude</span></span>
+<span id="cb43-18"><a href="multiple-component-cosinor.html#cb43-18"></a>globalAmp &lt;-<span class="st"> </span>(peak <span class="op">-</span><span class="st"> </span>trough) <span class="op">/</span><span class="st"> </span><span class="dv">2</span></span>
+<span id="cb43-19"><a href="multiple-component-cosinor.html#cb43-19"></a></span>
+<span id="cb43-20"><a href="multiple-component-cosinor.html#cb43-20"></a><span class="co"># Reference phase</span></span>
+<span id="cb43-21"><a href="multiple-component-cosinor.html#cb43-21"></a>zero &lt;-<span class="st"> </span><span class="kw">min</span>(aug<span class="op">$</span>t)</span>
+<span id="cb43-22"><a href="multiple-component-cosinor.html#cb43-22"></a></span>
+<span id="cb43-23"><a href="multiple-component-cosinor.html#cb43-23"></a><span class="co"># Plot</span></span>
+<span id="cb43-24"><a href="multiple-component-cosinor.html#cb43-24"></a><span class="kw">ggplot</span>(fit, <span class="kw">aes</span>(<span class="dt">x =</span> t, <span class="dt">y =</span> .fitted)) <span class="op">+</span></span>
+<span id="cb43-25"><a href="multiple-component-cosinor.html#cb43-25"></a><span class="st">    </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;gam&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;black&quot;</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>, <span class="dt">size =</span> <span class="fl">1.2</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-26"><a href="multiple-component-cosinor.html#cb43-26"></a><span class="st">    </span><span class="co"># Mesor</span></span>
+<span id="cb43-27"><a href="multiple-component-cosinor.html#cb43-27"></a><span class="st">    </span><span class="kw">geom_hline</span>(<span class="dt">yintercept =</span> mesor, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-28"><a href="multiple-component-cosinor.html#cb43-28"></a><span class="st">    </span><span class="kw">geom_text</span>(<span class="dt">x =</span> zero <span class="op">+</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">y =</span> mesor <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>mesor, <span class="dt">label =</span> <span class="st">&quot;MESOR&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-29"><a href="multiple-component-cosinor.html#cb43-29"></a><span class="st">    </span><span class="co"># Orthophase</span></span>
+<span id="cb43-30"><a href="multiple-component-cosinor.html#cb43-30"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> orthophase, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-31"><a href="multiple-component-cosinor.html#cb43-31"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> orthophase, <span class="dt">y =</span> peak), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st">   </span></span>
+<span id="cb43-32"><a href="multiple-component-cosinor.html#cb43-32"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb43-33"><a href="multiple-component-cosinor.html#cb43-33"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> zero, <span class="dt">xend =</span> orthophase, <span class="dt">y =</span> peak, <span class="dt">yend =</span> peak),</span>
+<span id="cb43-34"><a href="multiple-component-cosinor.html#cb43-34"></a>        <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">size =</span> <span class="fl">0.8</span></span>
+<span id="cb43-35"><a href="multiple-component-cosinor.html#cb43-35"></a>    ) <span class="op">+</span></span>
+<span id="cb43-36"><a href="multiple-component-cosinor.html#cb43-36"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
+<span id="cb43-37"><a href="multiple-component-cosinor.html#cb43-37"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> (orthophase <span class="op">-</span><span class="st"> </span>zero) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">y =</span> peak <span class="op">+</span><span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>mesor), </span>
+<span id="cb43-38"><a href="multiple-component-cosinor.html#cb43-38"></a>        <span class="dt">label =</span> <span class="st">&quot;Orthophase&quot;</span></span>
+<span id="cb43-39"><a href="multiple-component-cosinor.html#cb43-39"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-40"><a href="multiple-component-cosinor.html#cb43-40"></a><span class="st">    </span><span class="co"># Bathyphase</span></span>
+<span id="cb43-41"><a href="multiple-component-cosinor.html#cb43-41"></a><span class="st">    </span><span class="kw">geom_vline</span>(<span class="dt">xintercept =</span> bathyphase, <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-42"><a href="multiple-component-cosinor.html#cb43-42"></a><span class="st">    </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x =</span> bathyphase, <span class="dt">y =</span> trough), <span class="dt">size =</span> <span class="dv">2</span>) <span class="op">+</span><span class="st">     </span></span>
+<span id="cb43-43"><a href="multiple-component-cosinor.html#cb43-43"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb43-44"><a href="multiple-component-cosinor.html#cb43-44"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> zero, <span class="dt">xend =</span> bathyphase, <span class="dt">y =</span> trough, <span class="dt">yend =</span> trough),</span>
+<span id="cb43-45"><a href="multiple-component-cosinor.html#cb43-45"></a>        <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span></span>
+<span id="cb43-46"><a href="multiple-component-cosinor.html#cb43-46"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-47"><a href="multiple-component-cosinor.html#cb43-47"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
+<span id="cb43-48"><a href="multiple-component-cosinor.html#cb43-48"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> (bathyphase <span class="op">+</span><span class="st"> </span>zero) <span class="op">/</span><span class="st"> </span><span class="dv">2</span>, <span class="dt">y =</span> trough <span class="op">-</span><span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>mesor), </span>
+<span id="cb43-49"><a href="multiple-component-cosinor.html#cb43-49"></a>        <span class="dt">label =</span> <span class="st">&quot;Bathyphase&quot;</span></span>
+<span id="cb43-50"><a href="multiple-component-cosinor.html#cb43-50"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-51"><a href="multiple-component-cosinor.html#cb43-51"></a><span class="st">    </span><span class="co"># Global Amplitude</span></span>
+<span id="cb43-52"><a href="multiple-component-cosinor.html#cb43-52"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb43-53"><a href="multiple-component-cosinor.html#cb43-53"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> orthophase, <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, <span class="dt">y =</span> peak, <span class="dt">yend =</span> peak),</span>
+<span id="cb43-54"><a href="multiple-component-cosinor.html#cb43-54"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span></span>
+<span id="cb43-55"><a href="multiple-component-cosinor.html#cb43-55"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-56"><a href="multiple-component-cosinor.html#cb43-56"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb43-57"><a href="multiple-component-cosinor.html#cb43-57"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> bathyphase, <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, <span class="dt">y =</span> trough, <span class="dt">yend =</span> trough),</span>
+<span id="cb43-58"><a href="multiple-component-cosinor.html#cb43-58"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span></span>
+<span id="cb43-59"><a href="multiple-component-cosinor.html#cb43-59"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-60"><a href="multiple-component-cosinor.html#cb43-60"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb43-61"><a href="multiple-component-cosinor.html#cb43-61"></a>        <span class="kw">aes</span>(</span>
+<span id="cb43-62"><a href="multiple-component-cosinor.html#cb43-62"></a>            <span class="dt">x =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, </span>
+<span id="cb43-63"><a href="multiple-component-cosinor.html#cb43-63"></a>            <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb43-64"><a href="multiple-component-cosinor.html#cb43-64"></a>            <span class="dt">y =</span> mesor,</span>
+<span id="cb43-65"><a href="multiple-component-cosinor.html#cb43-65"></a>            <span class="dt">yend =</span> trough</span>
+<span id="cb43-66"><a href="multiple-component-cosinor.html#cb43-66"></a>        ),</span>
+<span id="cb43-67"><a href="multiple-component-cosinor.html#cb43-67"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, </span>
+<span id="cb43-68"><a href="multiple-component-cosinor.html#cb43-68"></a>        <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">type =</span> <span class="st">&quot;closed&quot;</span>, <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">&quot;npc&quot;</span>))</span>
+<span id="cb43-69"><a href="multiple-component-cosinor.html#cb43-69"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-70"><a href="multiple-component-cosinor.html#cb43-70"></a><span class="st">    </span><span class="kw">geom_segment</span>(</span>
+<span id="cb43-71"><a href="multiple-component-cosinor.html#cb43-71"></a>        <span class="kw">aes</span>(</span>
+<span id="cb43-72"><a href="multiple-component-cosinor.html#cb43-72"></a>            <span class="dt">x =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>, </span>
+<span id="cb43-73"><a href="multiple-component-cosinor.html#cb43-73"></a>            <span class="dt">xend =</span> (orthophase <span class="op">+</span><span class="st"> </span>bathyphase)<span class="op">/</span><span class="dv">2</span>,</span>
+<span id="cb43-74"><a href="multiple-component-cosinor.html#cb43-74"></a>            <span class="dt">y =</span> mesor,</span>
+<span id="cb43-75"><a href="multiple-component-cosinor.html#cb43-75"></a>            <span class="dt">yend =</span> peak</span>
+<span id="cb43-76"><a href="multiple-component-cosinor.html#cb43-76"></a>        ),</span>
+<span id="cb43-77"><a href="multiple-component-cosinor.html#cb43-77"></a>        <span class="dt">linetype =</span> <span class="st">&quot;twodash&quot;</span>, <span class="dt">size =</span> <span class="fl">0.5</span>, </span>
+<span id="cb43-78"><a href="multiple-component-cosinor.html#cb43-78"></a>        <span class="dt">arrow =</span> <span class="kw">arrow</span>(<span class="dt">type =</span> <span class="st">&quot;closed&quot;</span>, <span class="dt">length =</span> <span class="kw">unit</span>(<span class="fl">0.03</span>, <span class="st">&quot;npc&quot;</span>))</span>
+<span id="cb43-79"><a href="multiple-component-cosinor.html#cb43-79"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-80"><a href="multiple-component-cosinor.html#cb43-80"></a><span class="st">    </span><span class="kw">geom_text</span>(</span>
+<span id="cb43-81"><a href="multiple-component-cosinor.html#cb43-81"></a>        <span class="kw">aes</span>(<span class="dt">x =</span> (bathyphase <span class="op">+</span><span class="st"> </span>orthophase)<span class="op">/</span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="dv">4</span>, <span class="dt">y =</span> <span class="fl">1.01</span><span class="op">*</span>mesor),</span>
+<span id="cb43-82"><a href="multiple-component-cosinor.html#cb43-82"></a>        <span class="dt">label =</span> <span class="st">&quot;2 x Global Amplitude&quot;</span></span>
+<span id="cb43-83"><a href="multiple-component-cosinor.html#cb43-83"></a>    ) <span class="op">+</span><span class="st"> </span></span>
+<span id="cb43-84"><a href="multiple-component-cosinor.html#cb43-84"></a><span class="st">    </span><span class="kw">theme_minimal</span>() </span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="thoughts_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 

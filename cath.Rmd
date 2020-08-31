@@ -88,3 +88,94 @@ Thus, an average adult male would have a saturation of approximately 200 mL/dL.
 ### Thermodilution
 
 Stewart-Hamilton equation. 
+
+
+## Coronary Anatomy
+
+The coronary anatomy tree is visualized during cardiac catheterization. Clinical reports label the epicardial vessels and their percent stenosis. 
+
+
+### Text-processing
+
+An approach to analysis of LHC/RHC data is through text-processing, since cardiologists write very similar descriptions of procedures using a limited/specialized vocabulary.
+
+For example, we can set up the analysis of a single sentence from the findings section using a _tidy_ approach.
+
+```{r}
+# Setup
+library(tidyverse)
+
+# From findings
+txt <- "Small caliber RCA with 50% proximal and 70% mid stenoses."
+
+# Convert to tidy format
+sentence <- tibble(line = 1, sentence = txt) %>%
+	tidytext::unnest_tokens(input = sentence, output = word, to_lower = FALSE) %>%
+	pull(word)
+
+# Identify a big artery in sentence
+epicardial <- c("LM", "LAD", "LCX", "RCA")
+artery <- sentence[which(sentence %in% epicardial)]
+
+# Identify number/locations of disease
+locs <- grep("\\d+", sentence) 
+
+# Modifier for disease location
+mods <- c("proximal", "mid", "distal", "ostial")
+mlocs <- which(sentence %in% mods)
+
+# Find the nearest neighbors to identify which modifier goes with which location
+space <- combn(mlocs, length(locs))
+dist <- apply(space, 2, function(x) {sum(abs(locs - x))})
+matched <- space[, which.min(dist)]
+
+# Now connect the artery with percent stenosis
+tibble(
+	anatomy = paste(sentence[matched], artery),
+	stenosis = as.numeric(sentence[locs])
+) %>%
+	mutate(description = glue::glue("The {anatomy} has {stenosis}% stenosis."))
+```
+
+This method allows a computational approach at analyzing cath reports. This can be pushed into a function likely.
+
+```{r}
+# Function to turn sentence into tibble?
+coronary_anatomy <- function(x) {
+	
+	# Check if sentence
+	if(!is.character(x)) {stop("Requires character string", call. = FALSE)}
+	
+	# Establish variables
+	epicardial <- c("LM", "LAD", "LCX", "RCA")
+	mods <- c("proximal", "mid", "distal", "ostial")
+	
+	sentence <-
+		tibble(line = 1, sentence = x) %>%
+		tidytext::unnest_tokens(input = sentence, output = word, to_lower = FALSE) %>%
+		pull(word)
+		
+	# Identify number/locations of disease
+	artery <- sentence[which(sentence %in% epicardial)]
+	locs <- grep("\\d+", sentence) 
+	mlocs <- which(sentence %in% mods)
+	
+	# Find the nearest neighbors to identify which modifier goes with which location
+	space <- combn(mlocs, length(locs))
+	dist <- apply(space, 2, function(x) {sum(abs(locs - x))})
+	matched <- space[, which.min(dist)]
+	
+	tbl <- 
+		tibble(
+			anatomy = paste(sentence[matched], artery),
+			stenosis = as.numeric(sentence[locs])
+		)
+	
+	# Return
+	return(tbl)
+}
+
+# Test it out
+coronary_anatomy(txt)
+```
+
