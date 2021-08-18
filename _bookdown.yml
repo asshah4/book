@@ -1,0 +1,26 @@
+book_filename: "thoughts"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+output_dir: "docs"
+rmd_files:
+  - "index.Rmd"
+  - "intro.Rmd"
+  - "technical.Rmd"
+  - "PART-autonomic.Rmd"
+  - "circadian.Rmd"
+  - "PART-computational.Rmd"
+  - "cosinor.Rmd"
+  - "heart.Rmd"
+  - "package.Rmd"
+  - "functions.Rmd"
+  - "modeling.Rmd"
+  - "PART-epidemiology.Rmd"
+  - "PART-ecg.Rmd"
+  - "vcg.Rmd"
+  - "PART-clinical.Rmd"
+  - "cath.Rmd"
+  - "echo.Rmd"
+  - "PART-learning.Rmd"
+  - "tidymodels.Rmd"
