@@ -16,7 +16,10 @@ rmd_files:
   - "package.Rmd"
   - "functions.Rmd"
   - "modeling.Rmd"
+<<<<<<< HEAD
   - "PART-epidemiology.Rmd"
+=======
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
   - "PART-ecg.Rmd"
   - "vcg.Rmd"
   - "PART-clinical.Rmd"
