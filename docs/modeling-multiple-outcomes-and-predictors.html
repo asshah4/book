@@ -24,7 +24,11 @@
 <meta name="author" content="Anish Shah" />
 
 
+<<<<<<< HEAD
 <meta name="date" content="2020-11-24" />
+=======
+<meta name="date" content="2020-11-13" />
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +36,11 @@
   
   
 <link rel="prev" href="models.html"/>
+<<<<<<< HEAD
 <link rel="next" href="building-a-modeling-matrix-function.html"/>
+=======
+<link rel="next" href="building-a-modeling-matrix.html"/>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 <script src="libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -187,6 +195,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="8" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>8</b> Modeling</a>
 <ul>
+<<<<<<< HEAD
 <li class="chapter" data-level="8.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html"><i class="fa fa-check"></i><b>8.1</b> Modeling Multiple Outcomes and Predictors</a></li>
 <li class="chapter" data-level="8.2" data-path="building-a-modeling-matrix-function.html"><a href="building-a-modeling-matrix-function.html"><i class="fa fa-check"></i><b>8.2</b> Building a Modeling Matrix Function</a>
 <ul>
@@ -195,6 +204,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3" data-path="building-a-parsnip-model.html"><a href="building-a-parsnip-model.html"><i class="fa fa-check"></i><b>8.3</b> Building a <code>parsnip</code> Model</a>
 <ul>
 <li class="chapter" data-level="8.3.1" data-path="building-a-parsnip-model.html"><a href="building-a-parsnip-model.html#setting-up-the-model-specifications"><i class="fa fa-check"></i><b>8.3.1</b> Setting up the model specifications</a></li>
+=======
+<li class="chapter" data-level="8.1" data-path="modeling-multiple-outcomes-and-predictors.html"><a href="modeling-multiple-outcomes-and-predictors.html"><i class="fa fa-check"></i><b>8.1</b> Modeling Multiple Outcomes and Predictors</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="building-a-modeling-matrix-function.html"><a href="building-a-modeling-matrix-function.html#a-tidy-approach-to-multiple-outcomes-and-predictors"><i class="fa fa-check"></i><b>8.2.1</b> A <code>tidy</code> Approach to Multiple Outcomes and Predictors</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="building-a-parsnip-model.html"><a href="building-a-parsnip-model.html"><i class="fa fa-check"></i><b>8.3</b> Building a <code>parsnip</code> Model</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="building-a-modeling-matrix.html"><a href="building-a-modeling-matrix.html#a-tidy-approach-to-multiple-outcomes-and-predictors"><i class="fa fa-check"></i><b>8.2.1</b> A <code>tidy</code> Approach to Multiple Outcomes and Predictors</a></li>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 </ul></li>
 </ul></li>
 <li class="part"><span><b>III Electrocardiography</b></span></li>
@@ -256,6 +274,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="modeling-multiple-outcomes-and-predictors" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Modeling Multiple Outcomes and Predictors</h2>
 <p>A recurrent issue with causality-focused modeling with ECG data is that there are multiple outcomes (different ECG features). For example, in the <code>card</code> package, the <code>geh</code> dataset contains several ECG features based on <a href="vcg.html#vcg">vectorcardiography</a>.</p>
+<<<<<<< HEAD
+=======
+<div id="creating-multiple-models" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Creating Multiple Models</h3>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb1-1"></a><span class="kw">library</span>(card)</span>
 <span id="cb1-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb1-2"></a><span class="kw">library</span>(tidyverse)</span></code></pre></div>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
@@ -328,7 +351,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-2"></a>vars &lt;-<span class="st"> </span></span>
 <span id="cb11-3"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-3"></a><span class="st">    </span><span class="kw">c</span>(<span class="st">&quot;svg_mag&quot;</span>, <span class="st">&quot;az_svg&quot;</span>, <span class="st">&quot;el_svg&quot;</span>, <span class="st">&quot;qrs_tang&quot;</span>, <span class="st">&quot;log_auc_qt&quot;</span>, <span class="st">&quot;log_wvg&quot;</span>, <span class="st">&quot;lab_hba1c&quot;</span>, <span class="st">&quot;lab_fasting_bg&quot;</span>, <span class="st">&quot;homa&quot;</span>, <span class="st">&quot;dm&quot;</span>, <span class="st">&quot;age&quot;</span>, <span class="st">&quot;bmi&quot;</span>, <span class="st">&quot;bmi_cat&quot;</span>, <span class="st">&quot;age_cat&quot;</span>, <span class="st">&quot;sex&quot;</span>, <span class="st">&quot;htn&quot;</span>, <span class="st">&quot;cad&quot;</span>, <span class="st">&quot;lab_ser_creatinine&quot;</span>, <span class="st">&quot;lab_tchol&quot;</span>) </span>
 <span id="cb11-4"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-4"></a>    </span>
+<<<<<<< HEAD
 <span id="cb11-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-5"></a>test_data &lt;-</span>
+=======
+<span id="cb11-5"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-5"></a>df &lt;-</span>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 <span id="cb11-6"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-6"></a><span class="st">    </span>geh <span class="op">%&gt;%</span></span>
 <span id="cb11-7"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-7"></a><span class="st">    </span><span class="kw">select</span>(<span class="kw">all_of</span>(vars)) <span class="op">%&gt;%</span></span>
 <span id="cb11-8"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-8"></a><span class="st">    </span><span class="co">#na.omit() %&gt;%</span></span>
@@ -354,7 +381,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb11-28"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-28"></a><span class="st">    </span>card<span class="op">::</span><span class="kw">build_models</span>(</span>
 <span id="cb11-29"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-29"></a>        svg_mag <span class="op">+</span><span class="st"> </span>az_svg <span class="op">+</span><span class="st"> </span>el_svg <span class="op">+</span><span class="st"> </span>qrs_tang <span class="op">+</span><span class="st"> </span>log_auc_qt <span class="op">+</span><span class="st"> </span>log_wvg <span class="op">~</span><span class="st"> </span></span>
 <span id="cb11-30"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-30"></a><span class="st">            </span>lab_hba1c <span class="op">+</span><span class="st"> </span>age <span class="op">+</span><span class="st"> </span>sex <span class="op">+</span><span class="st"> </span>bmi <span class="op">+</span><span class="st"> </span>cad <span class="op">+</span><span class="st"> </span>htn, </span>
+<<<<<<< HEAD
 <span id="cb11-31"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-31"></a>        <span class="dt">data =</span> test_data,</span>
+=======
+<span id="cb11-31"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-31"></a>        <span class="dt">data =</span> df,</span>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 <span id="cb11-32"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-32"></a>        <span class="dt">exposure =</span> <span class="st">&quot;lab_hba1c&quot;</span>,</span>
 <span id="cb11-33"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-33"></a>        <span class="dt">engine =</span> <span class="st">&quot;linear&quot;</span>,</span>
 <span id="cb11-34"><a href="modeling-multiple-outcomes-and-predictors.html#cb11-34"></a>        <span class="dt">type =</span> <span class="st">&quot;sequential&quot;</span></span>
@@ -370,6 +401,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 az_svg   lab_hb…  0.0381     0.0233     1.64   0.102  -0.00763   0.0839      1
 ## 5 el_svg   (Inter…  0.0767     0.195      0.394  0.694  -0.306     0.460       1
 ## 6 el_svg   lab_hb… -0.00862    0.0233    -0.370  0.711  -0.0544    0.0371      1</code></pre>
+<<<<<<< HEAD
+=======
+</div>
+<div id="visualize-regression-estimates" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Visualize Regression Estimates</h3>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
 <p>To assess or get a sense of how the variables are playing out, we can visualize the estimates across the builds of the models. This will also use the <code>gganimate</code> package to show the effect of data layering</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="modeling-multiple-outcomes-and-predictors.html#cb13-1"></a><span class="co"># Libraries</span></span>
 <span id="cb13-2"><a href="modeling-multiple-outcomes-and-predictors.html#cb13-2"></a><span class="kw">library</span>(gganimate)</span>
@@ -423,13 +460,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-50"><a href="modeling-multiple-outcomes-and-predictors.html#cb13-50"></a><span class="kw">animate</span>(a, <span class="dt">end_pause =</span> <span class="dv">30</span>)</span></code></pre></div>
 <p><img src="thoughts_files/figure-html/unnamed-chunk-4-1.gif" /><!-- --></p>
 </div>
+<<<<<<< HEAD
+=======
+</div>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
             </section>
 
           </div>
         </div>
       </div>
 <a href="models.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<<<<<<< HEAD
 <a href="building-a-modeling-matrix-function.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+=======
+<a href="building-a-modeling-matrix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+>>>>>>> 82bd0d36d1a9f5f20f8528d135d479da454ac798
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
