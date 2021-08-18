@@ -16,6 +16,7 @@ rmd_files:
   - "package.Rmd"
   - "functions.Rmd"
   - "modeling.Rmd"
+  - "PART-epidemiology.Rmd"
   - "PART-ecg.Rmd"
   - "vcg.Rmd"
   - "PART-clinical.Rmd"
